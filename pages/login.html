@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CORREGIDO: con ../ -->
+</head>
+<body>
+        <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency"> <!-- Misma carpeta: sin ../ -->
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon"> <!-- CORREGIDO: con ../ -->
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+    
+    
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40"> <!-- CORREGIDO: con ../ -->
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ACERCA DE (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-info-circle"></i> Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-users"></i> ¿Quiénes Somos?
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-bullseye"></i> Misión, Visión y Valores
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#equipo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-user-friends"></i> Nuestro Equipo
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#faq"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#resultados"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-chart-line"></i> Resultados Comprobados
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Todo
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- SERVICIOS (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hands-helping"></i> Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <h6 class="dropdown-header">Apoyo Comunitario</h6>
+                            <a class="dropdown-item" href="servicios.html#foro"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Foro Comunitario
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#tests"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-clipboard-check"></i> Tests Autoevaluativos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Herramientas</h6>
+                            <a class="dropdown-item" href="servicios.html#recursos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-tools"></i> Recursos de Autocuidado
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#juegos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Ayuda Especializada</h6>
+                            <a class="dropdown-item" href="servicios.html#mapa"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-map-marked-alt"></i> Centros de Ayuda
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#formularios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-file-alt"></i> Formularios de Ayuda
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Explorar Todos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COMUNIDAD (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-heart"></i> Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="comunidad.html#testimonios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-star"></i> Testimonios de Superación
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-share-alt"></i> Experiencias Compartidas
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#articulos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-newspaper"></i> Artículos y Publicaciones
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#eventos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-calendar-alt"></i> Eventos y Talleres
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Unirse a la Comunidad
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- CONTACTO (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-address-book"></i> Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="contacto.html#contacto-general"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-envelope"></i> Contacto General
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#emergencia"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-phone-alt"></i> Contactos de Emergencia
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#chat"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Chat de Primer Contacto
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Contactos Completos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COLABORA (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-donate"></i> Donaciones
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-hands-helping"></i> Voluntariado
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-university"></i> Colaboraciones Institucionales
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Oportunidades
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- USUARIO / LOGIN - ACTIVE -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" id="userDropdownMenu">
+                            <!-- Contenido dinámico basado en estado de login -->
+                            <div id="loggedOutMenu">
+                                <a class="dropdown-item" href="#login"> <!-- Misma página: solo # -->
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </a>
+                                <a class="dropdown-item" href="#register"> <!-- Misma página: solo # -->
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </a>
+                                <a class="dropdown-item" href="#recover"> <!-- Misma página: solo # -->
+                                    <i class="fas fa-key"></i> Recuperar Contraseña
+                                </a>
+                            </div>
+                            <div id="loggedInMenu" style="display: none;">
+                                <a class="dropdown-item" href="perfil.html"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#historial"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-history"></i> Historial de Tests
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#recursos-guardados"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-bookmark"></i> Recursos Guardados
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#configuracion"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-cog"></i> Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Login/Registro -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card auth-card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login">
+                                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register">
+                                        <i class="fas fa-user-plus"></i> Crear Cuenta
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="recover-tab" data-toggle="tab" href="#recover">
+                                        <i class="fas fa-key"></i> Recuperar Contraseña
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content mt-4" id="authTabsContent">
+                                <!-- Login Tab -->
+                                <div class="tab-pane fade show active" id="login">
+                                    <form id="loginForm">
+                                        <div class="form-group">
+                                            <label for="loginEmail">Email *</label>
+                                            <input type="email" class="form-control" id="loginEmail" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="loginPassword">Contraseña *</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="loginPassword" required>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">
+                                                Recordarme
+                                            </label>
+                                            <a href="#recover" class="float-right" data-toggle="tab">
+                                                ¿Olvidaste tu contraseña?
+                                            </a>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                        </button>
+                                        
+                                        <div class="text-center mt-3">
+                                            <p>O inicia sesión con:</p>
+                                            <button type="button" class="btn btn-outline-primary mr-2">
+                                                <i class="fab fa-google"></i> Google
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary">
+                                                <i class="fab fa-facebook"></i> Facebook
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="alert alert-info mt-4">
+                                            <i class="fas fa-info-circle"></i>
+                                            <strong>Nota:</strong> Puedes usar SOULINK sin crear una cuenta, pero algunas funciones como guardar tus resultados de tests o participar en el foro requieren registro.
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <!-- Register Tab -->
+                                <div class="tab-pane fade" id="register">
+                                    <form id="registerForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="regNombre">Nombre *</label>
+                                                    <input type="text" class="form-control" id="regNombre" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="regApellido">Apellido *</label>
+                                                    <input type="text" class="form-control" id="regApellido" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="regEmail">Email *</label>
+                                            <input type="email" class="form-control" id="regEmail" required>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="regPassword">Contraseña *</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="regPassword" required>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary" type="button" id="toggleRegPassword">
+                                                                <i class="fas fa-eye"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <small class="form-text text-muted">Mínimo 8 caracteres</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="regConfirmPassword">Confirmar Contraseña *</label>
+                                                    <input type="password" class="form-control" id="regConfirmPassword" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="regFechaNacimiento">Fecha de Nacimiento</label>
+                                            <input type="date" class="form-control" id="regFechaNacimiento">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Género</label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="genero" id="femenino" value="femenino">
+                                                    <label class="form-check-label" for="femenino">Femenino</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="genero" id="masculino" value="masculino">
+                                                    <label class="form-check-label" for="masculino">Masculino</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="genero" id="otro" value="otro">
+                                                    <label class="form-check-label" for="otro">Otro</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="genero" id="prefieroNoDecir" value="prefieroNoDecir">
+                                                    <label class="form-check-label" for="prefieroNoDecir">Prefiero no decir</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                                            <label class="form-check-label" for="acceptTerms">
+                                                Acepto los <a href="terminos.html" target="_blank">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank">Política de Privacidad</a> * <!-- Misma carpeta: sin ../ -->
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="newsletter">
+                                            <label class="form-check-label" for="newsletter">
+                                                Quiero recibir información sobre nuevos recursos y talleres
+                                            </label>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-success btn-block btn-lg">
+                                            <i class="fas fa-user-plus"></i> Crear Cuenta
+                                        </button>
+                                    </form>
+                                </div>
+                                
+                                <!-- Recover Tab -->
+                                <div class="tab-pane fade" id="recover">
+                                    <form id="recoverForm">
+                                        <div class="form-group">
+                                            <label for="recoverEmail">Email registrado *</label>
+                                            <input type="email" class="form-control" id="recoverEmail" required>
+                                            <small class="form-text text-muted">
+                                                Te enviaremos un enlace para restablecer tu contraseña
+                                            </small>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                            <i class="fas fa-paper-plane"></i> Enviar Enlace de Recuperación
+                                        </button>
+                                        
+                                        <div class="alert alert-success mt-3" id="recoverSuccess" style="display: none;">
+                                            <i class="fas fa-check-circle"></i>
+                                            Hemos enviado un enlace de recuperación a tu email. Revisa tu bandeja de entrada.
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Beneficios de Registro -->
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">¿Por qué registrarte en SOULINK?</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="benefit-item text-center">
+                                        <i class="fas fa-history fa-2x text-primary"></i>
+                                        <h6>Historial Personal</h6>
+                                        <p>Guarda tus resultados de tests y sigue tu progreso</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="benefit-item text-center">
+                                        <i class="fas fa-comments fa-2x text-success"></i>
+                                        <h6>Participación en Foro</h6>
+                                        <p>Comparte experiencias y recibe apoyo de la comunidad</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="benefit-item text-center">
+                                        <i class="fas fa-bookmark fa-2x text-warning"></i>
+                                        <h6>Recursos Guardados</h6>
+                                        <p>Guarda tus recursos favoritos para acceder rápido</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="terminos.html" class="text-white">Términos</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="contacto.html" class="text-white ml-3">Contacto</a> <!-- Misma carpeta: sin ../ -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script> <!-- CORREGIDO: con ../ -->
+    <script src="../js/auth.js"></script> <!-- CORREGIDO: con ../ -->
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('loginPassword');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Toggle register password visibility
+        document.getElementById('toggleRegPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('regPassword');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simulate login - in production this would be an API call
+            if (email && password.length >= 6) {
+                alert('Inicio de sesión exitoso. Redirigiendo...');
+                // In production: Save token and redirect
+                localStorage.setItem('soulink_token', 'simulated_token');
+                window.location.href = 'perfil.html'; // Misma carpeta: sin ../
+            } else {
+                alert('Por favor ingresa credenciales válidas');
+            }
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('La contraseña debe tener al menos 8 caracteres');
+                return;
+            }
+            
+            alert('Cuenta creada exitosamente. Redirigiendo...');
+            // In production: API call to register and auto-login
+            localStorage.setItem('soulink_token', 'simulated_token');
+            window.location.href = 'perfil.html'; // Misma carpeta: sin ../
+        });
+        
+        document.getElementById('recoverForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('recoverSuccess').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

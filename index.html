@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULINK - Apoyo Emocional Preventivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <!-- CORREGIDO: sin ../ -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> <!-- CORREGIDO: sin ../ -->
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="pages/contacto.html#emergencia" class="btn-emergency"> <!-- CORREGIDO: agregar pages/ -->
+            <img src="assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon"> <!-- CORREGIDO: sin ../ -->
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40"> <!-- CORREGIDO: sin ../ -->
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ACERCA DE (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="pages/acerca.html" id="acercaDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-info-circle"></i> Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="pages/acerca.html#quienes-somos">
+                                <i class="fas fa-users"></i> ¿Quiénes Somos?
+                            </a>
+                            <a class="dropdown-item" href="pages/acerca.html#mision-vision">
+                                <i class="fas fa-bullseye"></i> Misión, Visión y Valores
+                            </a>
+                            <a class="dropdown-item" href="pages/acerca.html#equipo">
+                                <i class="fas fa-user-friends"></i> Nuestro Equipo
+                            </a>
+                            <a class="dropdown-item" href="pages/acerca.html#faq">
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a class="dropdown-item" href="pages/acerca.html#resultados">
+                                <i class="fas fa-chart-line"></i> Resultados Comprobados
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="pages/acerca.html">
+                                <i class="fas fa-arrow-right"></i> Ver Todo
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- SERVICIOS (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="pages/servicios.html" id="serviciosDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hands-helping"></i> Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <h6 class="dropdown-header">Apoyo Comunitario</h6>
+                            <a class="dropdown-item" href="pages/servicios.html#foro">
+                                <i class="fas fa-comments"></i> Foro Comunitario
+                            </a>
+                            <a class="dropdown-item" href="pages/servicios.html#tests">
+                                <i class="fas fa-clipboard-check"></i> Tests Autoevaluativos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Herramientas</h6>
+                            <a class="dropdown-item" href="pages/servicios.html#recursos">
+                                <i class="fas fa-tools"></i> Recursos de Autocuidado
+                            </a>
+                            <a class="dropdown-item" href="pages/servicios.html#juegos">
+                                <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Ayuda Especializada</h6>
+                            <a class="dropdown-item" href="pages/servicios.html#mapa">
+                                <i class="fas fa-map-marked-alt"></i> Centros de Ayuda
+                            </a>
+                            <a class="dropdown-item" href="pages/servicios.html#formularios">
+                                <i class="fas fa-file-alt"></i> Formularios de Ayuda
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="pages/servicios.html">
+                                <i class="fas fa-arrow-right"></i> Explorar Todos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COMUNIDAD (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="pages/comunidad.html" id="comunidadDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-heart"></i> Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="pages/comunidad.html#testimonios">
+                                <i class="fas fa-star"></i> Testimonios de Superación
+                            </a>
+                            <a class="dropdown-item" href="pages/comunidad.html#experiencias">
+                                <i class="fas fa-share-alt"></i> Experiencias Compartidas
+                            </a>
+                            <a class="dropdown-item" href="pages/comunidad.html#articulos">
+                                <i class="fas fa-newspaper"></i> Artículos y Publicaciones
+                            </a>
+                            <a class="dropdown-item" href="pages/comunidad.html#eventos">
+                                <i class="fas fa-calendar-alt"></i> Eventos y Talleres
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="pages/comunidad.html">
+                                <i class="fas fa-arrow-right"></i> Unirse a la Comunidad
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- CONTACTO (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="pages/contacto.html" id="contactoDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-address-book"></i> Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="pages/contacto.html#contacto-general">
+                                <i class="fas fa-envelope"></i> Contacto General
+                            </a>
+                            <a class="dropdown-item" href="pages/contacto.html#emergencia">
+                                <i class="fas fa-phone-alt"></i> Contactos de Emergencia
+                            </a>
+                            <a class="dropdown-item" href="pages/contacto.html#chat">
+                                <i class="fas fa-comments"></i> Chat de Primer Contacto
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="pages/contacto.html">
+                                <i class="fas fa-arrow-right"></i> Ver Contactos Completos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COLABORA (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="pages/colaboraciones.html" id="colaboraDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="pages/colaboraciones.html#trabajo">
+                                <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                            <a class="dropdown-item" href="pages/colaboraciones.html#donaciones">
+                                <i class="fas fa-donate"></i> Donaciones
+                            </a>
+                            <a class="dropdown-item" href="pages/colaboraciones.html#voluntariado">
+                                <i class="fas fa-hands-helping"></i> Voluntariado
+                            </a>
+                            <a class="dropdown-item" href="pages/colaboraciones.html#colaboraciones-institucionales">
+                                <i class="fas fa-university"></i> Colaboraciones Institucionales
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="pages/colaboraciones.html">
+                                <i class="fas fa-arrow-right"></i> Ver Oportunidades
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- USUARIO / LOGIN -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" id="userDropdownMenu">
+                            <!-- Contenido dinámico basado en estado de login -->
+                            <div id="loggedOutMenu">
+                                <a class="dropdown-item" href="pages/login.html#login">
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </a>
+                                <a class="dropdown-item" href="pages/login.html#register">
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </a>
+                                <a class="dropdown-item" href="pages/login.html#recover">
+                                    <i class="fas fa-key"></i> Recuperar Contraseña
+                                </a>
+                            </div>
+                            <div id="loggedInMenu" style="display: none;">
+                                <a class="dropdown-item" href="pages/perfil.html">
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a>
+                                <a class="dropdown-item" href="pages/perfil.html#historial">
+                                    <i class="fas fa-history"></i> Historial de Tests
+                                </a>
+                                <a class="dropdown-item" href="pages/perfil.html#recursos-guardados">
+                                    <i class="fas fa-bookmark"></i> Recursos Guardados
+                                </a>
+                                <a class="dropdown-item" href="pages/perfil.html#configuracion">
+                                    <i class="fas fa-cog"></i> Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4">No estás solo en este camino</h1>
+                    <p class="lead">SOULINK es una plataforma segura de apoyo emocional preventivo. Encuentra contención, recursos y una comunidad que comprende por lo que pasas.</p>
+                    <div class="hero-buttons">
+                        <a href="pages/servicios.html" class="btn btn-primary btn-lg">Explorar Servicios</a> <!-- CORREGIDO: agregar pages/ -->
+                        <a href="pages/contacto.html#emergencia" class="btn btn-outline-light btn-lg">Contacto de Emergencia</a> <!-- CORREGIDO: agregar pages/ -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/Conejo/inicio.png" alt="Apoyo emocional" class="img-fluid"> <!-- CORREGIDO: sin ../ -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Rápidos -->
+    <section class="quick-services py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Acceso Rápido a Ayuda</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-comments fa-3x mb-3"></i>
+                            <h5>Foro Comunitario</h5>
+                            <p>Espacio seguro para compartir experiencias</p>
+                            <a href="pages/servicios.html#foro" class="btn btn-outline-primary">Entrar</a> <!-- CORREGIDO: agregar pages/ -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-clipboard-check fa-3x mb-3"></i>
+                            <h5>Tests Autoevaluativos</h5>
+                            <p>Evalúa tu bienestar emocional</p>
+                            <a href="pages/servicios.html#tests" class="btn btn-outline-primary">Comenzar</a> <!-- CORREGIDO: agregar pages/ -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-hands-helping fa-3x mb-3"></i>
+                            <h5>Recursos de Autocuidado</h5>
+                            <p>Guías y técnicas validadas</p>
+                            <a href="pages/servicios.html#recursos" class="btn btn-outline-primary">Ver Recursos</a> <!-- CORREGIDO: agregar pages/ -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-map-marker-alt fa-3x mb-3"></i>
+                            <h5>Centros de Ayuda</h5>
+                            <p>Encuentra ayuda profesional cerca</p>
+                            <a href="pages/servicios.html#mapa" class="btn btn-outline-primary">Buscar Centros</a> <!-- CORREGIDO: agregar pages/ -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <h3 class="display-4">500+</h3>
+                    <p>Usuarios activos</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="display-4">1,200+</h3>
+                    <p>Testimonios compartidos</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="display-4">50+</h3>
+                    <p>Recursos disponibles</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="display-4">24/7</h3>
+                    <p>Contactos de emergencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Historias de Superación</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card">
+                            <p>"SOULINK me ayudó a entender que no estaba solo en mi proceso de duelo. El foro fue un espacio seguro donde pude expresarme sin juicios."</p>
+                            <h5>- María G., 28 años</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <p>"Los tests me dieron claridad sobre mi nivel de ansiedad y los recursos de autocuidado me enseñaron técnicas que uso diariamente."</p>
+                            <h5>- Carlos R., 35 años</h5>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Plataforma de apoyo emocional preventivo. Un espacio seguro para tu bienestar mental.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="pages/acerca.html">Acerca de</a></li> <!-- CORREGIDO: agregar pages/ -->
+                        <li><a href="pages/servicios.html">Servicios</a></li> <!-- CORREGIDO: agregar pages/ -->
+                        <li><a href="pages/contacto.html">Contacto</a></li> <!-- CORREGIDO: agregar pages/ -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pages/servicios.html#foro">Foro Comunitario</a></li> <!-- CORREGIDO: agregar pages/ -->
+                        <li><a href="pages/servicios.html#tests">Tests</a></li> <!-- CORREGIDO: agregar pages/ -->
+                        <li><a href="pages/servicios.html#recursos">Recursos</a></li> <!-- CORREGIDO: agregar pages/ -->
+                        <li><a href="pages/servicios.html#mapa">Centros de Ayuda</a></li> <!-- CORREGIDO: agregar pages/ -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto de Emergencia</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-globe"></i> saludresponde.gob.cl</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="pages/privacidad.html" class="text-white mr-3">Política de Privacidad</a> <!-- CORREGIDO: agregar pages/ -->
+                    <a href="pages/terminos.html" class="text-white">Términos de Servicio</a> <!-- CORREGIDO: agregar pages/ -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script> <!-- CORREGIDO: sin ../ -->
+</body>
+</html>

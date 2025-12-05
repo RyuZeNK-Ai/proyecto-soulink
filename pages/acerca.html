@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Nosotros - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CORREGIDO: con ../ -->
+</head>
+<body>
+    
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency"> <!-- Misma carpeta: sin ../ -->
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon"> <!-- CORREGIDO: con ../ -->
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40"> <!-- CORREGIDO: con ../ -->
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ACERCA DE (con submenú) -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="acercaDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-info-circle"></i> Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="#quienes-somos"> <!-- Misma página: solo # -->
+                                <i class="fas fa-users"></i> ¿Quiénes Somos?
+                            </a>
+                            <a class="dropdown-item" href="#mision-vision"> <!-- Misma página: solo # -->
+                                <i class="fas fa-bullseye"></i> Misión, Visión y Valores
+                            </a>
+                            <a class="dropdown-item" href="#equipo"> <!-- Misma página: solo # -->
+                                <i class="fas fa-user-friends"></i> Nuestro Equipo
+                            </a>
+                            <a class="dropdown-item" href="#faq"> <!-- Misma página: solo # -->
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a class="dropdown-item" href="#resultados"> <!-- Misma página: solo # -->
+                                <i class="fas fa-chart-line"></i> Resultados Comprobados
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-arrow-right"></i> Ver Todo
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- SERVICIOS (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hands-helping"></i> Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <h6 class="dropdown-header">Apoyo Comunitario</h6>
+                            <a class="dropdown-item" href="servicios.html#foro"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Foro Comunitario
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#tests"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-clipboard-check"></i> Tests Autoevaluativos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Herramientas</h6>
+                            <a class="dropdown-item" href="servicios.html#recursos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-tools"></i> Recursos de Autocuidado
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#juegos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Ayuda Especializada</h6>
+                            <a class="dropdown-item" href="servicios.html#mapa"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-map-marked-alt"></i> Centros de Ayuda
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#formularios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-file-alt"></i> Formularios de Ayuda
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Explorar Todos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COMUNIDAD (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-heart"></i> Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="comunidad.html#testimonios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-star"></i> Testimonios de Superación
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-share-alt"></i> Experiencias Compartidas
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#articulos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-newspaper"></i> Artículos y Publicaciones
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#eventos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-calendar-alt"></i> Eventos y Talleres
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Unirse a la Comunidad
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- CONTACTO (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-address-book"></i> Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="contacto.html#contacto-general"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-envelope"></i> Contacto General
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#emergencia"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-phone-alt"></i> Contactos de Emergencia
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#chat"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Chat de Primer Contacto
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Contactos Completos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COLABORA (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-donate"></i> Donaciones
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-hands-helping"></i> Voluntariado
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-university"></i> Colaboraciones Institucionales
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Oportunidades
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- USUARIO / LOGIN -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" id="userDropdownMenu">
+                            <!-- Contenido dinámico basado en estado de login -->
+                            <div id="loggedOutMenu">
+                                <a class="dropdown-item" href="login.html#login"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </a>
+                                <a class="dropdown-item" href="login.html#register"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </a>
+                                <a class="dropdown-item" href="login.html#recover"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-key"></i> Recuperar Contraseña
+                                </a>
+                            </div>
+                            <div id="loggedInMenu" style="display: none;">
+                                <a class="dropdown-item" href="perfil.html"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#historial"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-history"></i> Historial de Tests
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#recursos-guardados"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-bookmark"></i> Recursos Guardados
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#configuracion"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-cog"></i> Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="container">
+            <h1 class="display-4">Acerca de SOULINK</h1>
+            <p class="lead">Conoce nuestra misión, visión y el equipo detrás de esta plataforma de apoyo emocional</p>
+        </div>
+    </section>
+
+    <!-- Quiénes Somos -->
+    <section class="py-5" id="quienes-somos">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">¿Quiénes Somos?</h2>
+                    <p>SOULINK nace como respuesta a la creciente crisis de salud mental en Chile, especialmente entre jóvenes y adultos jóvenes. Somos un equipo multidisciplinario comprometido con brindar apoyo emocional preventivo a través de una plataforma digital segura y accesible.</p>
+                    <p>Nuestro objetivo es reducir el estigma alrededor de la salud mental y proporcionar herramientas validadas para el autocuidado emocional.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../assets/images/Conejo/logo_acerca.png" alt="Equipo trabajando" class="img-fluid rounded"> <!-- CORREGIDO: con ../ -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión, Visión, Valores -->
+    <section class="py-5 bg-light" id="mision-vision">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestros Pilares Fundamentales</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-bullseye fa-3x mb-3 text-primary"></i>
+                            <h4>Misión</h4>
+                            <p>Brindar una plataforma digital segura y accesible que ofrezca apoyo emocional preventivo a personas que atraviesan estrés, duelo o momentos de vulnerabilidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-eye fa-3x mb-3 text-success"></i>
+                            <h4>Visión</h4>
+                            <p>Convertirnos en la principal plataforma de apoyo emocional preventivo en Chile, destacando por un entorno seguro, humano y tecnológicamente responsable.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-heart fa-3x mb-3 text-danger"></i>
+                            <h4>Valores</h4>
+                            <ul class="list-unstyled text-left">
+                                <li><i class="fas fa-check text-success"></i> Dignidad Humana</li>
+                                <li><i class="fas fa-check text-success"></i> Empatía</li>
+                                <li><i class="fas fa-check text-success"></i> Confidencialidad</li>
+                                <li><i class="fas fa-check text-success"></i> Responsabilidad</li>
+                                <li><i class="fas fa-check text-success"></i> Innovación Ética</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="py-5" id="equipo">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestro Equipo</h2>
+            <div class="row">
+                <!-- Miembro 1: Product Owner -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <div class="featured-badge">🤝</div>
+                            <img src="../assets/images/team/anita.jpeg" alt="Anita Morales" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Anita Morales</h5>
+                        <p class="text-muted">Product Owner</p>
+                        <p class="team-bio"> Encargada de definir y evolucionar el proyecto, alineando necesidades de los usuarios y equipo técnico para crear soluciones seguras, éticas y centradas en el bienestar</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 2: Back-End Developer -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                               <div class="featured-badge">💻</div>
+                            <img src="../assets/images/team/Mauricio.png" alt="Mauricio Narváez" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Mauricio Narváez</h5>
+                        <p class="text-muted">Back-End Developer</p>
+                        <p class="team-bio">Experto en Java y Spring Boot con 7 años desarrollando sistemas escalables para el sector salud</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 3: Full Stack Developer -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                               <div class="featured-badge">💻</div>
+                            <img src="../assets/images/team/Vicente.jpeg" alt="Vicente Díaz" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Vicente Díaz</h5>
+                        <p class="text-muted">Full Stack Developer</p>
+                        <p class="team-bio">Especialista en JavaScript, React y Node.js. Apasionado por crear interfaces accesibles y eficientes</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-codepen"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 4: Back-End Developer -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                               <div class="featured-badge">💻</div>
+                            <img src="../assets/images/team/Javier.png" alt="Javier Valenzuela" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Javier Valenzuela</h5>
+                        <p class="text-muted">Back-End Developer</p>
+                        <p class="team-bio">Especialista en bases de datos y arquitectura de sistemas. Garantiza la seguridad y eficiencia de nuestra plataforma</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 5: QA / Tester -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <div class="featured-badge">💻</div>
+                            <img src="../assets/images/team/agustin.png" alt="Agustín Valenzuela" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Agustín Valenzuela</h5>
+                        <p class="text-muted">QA / Tester</p>
+                        <p class="team-bio">Encargado de garantizar la calidad del software. Especialista en pruebas automatizadas y experiencia de usuario</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fas fa-bug"></i></a>
+                            <a href="#"><i class="fab fa-jira"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 6: UX/UI Designer -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <div class="featured-badge">🎨</div>
+                            <img src="../assets/images/team/karim.png" alt="Karim Valenzuela" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Karim Valenzuela</h5>
+                        <p class="text-muted">UX/UI Designer</p>
+                        <p class="team-bio">Diseñador de experiencias centradas en el usuario. Crea interfaces intuitivas que generan confianza y calma</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 7: Scrum Master -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <div class="featured-badge">⭐</div>
+                            <img src="../assets/images/team/Nico.png" alt="Nicolás Peña" class="rounded-circle" width="120" height="120"> <!-- CORREGIDO: con ../ -->
+                        </div>
+                        <h5>Nicolás Peña</h5>
+                        <p class="text-muted">Scrum Master</p>
+                        <p class="team-bio">Líder del equipo. Asegura que todos trabajen en armonía y que el proyecto avance de manera eficiente y organizada</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fas fa-flag"></i></a>
+                            <a href="#"><i class="fas fa-users"></i></a>
+                            <a href="#"><i class="fas fa-trophy"></i></a>
+                        </div>
+                        <div class="team-special">
+                            <span class="badge badge-warning">Líder del Proyecto</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miembro 8: Developer Adicional si lo necesitas -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="team-card text-center">
+                        <div class="team-avatar mb-3">
+                            <div class="placeholder-avatar">
+                                <i class="fas fa-user-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <h5>¿Te unes?</h5>
+                        <p class="text-muted">Colaborador</p>
+                        <p class="team-bio">Espacio para futuros colaboradores que quieran sumarse a nuestra misión de apoyo emocional</p>
+                        <a href="colaboraciones.html" class="btn btn-outline-primary btn-sm">Únete al equipo</a> <!-- Misma carpeta: sin ../ -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nota del equipo -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card border-primary">
+                        <div class="card-body text-center">
+                            <h4><i class="fas fa-heart text-danger"></i> Nuestra Filosofía</h4>
+                            <p class="mb-0">Somos un equipo multidisciplinario unido por una misión común: crear un espacio digital seguro donde todas las personas puedan encontrar apoyo emocional y herramientas para su bienestar mental. Cada miembro aporta su expertise técnico y humano para hacer de SOULINK una plataforma confiable y accesible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-5 bg-light" id="faq">
+        <div class="container">
+            <h2 class="text-center mb-5">Preguntas Frecuentes</h2>
+            <div class="accordion" id="faqAccordion">
+                <!-- Pregunta 1 -->
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
+                                ¿Es SOULINK un servicio gratuito?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Sí, todas las funciones esenciales de SOULINK son completamente gratuitas. Creemos que el apoyo emocional debe ser accesible para todos.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pregunta 2 -->
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
+                                ¿Cómo protegen mi privacidad?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Usamos encriptación de datos, no compartimos información personal con terceros, y ofrecemos la opción de participar de forma anónima en el foro.
+                        </div>
+                    </div>
+                </div>
+                <!-- Pregunta 3 -->
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">
+                                ¿SOULINK reemplaza la terapia psicológica?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            No. SOULINK es una herramienta de apoyo preventivo y no sustituye la atención psicológica profesional. Te ayudamos a identificar cuándo buscar ayuda profesional.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados Comprobados -->
+    <section class="py-5" id="resultados">
+        <div class="container">
+            <h2 class="text-center mb-5">Resultados Comprobados</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-circle">
+                        <h3 class="display-4">85%</h3>
+                        <p>Reportan mejoría en su bienestar emocional</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-circle">
+                        <h3 class="display-4">92%</h3>
+                        <p>Se sienten más acompañados</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-circle">
+                        <h3 class="display-4">78%</h3>
+                        <p>Utilizan las técnicas de autocuidado aprendidas</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-circle">
+                        <h3 class="display-4">95%</h3>
+                        <p>Recomendarían SOULINK a otras personas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Plataforma de apoyo emocional preventivo.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html">Inicio</a></li> <!-- CORREGIDO: subir a raíz con ../ -->
+                        <li><a href="acerca.html">Acerca de</a></li> <!-- Misma carpeta: sin ../ -->
+                        <li><a href="servicios.html">Servicios</a></li> <!-- Misma carpeta: sin ../ -->
+                        <li><a href="contacto.html">Contacto</a></li> <!-- Misma carpeta: sin ../ -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@soulink.cl</li>
+                        <li><i class="fas fa-phone"></i> +56 9 1234 5678</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Emergencia</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="terminos.html" class="text-white">Términos</a> <!-- Misma carpeta: sin ../ -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script> <!-- CORREGIDO: con ../ -->
+</body>
+</html>

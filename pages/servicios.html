@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency">
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon">
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ACERCA DE (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-info-circle"></i> Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">
+                                <i class="fas fa-users"></i> ¿Quiénes Somos?
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">
+                                <i class="fas fa-bullseye"></i> Misión, Visión y Valores
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#equipo">
+                                <i class="fas fa-user-friends"></i> Nuestro Equipo
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#faq">
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#resultados">
+                                <i class="fas fa-chart-line"></i> Resultados Comprobados
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">
+                                <i class="fas fa-arrow-right"></i> Ver Todo
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- SERVICIOS (con submenú) - ACTIVO -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hands-helping"></i> Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <h6 class="dropdown-header">Apoyo Comunitario</h6>
+                            <a class="dropdown-item" href="servicios.html#foro">
+                                <i class="fas fa-comments"></i> Foro Comunitario
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#tests">
+                                <i class="fas fa-clipboard-check"></i> Tests Autoevaluativos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Herramientas</h6>
+                            <a class="dropdown-item" href="servicios.html#recursos">
+                                <i class="fas fa-tools"></i> Recursos de Autocuidado
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#juegos">
+                                <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Ayuda Especializada</h6>
+                            <a class="dropdown-item" href="servicios.html#mapa">
+                                <i class="fas fa-map-marked-alt"></i> Centros de Ayuda
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#formularios">
+                                <i class="fas fa-file-alt"></i> Formularios de Ayuda
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">
+                                <i class="fas fa-arrow-right"></i> Explorar Todos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COMUNIDAD (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-heart"></i> Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">
+                                <i class="fas fa-star"></i> Testimonios de Superación
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">
+                                <i class="fas fa-share-alt"></i> Experiencias Compartidas
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">
+                                <i class="fas fa-newspaper"></i> Artículos y Publicaciones
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">
+                                <i class="fas fa-calendar-alt"></i> Eventos y Talleres
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">
+                                <i class="fas fa-arrow-right"></i> Unirse a la Comunidad
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- CONTACTO (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-address-book"></i> Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">
+                                <i class="fas fa-envelope"></i> Contacto General
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">
+                                <i class="fas fa-phone-alt"></i> Contactos de Emergencia
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#chat">
+                                <i class="fas fa-comments"></i> Chat de Primer Contacto
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">
+                                <i class="fas fa-arrow-right"></i> Ver Contactos Completos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COLABORA (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">
+                                <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">
+                                <i class="fas fa-donate"></i> Donaciones
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">
+                                <i class="fas fa-hands-helping"></i> Voluntariado
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">
+                                <i class="fas fa-university"></i> Colaboraciones Institucionales
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">
+                                <i class="fas fa-arrow-right"></i> Ver Oportunidades
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- USUARIO / LOGIN -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" id="userDropdownMenu">
+                            <!-- Contenido dinámico basado en estado de login -->
+                            <div id="loggedOutMenu">
+                                <a class="dropdown-item" href="login.html#login">
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </a>
+                                <a class="dropdown-item" href="login.html#register">
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </a>
+                                <a class="dropdown-item" href="login.html#recover">
+                                    <i class="fas fa-key"></i> Recuperar Contraseña
+                                </a>
+                            </div>
+                            <div id="loggedInMenu" style="display: none;">
+                                <a class="dropdown-item" href="perfil.html">
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#historial">
+                                    <i class="fas fa-history"></i> Historial de Tests
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#recursos-guardados">
+                                    <i class="fas fa-bookmark"></i> Recursos Guardados
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#configuracion">
+                                    <i class="fas fa-cog"></i> Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Servicios -->
+    <section class="hero-services">
+        <div class="container">
+            <h1 class="display-4">Nuestros Servicios</h1>
+            <p class="lead">Herramientas y recursos diseñados para tu bienestar emocional</p>
+        </div>
+    </section>
+
+    <!-- Navegación Interna -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="services-nav">
+                <a href="#foro" class="service-nav-link active">Foro</a>
+                <a href="#tests" class="service-nav-link">Tests</a>
+                <a href="#recursos" class="service-nav-link">Recursos</a>
+                <a href="#juegos" class="service-nav-link">Juegos</a>
+                <a href="#mapa" class="service-nav-link">Centros de Ayuda</a>
+                <a href="#formularios" class="service-nav-link">Formularios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Foro -->
+    <section id="foro" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Foro Comunitario</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Últimas Publicaciones</h5>
+                        </div>
+                        <div class="card-body" id="forumPostsContainer">
+                            <!-- Las publicaciones se cargarán aquí con JavaScript -->
+                            <div class="text-center py-4">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="sr-only">Cargando...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Crear nueva publicación</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="forumForm">
+                                <div class="form-group">
+                                    <label for="postTitle">Título *</label>
+                                    <input type="text" id="postTitle" class="form-control" required 
+                                           placeholder="¿De qué te gustaría hablar?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="postCategory">Categoría *</label>
+                                    <select id="postCategory" class="form-control" required>
+                                        <option value="">Selecciona una categoría</option>
+                                        <option value="ansiedad">Ansiedad</option>
+                                        <option value="depresion">Depresión</option>
+                                        <option value="duelo">Duelo</option>
+                                        <option value="estres">Estrés</option>
+                                        <option value="autoestima">Autoestima</option>
+                                        <option value="relaciones">Relaciones</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postContent">Contenido *</label>
+                                    <textarea id="postContent" class="form-control" rows="5" 
+                                              data-max="1000" required 
+                                              placeholder="Comparte tus pensamientos, experiencias o preguntas..."></textarea>
+                                    <small class="text-muted">Máximo 1000 caracteres</small>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input type="checkbox" class="form-check-input" id="postAnonymous">
+                                    <label class="form-check-label" for="postAnonymous">
+                                        Publicar de forma anónima
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submitPostBtn">
+                                    <i class="fas fa-paper-plane"></i> Publicar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="mb-0">Normas del Foro</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="fas fa-check text-success mr-2"></i>Respeto mutuo</li>
+                                <li class="mb-2"><i class="fas fa-check text-success mr-2"></i>Anonimato opcional</li>
+                                <li class="mb-2"><i class="fas fa-check text-success mr-2"></i>Moderación humana</li>
+                                <li class="mb-2"><i class="fas fa-check text-success mr-2"></i>Sin juicios</li>
+                                <li class="mb-2"><i class="fas fa-check text-success mr-2"></i>Confidencialidad</li>
+                                <li class="mb-2"><i class="fas fa-check text-success mr-2"></i>No spam</li>
+                                <li><i class="fas fa-check text-success mr-2"></i>Contenido apropiado</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="mb-0">Categorías</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="category-tags">
+                                <span class="badge badge-primary mb-2 p-2" data-category="ansiedad">
+                                    <i class="fas fa-wind mr-1"></i> Ansiedad
+                                </span>
+                                <span class="badge badge-secondary mb-2 p-2" data-category="depresion">
+                                    <i class="fas fa-cloud mr-1"></i> Depresión
+                                </span>
+                                <span class="badge badge-danger mb-2 p-2" data-category="duelo">
+                                    <i class="fas fa-heart-broken mr-1"></i> Duelo
+                                </span>
+                                <span class="badge badge-warning mb-2 p-2" data-category="estres">
+                                    <i class="fas fa-weight-hanging mr-1"></i> Estrés
+                                </span>
+                                <span class="badge badge-info mb-2 p-2" data-category="autoestima">
+                                    <i class="fas fa-star mr-1"></i> Autoestima
+                                </span>
+                                <span class="badge badge-success mb-2 p-2" data-category="relaciones">
+                                    <i class="fas fa-users mr-1"></i> Relaciones
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Foro más activo</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="forum-stats">
+                                <p><strong>Ansiedad:</strong> 245 publicaciones</p>
+                                <p><strong>Depresión:</strong> 189 publicaciones</p>
+                                <p><strong>Duelo:</strong> 156 publicaciones</p>
+                                <p><strong>Total usuarios:</strong> 1,542</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Tests -->
+    <section id="tests" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Tests Autoevaluativos</h2>
+            <p class="text-center mb-5">Estos tests te ayudarán a entender mejor tu estado emocional. Recuerda que no son un diagnóstico, sino herramientas de autoconocimiento.</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card test-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                            <h4>Test de Ansiedad (GAD-7)</h4>
+                            <p class="text-muted">Evalúa síntomas de ansiedad en las últimas 2 semanas</p>
+                            <div class="test-info mb-3">
+                                <span class="badge badge-light mr-2">7 preguntas</span>
+                                <span class="badge badge-light">5 minutos</span>
+                            </div>
+                            <p><small>Basado en el cuestionario validado GAD-7</small></p>
+                            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#anxietyTestModal">
+                                <i class="fas fa-play-circle"></i> Comenzar Test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card test-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-cloud-rain fa-3x text-secondary mb-3"></i>
+                            <h4>Escala de Depresión (PHQ-9)</h4>
+                            <p class="text-muted">Identifica síntomas depresivos</p>
+                            <div class="test-info mb-3">
+                                <span class="badge badge-light mr-2">9 preguntas</span>
+                                <span class="badge badge-light">7 minutos</span>
+                            </div>
+                            <p><small>Adaptación del Patient Health Questionnaire-9</small></p>
+                            <button class="btn btn-secondary btn-lg" id="startDepressionTest">
+                                <i class="fas fa-play-circle"></i> Comenzar Test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card test-card-sm">
+                        <div class="card-body">
+                            <h5>Test de Estrés</h5>
+                            <p>Evalúa tu nivel de estrés actual</p>
+                            <button class="btn btn-outline-primary btn-sm" disabled>
+                                Próximamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card test-card-sm">
+                        <div class="card-body">
+                            <h5>Autoestima</h5>
+                            <p>Mide tu nivel de autoestima</p>
+                            <button class="btn btn-outline-primary btn-sm" disabled>
+                                Próximamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card test-card-sm">
+                        <div class="card-body">
+                            <h5>Resiliencia</h5>
+                            <p>Evalúa tu capacidad de recuperación</p>
+                            <button class="btn btn-outline-primary btn-sm" disabled>
+                                Próximamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Test de Ansiedad -->
+    <div class="modal fade" id="anxietyTestModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Test de Ansiedad (GAD-7)</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="test-instructions mb-4">
+                        <p><strong>Instrucciones:</strong> Marca con qué frecuencia te han molestado los siguientes problemas durante las últimas 2 semanas.</p>
+                    </div>
+                    
+                    <form id="anxietyTestForm">
+                        <div class="test-progress mb-4">
+                            <div class="progress">
+                                <div class="progress-bar" id="testProgressBar" style="width: 0%"></div>
+                            </div>
+                            <small id="progressText">Pregunta 1 de 7</small>
+                        </div>
+                        
+                        <div id="testQuestionsContainer">
+                            <!-- Las preguntas se cargarán dinámicamente -->
+                        </div>
+                        
+                        <div class="test-navigation mt-4">
+                            <button type="button" class="btn btn-secondary" id="prevQuestion" disabled>
+                                <i class="fas fa-arrow-left"></i> Anterior
+                            </button>
+                            <button type="button" class="btn btn-primary float-right" id="nextQuestion">
+                                Siguiente <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="submit" class="btn btn-success float-right d-none" id="submitTest">
+                                <i class="fas fa-check"></i> Ver Resultados
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Recursos -->
+    <section id="recursos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Recursos de Autocuidado</h2>
+            
+            <div class="row mb-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card resource-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
+                            <h4>Guía de Respiración</h4>
+                            <p>Técnicas de respiración para manejo de ansiedad</p>
+                            <div class="resource-info mb-3">
+                                <span class="badge badge-light">PDF</span>
+                                <span class="badge badge-light">8 páginas</span>
+                            </div>
+                            <button class="btn btn-outline-danger">
+                                <i class="fas fa-download"></i> Descargar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card resource-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-video fa-3x text-primary mb-3"></i>
+                            <h4>Meditación Guiada</h4>
+                            <p>Sesión de 10 minutos para reducir el estrés</p>
+                            <div class="resource-info mb-3">
+                                <span class="badge badge-light">Video</span>
+                                <span class="badge badge-light">10 min</span>
+                            </div>
+                            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#meditationModal">
+                                <i class="fas fa-play"></i> Ver Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card resource-card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-book fa-3x text-success mb-3"></i>
+                            <h4>Diario Emocional</h4>
+                            <p>Plantilla para registrar y analizar emociones</p>
+                            <div class="resource-info mb-3">
+                                <span class="badge badge-light">PDF</span>
+                                <span class="badge badge-light">12 páginas</span>
+                            </div>
+                            <button class="btn btn-outline-success">
+                                <i class="fas fa-download"></i> Descargar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card resource-small">
+                        <div class="card-body">
+                            <h6><i class="fas fa-bed text-info mr-2"></i>Higiene del Sueño</h6>
+                            <p class="small">Guía para mejorar tu descanso</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card resource-small">
+                        <div class="card-body">
+                            <h6><i class="fas fa-utensils text-warning mr-2"></i>Alimentación</h6>
+                            <p class="small">Nutrición para la salud mental</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card resource-small">
+                        <div class="card-body">
+                            <h6><i class="fas fa-running text-success mr-2"></i>Ejercicio</h6>
+                            <p class="small">Actividad física para el bienestar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card resource-small">
+                        <div class="card-body">
+                            <h6><i class="fas fa-users text-primary mr-2"></i>Relaciones</h6>
+                            <p class="small">Conexiones saludables</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Juegos -->
+    <section id="juegos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Juegos Terapéuticos</h2>
+            <p class="text-center mb-5">Actividades interactivas para reducir el estrés y mejorar el bienestar emocional.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card game-card">
+                        <div class="card-body text-center">
+                            <div class="game-icon mb-3">
+                                <i class="fas fa-feather-alt fa-3x text-primary"></i>
+                            </div>
+                            <h4>Respiración Guiada</h4>
+                            <p>Juego interactivo para practicar técnicas de respiración profunda</p>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#breathingGameModal">
+                                <i class="fas fa-play"></i> Jugar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card game-card">
+                        <div class="card-body text-center">
+                            <div class="game-icon mb-3">
+                                <i class="fas fa-heart fa-3x text-danger"></i>
+                            </div>
+                            <h4>Diario de Gratitud</h4>
+                            <p>Escribe 3 cosas por las que estás agradecido cada día</p>
+                            <button class="btn btn-danger" id="startGratitudeJournal">
+                                <i class="fas fa-book-open"></i> Comenzar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card game-card">
+                        <div class="card-body text-center">
+                            <div class="game-icon mb-3">
+                                <i class="fas fa-puzzle-piece fa-3x text-success"></i>
+                            </div>
+                            <h4>Rompecabezas Relajante</h4>
+                            <p>Armar puzzles para concentración y relajación</p>
+                            <button class="btn btn-success" disabled>
+                                Próximamente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Mapa de Centros -->
+    <section id="mapa" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Centros de Ayuda</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Buscar centros por región</h5>
+                            <div class="form-group">
+                                <label for="regionSelect">Región</label>
+                                <select class="form-control" id="regionSelect">
+                                    <option value="">Todas las regiones</option>
+                                    <option value="metropolitana">Metropolitana</option>
+                                    <option value="valparaiso">Valparaíso</option>
+                                    <option value="biobio">Biobío</option>
+                                    <option value="maule">Maule</option>
+                                    <option value="araucania">Araucanía</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="centerType">Tipo de centro</label>
+                                <select class="form-control" id="centerType">
+                                    <option value="">Todos los tipos</option>
+                                    <option value="publico">Público</option>
+                                    <option value="privado">Privado</option>
+                                    <option value="ong">ONG</option>
+                                    <option value="universidad">Universidad</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-block" id="searchCenters">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h6>Centros destacados</h6>
+                            <div class="center-list" id="centerList">
+                                <!-- Lista de centros se carga aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Mapa de centros de ayuda</h5>
+                            <div id="mapContainer" style="height: 500px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                                <div class="text-center">
+                                    <i class="fas fa-map-marked-alt fa-4x text-muted mb-3"></i>
+                                    <p>Mapa interactivo de centros de ayuda</p>
+                                    <p class="small text-muted">(Integración con Google Maps en versión completa)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Formularios -->
+    <section id="formularios" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Formularios de Ayuda</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4><i class="fas fa-hand-holding-heart text-primary mr-2"></i>Solicitud de Apoyo</h4>
+                            <p>Si necesitas orientación específica, completa este formulario y nuestro equipo te contactará.</p>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#supportFormModal">
+                                <i class="fas fa-pencil-alt"></i> Completar Formulario
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4><i class="fas fa-user-md text-success mr-2"></i>Derivación Responsable</h4>
+                            <p>Solicita una derivación a un profesional de la salud mental cerca de tu ubicación.</p>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#referralFormModal">
+                                <i class="fas fa-external-link-alt"></i> Solicitar Derivación
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Tu espacio seguro de apoyo emocional.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#foro">Foro</a></li>
+                        <li><a href="#tests">Tests</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#juegos">Juegos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Ayuda</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="contacto.html#emergencia">Emergencia</a></li>
+                        <li><a href="#mapa">Centros de ayuda</a></li>
+                        <li><a href="#formularios">Formularios</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-envelope"></i> info@soulink.cl</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="../pages/privacidad.html" class="text-white mr-3">Privacidad</a>
+                    <a href="../pages/terminos.html" class="text-white">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales adicionales -->
+    <div class="modal fade" id="meditationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Meditación Guiada</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fas fa-play-circle fa-4x text-primary mb-3"></i>
+                        <h4>Meditación para la calma</h4>
+                        <p>Sesión de 10 minutos para reducir el estrés y la ansiedad</p>
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-play"></i> Reproducir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/forum.js"></script>
+    <script src="../js/tests.js"></script>
+    <script src="../js/forms.js"></script>
+</body>
+</html>

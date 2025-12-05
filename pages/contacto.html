@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CORREGIDO: con ../ -->
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="#emergencia" class="btn-emergency"> <!-- Misma página: solo # -->
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon"> <!-- CORREGIDO: con ../ -->
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40"> <!-- CORREGIDO: con ../ -->
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ACERCA DE (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-info-circle"></i> Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-users"></i> ¿Quiénes Somos?
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-bullseye"></i> Misión, Visión y Valores
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#equipo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-user-friends"></i> Nuestro Equipo
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#faq"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#resultados"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-chart-line"></i> Resultados Comprobados
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Todo
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- SERVICIOS (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hands-helping"></i> Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <h6 class="dropdown-header">Apoyo Comunitario</h6>
+                            <a class="dropdown-item" href="servicios.html#foro"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Foro Comunitario
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#tests"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-clipboard-check"></i> Tests Autoevaluativos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Herramientas</h6>
+                            <a class="dropdown-item" href="servicios.html#recursos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-tools"></i> Recursos de Autocuidado
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#juegos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Ayuda Especializada</h6>
+                            <a class="dropdown-item" href="servicios.html#mapa"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-map-marked-alt"></i> Centros de Ayuda
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#formularios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-file-alt"></i> Formularios de Ayuda
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Explorar Todos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COMUNIDAD (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-heart"></i> Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="comunidad.html#testimonios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-star"></i> Testimonios de Superación
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-share-alt"></i> Experiencias Compartidas
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#articulos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-newspaper"></i> Artículos y Publicaciones
+                            </a>
+                            <a class="dropdown-item" href="comunidad.html#eventos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-calendar-alt"></i> Eventos y Talleres
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Unirse a la Comunidad
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- CONTACTO (con submenú) - ACTIVE -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-address-book"></i> Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="#contacto-general"> <!-- Misma página: solo # -->
+                                <i class="fas fa-envelope"></i> Contacto General
+                            </a>
+                            <a class="dropdown-item" href="#emergencia"> <!-- Misma página: solo # -->
+                                <i class="fas fa-phone-alt"></i> Contactos de Emergencia
+                            </a>
+                            <a class="dropdown-item" href="#chat"> <!-- Misma página: solo # -->
+                                <i class="fas fa-comments"></i> Chat de Primer Contacto
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"> <!-- Misma página: solo # -->
+                                <i class="fas fa-arrow-right"></i> Ver Contactos Completos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COLABORA (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-donate"></i> Donaciones
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-hands-helping"></i> Voluntariado
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-university"></i> Colaboraciones Institucionales
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Oportunidades
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- USUARIO / LOGIN -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" id="userDropdownMenu">
+                            <!-- Contenido dinámico basado en estado de login -->
+                            <div id="loggedOutMenu">
+                                <a class="dropdown-item" href="login.html#login"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </a>
+                                <a class="dropdown-item" href="login.html#register"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </a>
+                                <a class="dropdown-item" href="login.html#recover"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-key"></i> Recuperar Contraseña
+                                </a>
+                            </div>
+                            <div id="loggedInMenu" style="display: none;">
+                                <a class="dropdown-item" href="perfil.html"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#historial"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-history"></i> Historial de Tests
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#recursos-guardados"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-bookmark"></i> Recursos Guardados
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#configuracion"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-cog"></i> Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Contacto -->
+    <section class="hero-contact">
+        <div class="container">
+            <h1 class="display-4">Contáctanos</h1>
+            <p class="lead">Estamos aquí para escucharte y apoyarte</p>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto General -->
+    <section class="py-5" id="contacto-general">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <h2 class="mb-4">Formulario de Contacto</h2>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre *</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="apellido">Apellido *</label>
+                                    <input type="text" class="form-control" id="apellido" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="asunto">Asunto *</label>
+                            <select class="form-control" id="asunto" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="consulta">Consulta general</option>
+                                <option value="soporte">Soporte técnico</option>
+                                <option value="colaboracion">Colaboración</option>
+                                <option value="donacion">Donación</option>
+                                <option value="voluntariado">Voluntariado</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje *</label>
+                            <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="privacidad" required>
+                            <label class="form-check-label" for="privacidad">
+                                Acepto la <a href="privacidad.html">Política de Privacidad</a> * <!-- Misma carpeta: sin ../ -->
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Información de Contacto</h2>
+                    
+                    <div class="contact-info mb-4">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-envelope fa-2x text-primary mr-3"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@soulink.cl</p>
+                                <p>soporte@soulink.cl</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-phone fa-2x text-success mr-3"></i>
+                            <div>
+                                <h5>Teléfono</h5>
+                                <p>+56 9 1234 5678</p>
+                                <p>Lunes a Viernes: 9:00 - 18:00 hrs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x text-danger mr-3"></i>
+                            <div>
+                                <h5>Dirección</h5>
+                                <p>Av. Providencia 1234</p>
+                                <p>Providencia, Santiago</p>
+                                <p>Chile</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Horarios de Atención</h5>
+                            <ul class="list-unstyled">
+                                <li><strong>Lunes a Viernes:</strong> 9:00 - 18:00 hrs</li>
+                                <li><strong>Sábados:</strong> 10:00 - 14:00 hrs</li>
+                                <li><strong>Domingos:</strong> Cerrado</li>
+                            </ul>
+                            <p class="text-muted">* Atención de emergencia disponible 24/7 a través de los contactos oficiales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Emergencia -->
+    <section id="emergencia" class="py-5 bg-danger text-white">
+        <div class="container">
+            <h2 class="text-center mb-5">Contactos de Emergencia 24/7</h2>
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Importante:</strong> SOULINK no es un servicio de emergencia. Si estás en crisis o necesitas ayuda inmediata, contacta a los servicios oficiales.
+            </div>
+            
+            <div class="row">
+                <!-- Contacto 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="emergency-card">
+                        <div class="emergency-icon">
+                            <i class="fas fa-phone-volume fa-3x"></i>
+                        </div>
+                        <h4>4141</h4>
+                        <h5>No estás solo/a - MINSAL</h5>
+                        <p>Línea de prevención del suicidio</p>
+                        <p><strong>Disponibilidad:</strong> 24/7</p>
+                        <a href="tel:4141" class="btn btn-light btn-block">
+                            <i class="fas fa-phone"></i> Llamar ahora
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contacto 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="emergency-card">
+                        <div class="emergency-icon">
+                            <i class="fas fa-headset fa-3x"></i>
+                        </div>
+                        <h4>600 360 7777</h4>
+                        <h5>Salud Responde</h5>
+                        <p>Orientación en salud y apoyo emocional</p>
+                        <p><strong>Disponibilidad:</strong> 24/7</p>
+                        <a href="tel:6003607777" class="btn btn-light btn-block">
+                            <i class="fas fa-phone"></i> Llamar ahora
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contacto 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="emergency-card">
+                        <div class="emergency-icon">
+                            <i class="fas fa-hands-helping fa-3x"></i>
+                        </div>
+                        <h4>1412</h4>
+                        <h5>Fono Drogas y Alcohol - SENDA</h5>
+                        <p>Ayuda en consumo problemático</p>
+                        <p><strong>Disponibilidad:</strong> 24/7</p>
+                        <a href="tel:1412" class="btn btn-light btn-block">
+                            <i class="fas fa-phone"></i> Llamar ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <!-- Contacto 4 -->
+                <div class="col-md-4 mb-4">
+                    <div class="emergency-card">
+                        <h5>Fono Infancia</h5>
+                        <p>800 200 818</p>
+                        <p>Orientación sobre crianza (0-9 años)</p>
+                        <p><strong>Horario:</strong> L-V 8:30-19:00</p>
+                    </div>
+                </div>
+                
+                <!-- Contacto 5 -->
+                <div class="col-md-4 mb-4">
+                    <div class="emergency-card">
+                        <h5>Orientación Mujer</h5>
+                        <p>1455</p>
+                        <p>Atención a víctimas de violencia</p>
+                        <p><strong>Disponibilidad:</strong> 24/7</p>
+                    </div>
+                </div>
+                
+                <!-- Contacto 6 -->
+                <div class="col-md-4 mb-4">
+                    <div class="emergency-card">
+                        <h5>Hablemos de Todo - INJUV</h5>
+                        <p>Atención psicológica digital</p>
+                        <p><strong>Horario:</strong> L-V 10:00-21:00, S 11:00-17:00</p>
+                        <a href="https://hablemosdetodo.injuv.gob.cl" class="btn btn-light btn-sm" target="_blank">
+                            Visitar sitio web
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat de Primer Contacto -->
+    <section class="py-5 bg-light" id="chat">
+        <div class="container">
+            <h2 class="text-center mb-5">Chat de Primer Contacto</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-comments fa-4x text-primary mb-3"></i>
+                            <h4>¿Necesitas hablar con alguien ahora?</h4>
+                            <p class="mb-4">Nuestro chat de primer contacto está disponible para orientación básica y contención inicial. No es un servicio de terapia, pero puede ayudarte a dar los primeros pasos.</p>
+                            
+                            <div class="chat-info mb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><i class="fas fa-check text-success"></i> Anónimo</p>
+                                        <p><i class="fas fa-check text-success"></i> Moderado por voluntarios capacitados</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><i class="fas fa-check text-success"></i> Respuesta en menos de 10 minutos</p>
+                                        <p><i class="fas fa-check text-success"></i> Gratuito</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary btn-lg" id="openChat">
+                                <i class="fas fa-comment"></i> Abrir Chat
+                            </button>
+                            
+                            <div id="chatContainer" class="mt-4" style="display: none;">
+                                <div class="chat-window">
+                                    <div class="chat-header">
+                                        <h6>Chat de Primer Contacto</h6>
+                                        <button class="btn btn-sm btn-light" id="closeChat">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="chat-messages" id="chatMessages">
+                                        <div class="message bot">
+                                            <p>Hola, soy Soulie. Estoy aquí para escucharte. ¿En qué puedo ayudarte hoy?</p>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input">
+                                        <input type="text" class="form-control" id="chatInput" placeholder="Escribe tu mensaje...">
+                                        <button class="btn btn-primary" id="sendMessage">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Tu espacio seguro de apoyo emocional.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#contacto-general">Formulario</a></li> <!-- Misma página: solo # -->
+                        <li><a href="#emergencia">Emergencia</a></li> <!-- Misma página: solo # -->
+                        <li><a href="#chat">Chat</a></li> <!-- Misma página: solo # -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Información</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@soulink.cl</li>
+                        <li><i class="fas fa-phone"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Santiago, Chile</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Emergencia 24/7</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-phone"></i> 1412 (SENDA)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="terminos.html" class="text-white">Términos</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="acerca.html#faq" class="text-white ml-3">FAQ</a> <!-- Misma carpeta: sin ../ -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script> <!-- CORREGIDO: con ../ -->
+    <script>
+        // Chat functionality
+        document.getElementById('openChat').addEventListener('click', function() {
+            document.getElementById('chatContainer').style.display = 'block';
+            this.style.display = 'none';
+        });
+        
+        document.getElementById('closeChat').addEventListener('click', function() {
+            document.getElementById('chatContainer').style.display = 'none';
+            document.getElementById('openChat').style.display = 'inline-block';
+        });
+        
+        document.getElementById('sendMessage').addEventListener('click', function() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.className = 'message user';
+                userMsg.innerHTML = `<p>${message}</p>`;
+                document.getElementById('chatMessages').appendChild(userMsg);
+                
+                // Clear input
+                input.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const responses = [
+                        "Entiendo cómo te sientes. ¿Puedes contarme más sobre eso?",
+                        "Eso suena difícil. Recuerda que no estás solo/a en esto.",
+                        "Gracias por compartir eso conmigo. ¿Hay algo específico en lo que pueda ayudarte?",
+                        "Es normal sentirse así en situaciones difíciles. ¿Has probado algunas de las técnicas de respiración que tenemos en la sección de recursos?",
+                        "Me preocupo por ti. Si necesitas ayuda profesional inmediata, te recomiendo contactar alguno de los números de emergencia que aparecen arriba."
+                    ];
+                    
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'message bot';
+                    botMsg.innerHTML = `<p>${randomResponse}</p>`;
+                    document.getElementById('chatMessages').appendChild(botMsg);
+                    
+                    // Scroll to bottom
+                    const chatMessages = document.getElementById('chatMessages');
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        });
+        
+        // Enter key to send message
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('sendMessage').click();
+            }
+        });
+    </script>
+</body>
+</html>

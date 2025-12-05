@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CORREGIDO: con ../ -->
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency"> <!-- Misma carpeta: sin ../ -->
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon"> <!-- CORREGIDO: con ../ -->
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40"> <!-- CORREGIDO: con ../ -->
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"> <!-- CORREGIDO: subir a raíz con ../ -->
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ACERCA DE (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-info-circle"></i> Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-users"></i> ¿Quiénes Somos?
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-bullseye"></i> Misión, Visión y Valores
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#equipo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-user-friends"></i> Nuestro Equipo
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#faq"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-question-circle"></i> FAQ
+                            </a>
+                            <a class="dropdown-item" href="acerca.html#resultados"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-chart-line"></i> Resultados Comprobados
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Todo
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- SERVICIOS (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hands-helping"></i> Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <h6 class="dropdown-header">Apoyo Comunitario</h6>
+                            <a class="dropdown-item" href="servicios.html#foro"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Foro Comunitario
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#tests"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-clipboard-check"></i> Tests Autoevaluativos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Herramientas</h6>
+                            <a class="dropdown-item" href="servicios.html#recursos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-tools"></i> Recursos de Autocuidado
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#juegos"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                            </a>
+                            
+                            <h6 class="dropdown-header">Ayuda Especializada</h6>
+                            <a class="dropdown-item" href="servicios.html#mapa"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-map-marked-alt"></i> Centros de Ayuda
+                            </a>
+                            <a class="dropdown-item" href="servicios.html#formularios"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-file-alt"></i> Formularios de Ayuda
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Explorar Todos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COMUNIDAD (con submenú) - ACTIVE -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-heart"></i> Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="#testimonios"> <!-- Misma página: solo # -->
+                                <i class="fas fa-star"></i> Testimonios de Superación
+                            </a>
+                            <a class="dropdown-item" href="#experiencias"> <!-- Misma página: solo # -->
+                                <i class="fas fa-share-alt"></i> Experiencias Compartidas
+                            </a>
+                            <a class="dropdown-item" href="#articulos"> <!-- Misma página: solo # -->
+                                <i class="fas fa-newspaper"></i> Artículos y Publicaciones
+                            </a>
+                            <a class="dropdown-item" href="#eventos"> <!-- Misma página: solo # -->
+                                <i class="fas fa-calendar-alt"></i> Eventos y Talleres
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"> <!-- Misma página: solo # -->
+                                <i class="fas fa-arrow-right"></i> Unirse a la Comunidad
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- CONTACTO (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-address-book"></i> Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="contacto.html#contacto-general"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-envelope"></i> Contacto General
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#emergencia"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-phone-alt"></i> Contactos de Emergencia
+                            </a>
+                            <a class="dropdown-item" href="contacto.html#chat"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-comments"></i> Chat de Primer Contacto
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Contactos Completos
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- COLABORA (con submenú) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-donate"></i> Donaciones
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-hands-helping"></i> Voluntariado
+                            </a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-university"></i> Colaboraciones Institucionales
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html"> <!-- Misma carpeta: sin ../ -->
+                                <i class="fas fa-arrow-right"></i> Ver Oportunidades
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- USUARIO / LOGIN -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" id="userDropdownMenu">
+                            <!-- Contenido dinámico basado en estado de login -->
+                            <div id="loggedOutMenu">
+                                <a class="dropdown-item" href="login.html#login"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </a>
+                                <a class="dropdown-item" href="login.html#register"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </a>
+                                <a class="dropdown-item" href="login.html#recover"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-key"></i> Recuperar Contraseña
+                                </a>
+                            </div>
+                            <div id="loggedInMenu" style="display: none;">
+                                <a class="dropdown-item" href="perfil.html"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#historial"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-history"></i> Historial de Tests
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#recursos-guardados"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-bookmark"></i> Recursos Guardados
+                                </a>
+                                <a class="dropdown-item" href="perfil.html#configuracion"> <!-- Misma carpeta: sin ../ -->
+                                    <i class="fas fa-cog"></i> Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Comunidad -->
+    <section class="hero-community">
+        <div class="container">
+            <h1 class="display-4">Comunidad SOULINK</h1>
+            <p class="lead">Un espacio seguro para compartir, apoyar y crecer juntos</p>
+        </div>
+    </section>
+
+    <!-- Testimonios Destacados -->
+    <section class="py-5" id="testimonios">
+        <div class="container">
+            <h2 class="text-center mb-5">Testimonios de Superación</h2>
+            <div class="row">
+                <!-- Testimonio 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-highlight">
+                        <div class="testimonial-header">
+                            <img src="../assets/images/user1.jpg" alt="Usuario" class="rounded-circle" width="60"> <!-- CORREGIDO: con ../ -->
+                            <div class="user-info">
+                                <h6>María González</h6>
+                                <small>28 años, Santiago</small>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Después de perder a mi padre, me sentía completamente perdida. SOULINK me dio un espacio donde pudo expresar mi dolor sin ser juzgada. Los recursos sobre duelo me ayudaron a entender que lo que sentía era normal."</p>
+                        <div class="testimonial-footer">
+                            <span class="badge badge-primary">Duelo</span>
+                            <small>Hace 2 meses</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-highlight">
+                        <div class="testimonial-header">
+                            <img src="../assets/images/user2.jpg" alt="Usuario" class="rounded-circle" width="60"> <!-- CORREGIDO: con ../ -->
+                            <div class="user-info">
+                                <h6>Carlos Rodríguez</h6>
+                                <small>35 años, Valparaíso</small>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"La ansiedad me impedía trabajar y socializar. Los tests me ayudaron a identificar el problema y las técnicas de respiración del foro cambiaron mi vida. Hoy tengo herramientas para manejar mis crisis."</p>
+                        <div class="testimonial-footer">
+                            <span class="badge badge-warning">Ansiedad</span>
+                            <small>Hace 1 mes</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-highlight">
+                        <div class="testimonial-header">
+                            <img src="../assets/images/user3.jpg" alt="Usuario" class="rounded-circle" width="60"> <!-- CORREGIDO: con ../ -->
+                            <div class="user-info">
+                                <h6>Ana Silva</h6>
+                                <small>22 años, Concepción</small>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Como estudiante universitaria, el estrés era constante. Encontré en SOULINK una comunidad que entendía lo que pasaba. Los recursos de autocuidado y el apoyo de otros usuarios me salvaron en época de exámenes."</p>
+                        <div class="testimonial-footer">
+                            <span class="badge badge-info">Estrés</span>
+                            <small>Hace 3 semanas</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Publicaciones -->
+    <section class="py-5 bg-light" id="articulos">
+        <div class="container">
+            <h2 class="text-center mb-5">Artículos y Publicaciones</h2>
+            <div class="row">
+                <!-- Filtros -->
+                <div class="col-md-3">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h6>Filtrar por categoría</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat1" checked>
+                                <label class="form-check-label" for="cat1">Ansiedad</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat2" checked>
+                                <label class="form-check-label" for="cat2">Depresión</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat3">
+                                <label class="form-check-label" for="cat3">Duelo</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat4">
+                                <label class="form-check-label" for="cat4">Autoestima</label>
+                            </div>
+                            <button class="btn btn-primary btn-sm btn-block mt-3">Aplicar Filtros</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>Buscador</h6>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Buscar artículos...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Artículos -->
+                <div class="col-md-9">
+                    <div class="row">
+                        <!-- Artículo 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card article-card h-100">
+                                <img src="../assets/images/article1.jpg" class="card-img-top" alt="Artículo"> <!-- CORREGIDO: con ../ -->
+                                <div class="card-body">
+                                    <span class="badge badge-primary mb-2">Ansiedad</span>
+                                    <h5 class="card-title">5 Técnicas para Manejar la Ansiedad Matutina</h5>
+                                    <p class="card-text">Aprende estrategias prácticas para comenzar el día con mayor calma y control emocional.</p>
+                                    <div class="article-meta">
+                                        <small><i class="fas fa-clock"></i> 5 min lectura</small>
+                                        <small><i class="fas fa-calendar"></i> 15 Ene 2024</small>
+                                    </div>
+                                    <a href="#" class="btn btn-outline-primary btn-sm mt-3">Leer más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Artículo 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card article-card h-100">
+                                <img src="../assets/images/article2.jpg" class="card-img-top" alt="Artículo"> <!-- CORREGIDO: con ../ -->
+                                <div class="card-body">
+                                    <span class="badge badge-danger mb-2">Duelo</span>
+                                    <h5 class="card-title">El Proceso de Duelo: Etapas y Cuidados</h5>
+                                    <p class="card-text">Guía completa para entender y transitar por las diferentes etapas del duelo.</p>
+                                    <div class="article-meta">
+                                        <small><i class="fas fa-clock"></i> 8 min lectura</small>
+                                        <small><i class="fas fa-calendar"></i> 10 Ene 2024</small>
+                                    </div>
+                                    <a href="#" class="btn btn-outline-primary btn-sm mt-3">Leer más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Artículo 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card article-card h-100">
+                                <img src="../assets/images/article3.jpg" class="card-img-top" alt="Artículo"> <!-- CORREGIDO: con ../ -->
+                                <div class="card-body">
+                                    <span class="badge badge-success mb-2">Autocuidado</span>
+                                    <h5 class="card-title">Rutina de Autocuidado para el Bienestar Emocional</h5>
+                                    <p class="card-text">Crea una rutina diaria que fortalezca tu salud mental y bienestar emocional.</p>
+                                    <div class="article-meta">
+                                        <small><i class="fas fa-clock"></i> 6 min lectura</small>
+                                        <small><i class="fas fa-calendar"></i> 5 Ene 2024</small>
+                                    </div>
+                                    <a href="#" class="btn btn-outline-primary btn-sm mt-3">Leer más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Artículo 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card article-card h-100">
+                                <img src="../assets/images/article4.jpg" class="card-img-top" alt="Artículo"> <!-- CORREGIDO: con ../ -->
+                                <div class="card-body">
+                                    <span class="badge badge-warning mb-2">Estrés</span>
+                                    <h5 class="card-title">Manejo del Estrés Laboral en Tiempos Modernos</h5>
+                                    <p class="card-text">Estrategias efectivas para reducir el estrés en el ambiente laboral.</p>
+                                    <div class="article-meta">
+                                        <small><i class="fas fa-clock"></i> 7 min lectura</small>
+                                        <small><i class="fas fa-calendar"></i> 2 Ene 2024</small>
+                                    </div>
+                                    <a href="#" class="btn btn-outline-primary btn-sm mt-3">Leer más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paginación -->
+                    <nav aria-label="Paginación de artículos">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencias de Usuarios -->
+    <section class="py-5" id="experiencias">
+        <div class="container">
+            <h2 class="text-center mb-5">Experiencias Compartidas</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Experiencia 1 -->
+                    <div class="experience-card mb-4">
+                        <div class="experience-header">
+                            <div class="d-flex align-items-center">
+                                <img src="../assets/images/user4.jpg" alt="Usuario" class="rounded-circle mr-3" width="50"> <!-- CORREGIDO: con ../ -->
+                                <div>
+                                    <h6>Pedro Martínez</h6>
+                                    <small class="text-muted">Compartió su experiencia hace 5 días</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <p>"Quiero agradecer a la comunidad de SOULINK. Cuando estaba pasando por mi peor momento de depresión, leer las experiencias de otros me hizo sentir menos solo. Los ejercicios de gratitud que encontré aquí se convirtieron en mi ancla diaria."</p>
+                        </div>
+                        <div class="experience-footer">
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-heart"></i> Me gusta (24)
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary ml-2">
+                                <i class="fas fa-comment"></i> Comentar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Experiencia 2 -->
+                    <div class="experience-card mb-4">
+                        <div class="experience-header">
+                            <div class="d-flex align-items-center">
+                                <img src="../assets/images/user5.jpg" alt="Usuario" class="rounded-circle mr-3" width="50"> <!-- CORREGIDO: con ../ -->
+                                <div>
+                                    <h6>Laura Fernández</h6>
+                                    <small class="text-muted">Compartió su experiencia hace 2 semanas</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <p>"El test de ansiedad me abrió los ojos sobre lo que estaba experimentando. No sabía que lo que sentía tenía nombre y que había formas de manejarlo. Hoy, después de 3 meses usando SOULINK, puedo decir que he recuperado el control de mi vida."</p>
+                        </div>
+                        <div class="experience-footer">
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-heart"></i> Me gusta (42)
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary ml-2">
+                                <i class="fas fa-comment"></i> Comentar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos y Talleres -->
+    <section class="py-5 bg-light" id="eventos">
+        <div class="container">
+            <h2 class="text-center mb-5">Próximos Eventos</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Taller Virtual</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Mindfulness para la Ansiedad</h6>
+                            <p><i class="fas fa-calendar"></i> 25 Enero 2024</p>
+                            <p><i class="fas fa-clock"></i> 19:00 - 20:30 hrs</p>
+                            <p><i class="fas fa-video"></i> Vía Zoom</p>
+                            <button class="btn btn-primary btn-sm">Inscribirse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Grupo de Apoyo</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Procesos de Duelo</h6>
+                            <p><i class="fas fa-calendar"></i> 30 Enero 2024</p>
+                            <p><i class="fas fa-clock"></i> 18:00 - 19:30 hrs</p>
+                            <p><i class="fas fa-users"></i> Grupo cerrado</p>
+                            <button class="btn btn-success btn-sm">Más información</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card">
+                        <div class="card-header bg-warning text-white">
+                            <h5 class="mb-0">Webinar</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Autocuidado Digital</h6>
+                            <p><i class="fas fa-calendar"></i> 5 Febrero 2024</p>
+                            <p><i class="fas fa-clock"></i> 20:00 - 21:00 hrs</p>
+                            <p><i class="fas fa-globe"></i> Transmisión en vivo</p>
+                            <button class="btn btn-warning btn-sm">Agendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Unidos en el camino hacia el bienestar emocional.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Comunidad</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#testimonios">Testimonios</a></li> <!-- Misma página: solo # -->
+                        <li><a href="#articulos">Artículos</a></li> <!-- Misma página: solo # -->
+                        <li><a href="#eventos">Eventos</a></li> <!-- Misma página: solo # -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Participa</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="servicios.html#foro">Foro</a></li> <!-- Misma carpeta: sin ../ -->
+                        <li><a href="colaboraciones.html">Comparte tu historia</a></li> <!-- Misma carpeta: sin ../ -->
+                        <li><a href="colaboraciones.html#voluntariado">Voluntariado</a></li> <!-- Misma carpeta: sin ../ -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Emergencia</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="terminos.html" class="text-white">Términos</a> <!-- Misma carpeta: sin ../ -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script> <!-- CORREGIDO: con ../ -->
+</body>
+</html>

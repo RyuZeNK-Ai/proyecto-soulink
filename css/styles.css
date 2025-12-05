@@ -1,0 +1,966 @@
+/* ===== RESET Y ESTILOS GLOBALES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #8C52FF;
+    --secondary-color: #166088;
+    --accent-color: #ff6b6b;
+    --light-color: #fefefef;
+    --dark-color: #343a40;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --text-color: #333;
+    --text-light: #6c757d;
+}
+
+body {
+    font-family: 'Gotham', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    padding-top: 76px; /* Para la navbar fija */
+}
+
+/* ===== BOTÓN DE EMERGENCIA ===== */
+.emergency-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chatbot-icon {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    position: absolute;
+    bottom: 80%; /* CAMBIA ESTO: estaba en 100% */
+    right: 0;
+    margin-bottom: -30px; /* CAMBIA ESTO: ajusta negativo para bajar */
+}
+
+.btn-emergency {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .emergency-btn {
+        flex-direction: column;
+        gap: 10px;
+        right: 15px;
+    }
+    
+    .chatbot-icon {
+        width: 40px;
+        height: 40px;
+        order: 2; /* Pone el icono debajo */
+    }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4); }
+    50% { box-shadow: 0 4px 25px rgba(220, 53, 69, 0.8); }
+    100% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4); }
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-link {
+    font-weight: 500;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    padding-top: 176px;
+}
+
+.hero h1 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-outline-light:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== TARJETAS DE SERVICIOS ===== */
+.service-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border-top: 4px solid var(--primary-color);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card i {
+    color: var(--primary-color);
+}
+
+/* ===== ESTADÍSTICAS ===== */
+.stats h3 {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ===== TESTIMONIOS ===== */
+.testimonial-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial-card p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.testimonial-card h5 {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: var(--dark-color);
+}
+
+.footer h5 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: #adb5bd;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* ===== FORMULARIOS ===== */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(74, 111, 165, 0.25);
+}
+
+/* ===== FORO ===== */
+.forum-post {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-color);
+}
+
+.forum-post:hover {
+    border-left-color: var(--accent-color);
+}
+
+/* ===== SECCIÓN DE EQUIPO ===== */
+.team-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 2px solid transparent;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.team-avatar {
+    position: relative;
+    display: inline-block;
+}
+
+.team-avatar img {
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+}
+
+.featured-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: gold;
+    color: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.team-bio {
+    font-size: 0.9rem;
+    color: #666;
+    min-height: 80px;
+    margin-bottom: 15px;
+}
+
+.team-social {
+    margin-top: 15px;
+}
+
+.team-social a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 5px;
+    color: var(--primary-color);
+    transition: all 0.3s;
+}
+
+.team-social a:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.team-special {
+    margin-top: 10px;
+}
+
+.placeholder-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    margin: 0 auto;
+    border: 3px dashed var(--primary-color);
+}
+
+/* ===== HERO ESPECÍFICOS POR PÁGINA ===== */
+.hero-about {
+    background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    padding-top: 176px;
+    text-align: center;
+}
+
+.hero-community {
+    background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    padding-top: 176px;
+    text-align: center;
+}
+
+.hero-contact {
+    background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    padding-top: 176px;
+    text-align: center;
+}
+
+.hero-collaborations {
+    background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    padding-top: 176px;
+    text-align: center;
+}
+
+.hero-services {
+    background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    padding-top: 176px;
+    text-align: center;
+}
+
+/* ===== TESTIMONIOS DESTACADOS ===== */
+.testimonial-highlight {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-info {
+    margin-left: 15px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.testimonial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* ===== ARTÍCULOS ===== */
+.article-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.article-card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+/* ===== EXPERIENCIAS ===== */
+.experience-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.experience-header {
+    margin-bottom: 15px;
+}
+
+.experience-body {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.experience-footer {
+    display: flex;
+    gap: 10px;
+}
+
+/* ===== EVENTOS ===== */
+.event-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.event-card .card-header {
+    border-radius: 0;
+}
+
+/* ===== CONTACTO DE EMERGENCIA ===== */
+.emergency-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.emergency-icon {
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* ===== CHAT ===== */
+.chat-window {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.chat-input {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+.message {
+    margin-bottom: 15px;
+    max-width: 80%;
+}
+
+.message.bot {
+    align-self: flex-start;
+}
+
+.message.user {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message p {
+    background: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.message.user p {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* ===== COLABORACIONES ===== */
+.position-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.position-item:last-child {
+    border-bottom: none;
+}
+
+.collab-item {
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.donation-amounts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.donation-btn {
+    min-width: 100px;
+}
+
+.donation-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* ===== AUTH (LOGIN/REGISTRO) ===== */
+.auth-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card .nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.auth-card .nav-link {
+    border: none;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.auth-card .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    background: none;
+}
+
+.benefit-item {
+    padding: 15px;
+}
+
+.benefit-item i {
+    margin-bottom: 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero, .hero-about, .hero-community, .hero-contact, 
+    .hero-collaborations, .hero-services {
+        text-align: center;
+        padding: 80px 0;
+        padding-top: 156px;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .emergency-btn {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .btn-emergency {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .team-card {
+        padding: 20px;
+    }
+    
+    .team-bio {
+        min-height: auto;
+    }
+    
+    .team-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .donation-amounts {
+        justify-content: center;
+    }
+    
+    .donation-btn {
+        min-width: 80px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== ANIMACIONES ===== */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== UTILIDADES ADICIONALES ===== */
+.stat-circle {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-circle h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.category-badges .badge {
+    margin: 2px;
+    font-size: 0.9rem;
+}
+
+.forum-stats {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.resource-card {
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.test-card {
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    border-left: 4px solid var(--primary-color);
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+/* ===== NAVBAR MEJORADA CON SUBMENÚS ===== */
+
+/* Dropdown menus */
+.navbar .dropdown-menu {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+    min-width: 250px;
+    border-top: 3px solid var(--primary-color);
+    margin-top: 10px;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    color: #333;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+    padding-left: 25px;
+}
+
+.dropdown-item:hover i {
+    color: white;
+}
+
+.dropdown-header {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 20px;
+    margin-top: 5px;
+}
+
+.dropdown-divider {
+    margin: 5px 0;
+}
+
+/* Navbar hover effects */
+.navbar-nav .nav-link {
+    position: relative;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(74, 111, 165, 0.1);
+}
+
+.navbar-nav .nav-link.active {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Dropdown toggle arrow animation */
+.navbar .dropdown-toggle::after {
+    transition: transform 0.3s;
+    margin-left: 5px;
+}
+
+.navbar .show .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .navbar .dropdown-menu {
+        box-shadow: none;
+        border: none;
+        padding-left: 20px;
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+    
+    .dropdown-item {
+        padding: 8px 15px;
+    }
+    
+    .dropdown-header {
+        padding-left: 15px;
+    }
+}
+
+/* Mega menu for desktop */
+@media (min-width: 992px) {
+    .navbar .dropdown-menu {
+        animation: fadeInDown 0.3s;
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Services mega menu */
+    #serviciosDropdown + .dropdown-menu {
+        min-width: 350px;
+    }
+}
+
+/* Active page highlighting */
+.navbar-nav .nav-item.active > .nav-link {
+    font-weight: 600;
+    color: var(--primary-color) !important;
+}
+
+/* User menu specific styles */
+#userDropdownMenu .dropdown-item {
+    padding: 8px 20px;
+}
+
+#userDropdownMenu .dropdown-divider {
+    margin: 8px 0;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 15px 0;
+    }
+    
+    .navbar-nav {
+        padding: 10px 0;
+    }
+    
+    .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+    }
+
+}
