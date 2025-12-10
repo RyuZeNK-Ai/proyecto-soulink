@@ -68,9 +68,12 @@ proyecto-soulink/
 │   └── styles.css
 └── .gitignore             
 ```
-## 📸 Screenshots - Sección "Acerca de"
+## 📸 Screenshot 1 - Sección "Acerca de"
 
-![Pantalla 1](assets/images/Screenshots_acerca.png)
+![Acerca de](assets/images/Screenshots_acerca.png)
 
-![Pantalla 2](assets/images/Screenshots_acerca2.png)
+## 📸 Screenshot 2 - Sección "Contacto"
+
+![Contacto](assets/images/Screenshots_contacto.png)
+
 
