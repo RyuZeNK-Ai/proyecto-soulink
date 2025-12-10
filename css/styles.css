@@ -7,14 +7,14 @@
 
 :root {
     --primary-color: #8C52FF;
-    --secondary-color: #166088;
-    --accent-color: #ff6b6b;
-    --light-color: #fefefef;
-    --dark-color: #343a40;
-    --success-color: #28a745;
+    --secondary-color: #5CE1E6;
+    --accent-color: #FF66C4;
+    --light-color: #fefefe;
+    --dark-color: #1e1d1d;
+    --success-color: #7ed957;
     --warning-color: #ffc107;
     --danger-color: #dc3545;
-    --text-color: #333;
+    --text-color: #1E1D1D;
     --text-light: #6c757d;
 }
 
@@ -115,7 +115,7 @@ body {
 /* ===== HERO SECTION ===== */
 .hero {
     background: linear-gradient(135deg, #8C52FF 0%, #7A73FF 40%, #5CE1E6 100%);
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 100px 0;
     margin-top: -76px;
     padding-top: 176px;
@@ -173,7 +173,7 @@ body {
 }
 
 .service-card i {
-    color: var(--primary-color);
+    color: var(--primary-color); 
 }
 
 /* ===== ESTADÍSTICAS ===== */
@@ -264,7 +264,7 @@ body {
 .form-control {
     border: 2px solid #e9ecef;
     border-radius: 10px;
-    padding: 12px 15px;
+    padding: 5px 15px;
     margin-bottom: 20px;
     transition: all 0.3s;
 }
