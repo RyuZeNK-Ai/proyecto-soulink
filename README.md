@@ -27,16 +27,8 @@
 </td
 </tr>
 </table>
-</div>
 
- <h1 align="center" style="font-size: 2em; margin-bottom: 20px;">
-  🚀Haz clic en el botón para ingresar a la página🚀
-</h1>
-<p align="center">
-  <a href="https://ryuzenk-ai.github.io/proyecto-soulink/">
-    <img src="https://img.shields.io/badge/🚀_INGRESAR_A_SOULINK-FF3366?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-</p>
+</div>
 
  ## 📋 Descripción
 Repositorio principal para el desarrollo del sitio web de Soulink. Este proyecto contiene la implementación progresiva de la plataforma, incluyendo el frontend, componentes UI y la estructura completa del sitio.
@@ -83,6 +75,5 @@ proyecto-soulink/
 ## 📸 Screenshot 2 - Sección "Contacto"
 
 ![Contacto](assets/images/Screenshots_contacto.png)
-
 
 
