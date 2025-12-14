@@ -964,3 +964,18 @@ body {
     }
 
 }
+
+/* Siempre fija el estilo del botón, sin depender del modo oscuro */
+.btn-emergency {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: none;
+}
+
+/* El modo oscuro NO cambia nada */
+body.dark-mode .btn-emergency {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
