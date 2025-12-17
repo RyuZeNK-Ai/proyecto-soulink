@@ -5,7 +5,7 @@
         "descripcion": "Osito de crochet hecho a mano con lana suave, perfecto para abrazar.",
         "precio": 14990,
         "categoria": "amigurumis",
-        "imagen": "/proyecto-soulink/assets/images/MerchConsejin/Amigurumis/amigurumi1.png"
+        "imagen": "assets/images/MerchConsejin/Amigurumis/amigurumi1.png"
         "stock": 15,
         "destacado": true,
         "autor": "Artista: María Fernández"
