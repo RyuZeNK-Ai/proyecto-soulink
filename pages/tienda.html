@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .tienda-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            margin-top: -76px;
+            padding-top: 176px;
+            text-align: center;
+        }
+        
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+        
+        .product-category {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .product-stock {
+            font-size: 0.9rem;
+        }
+        
+        .product-stock.in-stock {
+            color: #28a745;
+        }
+        
+        .product-stock.low-stock {
+            color: #ffc107;
+        }
+        
+        /* BOTONES MÁS PEQUEÑOS - AJUSTADO ESPECÍFICAMENTE */
+        /* Botón azul (normal) - MÁS COMPACTO */
+        .cart-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7A73FF 100%);
+            border: none;
+            transition: all 0.3s;
+            padding: 5px 2px !important; /* AÚN MÁS COMPACTO: de 6px 12px a 5px 10px */
+            font-size: 0.8rem !important; /* Texto más pequeño */
+            border-radius: 4px;
+            min-height: 32px; /* Reducido de 36px */
+            white-space: nowrap; /* Evita que el texto se divida */
+        }
+        
+        .cart-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Botón verde (agregado) - se mantiene igual de compacto */
+        .cart-btn.added {
+            background: #28a745;
+            padding: 5px 10px !important; /* Igual de compacto que el azul */
+            font-size: 0.8rem !important;
+            min-height: 32px;
+        }
+        
+        /* Ajustes para botones en tarjetas de producto */
+        .product-card .cart-btn {
+            margin-left: 8px;
+            flex-shrink: 0; /* Evita que se encoja */
+            min-width: 110px; /* Ancho mínimo consistente */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Contenedor de precio y botón mejor alineado */
+        .product-card .card-body > .d-flex {
+            align-items: center;
+            min-height: 50px;
+        }
+        
+        .filter-btn {
+            margin: 2px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            padding: 5px 12px;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        #cartBadge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Badge del carrito en navegación - AGREGADO */
+        .cart-badge-nav {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-modal-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .cart-item-quantity {
+            width: 60px; /* Reducido de 70px */
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 4px;
+        }
+        
+        .checkout-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            border: none;
+            padding: 8px 16px; /* Reducido de 10px 20px */
+            font-size: 1rem; /* Reducido de 1.1rem */
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        
+        .cart-total {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px; /* Reducido de 20px */
+            margin-top: 15px;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .how-it-works {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px; /* Reducido de 30px */
+            margin: 25px 0; /* Reducido de 30px */
+        }
+        
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        /* Botones de cantidad en carrito más pequeños */
+        .cart-modal .btn-sm {
+            padding: 4px 8px;
+            font-size: 0.8rem;
+        }
+        
+        /* Ajustes para responsive */
+        @media (max-width: 768px) {
+            .cart-btn {
+                padding: 4px 8px !important; /* Aún más compacto en móviles */
+                font-size: 0.75rem !important;
+                min-width: 100px; /* Ancho mínimo reducido para móviles */
+            }
+            
+            .product-card .cart-btn {
+                margin-left: 5px;
+            }
+            
+            .product-price {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 576px) {
+            .cart-btn {
+                padding: 3px 6px !important;
+                font-size: 0.7rem !important;
+                min-width: 90px;
+            }
+            
+            .cart-btn i {
+                margin-right: 2px !important;
+            }
+        }
+        
+        /* Mejora en la visualización del autor */
+        .product-author {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        /* Ajuste para descripción más compacta - CORREGIDO */
+        .product-card .card-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+            max-height: 2.8em; /* 2 líneas * 1.4 line-height */
+        }
+        
+        /* Alternativa con line-clamp mejorado */
+        .product-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            /* Para navegadores modernos que soportan line-clamp */
+            display: -moz-box;
+            -moz-box-orient: vertical;
+            display: box;
+            box-orient: vertical;
+            line-clamp: 2;
+        }
+        
+        /* Fallback para navegadores que no soportan line-clamp */
+        @supports not (-webkit-line-clamp: 2) {
+            .product-description {
+                max-height: 2.8em; /* 2 líneas * 1.4 line-height */
+                position: relative;
+            }
+            
+            .product-description::after {
+                content: '...';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                background: white;
+                padding-left: 4px;
+            }
+        }
+        
+        /* Espaciado mejorado dentro de los botones */
+        .cart-btn i {
+            margin-right: 4px;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency">
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon">
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+    
+    <!-- Navegación ACTUALIZADA con badge del carrito -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <!-- LOGO -->
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+
+                    <!-- ACERCA DE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" data-toggle="dropdown">
+                            Acerca de
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
+                            <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
+                            <a class="dropdown-item" href="acerca.html#faq">FAQ</a>
+                            <a class="dropdown-item" href="acerca.html#resultados">Resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">Ver Todo</a>
+                        </div>
+                    </li>
+
+                    <!-- SERVICIOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" data-toggle="dropdown">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
+                            <a class="dropdown-item" href="servicios.html#tests">Tests</a>
+                            <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
+                            <a class="dropdown-item" href="servicios.html#juegos">Juegos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
+                        </div>
+                    </li>
+
+                    <!-- COMUNIDAD -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" data-toggle="dropdown">
+                            Comunidad
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">Unirse</a>
+                        </div>
+                    </li>
+
+                    <!-- CONTACTO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" data-toggle="dropdown">
+                            Contacto
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
+                            <a class="dropdown-item" href="contacto.html#chat">Chat</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
+                        </div>
+                    </li>
+
+                    <!-- COLABORA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" data-toggle="dropdown">
+                            Colabora
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">Institucionales</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
+                        </div>
+                    </li>
+
+                    <!-- TIENDA (ACTIVA) -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="tienda.html">
+                            Tienda
+                        </a>
+                    </li>
+
+                    <!-- CARRITO en Navegación - AGREGADO -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.html" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
+                        </a>
+                    </li>
+
+                    <!-- USUARIO -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="login.html#login">Iniciar Sesión</a>
+                            <a class="dropdown-item" href="login.html#register">Crear Cuenta</a>
+                            <a class="dropdown-item" href="login.html#recover">Recuperar Contraseña</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="tienda-hero" id="inicio">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4">Tienda SOULINK</h1>
+                    <p class="lead">Productos y recursos para tu bienestar emocional. Cada compra apoya nuestra misión de brindar apoyo emocional gratuito a la comunidad.</p>
+                    <div class="hero-buttons">
+                        <a href="#productos" class="btn btn-light btn-lg">Explorar Productos</a>
+                        <a href="#como-funciona" class="btn btn-outline-light btn-lg">¿Cómo funciona?</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-shopping-bag fa-10x" style="color: rgba(255,255,255,0.3);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section id="como-funciona" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">¿Cómo funciona nuestra tienda?</h2>
+            <div class="how-it-works">
+                <div class="row text-center">
+                    <div class="col-md-3 mb-4">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h5>1. Explora</h5>
+                        <p>Navega por nuestros productos organizados por categorías</p>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="step-icon">
+                            <i class="fas fa-cart-plus"></i>
+                        </div>
+                        <h5>2. Agrega</h5>
+                        <p>Añade productos a tu carrito con un solo clic</p>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h5>3. Compra</h5>
+                        <p>Procede al pago seguro con múltiples opciones</p>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="step-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h5>4. Ayuda</h5>
+                        <p>Tu compra financia programas de apoyo emocional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos" class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h2>Nuestros Productos</h2>
+                    <p class="text-muted">Recursos seleccionados para tu bienestar emocional</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary filter-btn active" data-filter="all">Todos</button>
+                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="amigurumis">Amigurumis</button>
+                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="stickers">Stickers</button>
+                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="ropa">Ropa</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner">
+                <i class="fas fa-spinner fa-spin fa-3x text-primary"></i>
+                <p class="mt-3">Cargando productos...</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="row" style="display: none;">
+                <!-- Los productos se cargarán aquí dinámicamente -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyProducts" class="empty-cart" style="display: none;">
+                <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+                <h4>No hay productos disponibles</h4>
+                <p>Próximamente agregaremos más productos a la tienda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías destacadas -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Categorías Destacadas</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card category-card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-paw fa-4x text-primary mb-3"></i>
+                            <h4>Amigurumis</h4>
+                            <p>Animalitos de crochet hechos con amor para tu bienestar emocional</p>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="amigurumis">Ver Amigurumis</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card category-card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-sticky-note fa-4x text-primary mb-3"></i>
+                            <h4>Stickers</h4>
+                            <p>Adhesivos con mensajes positivos para decorar tus espacios</p>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="stickers">Ver Stickers</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card category-card text-center h-100">
+                        <div class="card-body">
+                            <i class="fas fa-tshirt fa-4x text-primary mb-3"></i>
+                            <h4>Ropa</h4>
+                            <p>Prendas cómodas y con propósito para tu día a día</p>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="ropa">Ver Ropa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Beneficios de Comprar en SOULINK</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex">
+                        <div class="mr-3">
+                            <i class="fas fa-heart text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Apoya una Causa</h4>
+                            <p>El 100% de las ganancias se reinvierte en programas de apoyo emocional gratuito para la comunidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex">
+                        <div class="mr-3">
+                            <i class="fas fa-shield-alt text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Compra Segura</h4>
+                            <p>Procesamos tus pagos de forma segura con encriptación de última generación.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex">
+                        <div class="mr-3">
+                            <i class="fas fa-truck text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Envío Rápido</h4>
+                            <p>Despachamos tus productos en 24-48 horas hábiles a todo el país.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex">
+                        <div class="mr-3">
+                            <i class="fas fa-headset text-primary fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Soporte Dedicado</h4>
+                            <p>Nuestro equipo está disponible para ayudarte con cualquier consulta sobre tu compra.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Tienda SOULINK</h5>
+                    <p>Productos con propósito para tu bienestar emocional. Cada compra hace la diferencia.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5>Categorías</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="filter-btn text-white" data-filter="amigurumis">Amigurumis</a></li>
+                        <li><a href="#" class="filter-btn text-white" data-filter="stickers">Stickers</a></li>
+                        <li><a href="#" class="filter-btn text-white" data-filter="ropa">Ropa</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Ayuda</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#como-funciona" class="text-white">Cómo Comprar</a></li>
+                        <li><a href="#" class="text-white">Envíos y Entregas</a></li>
+                        <li><a href="#" class="text-white">Devoluciones</a></li>
+                        <li><a href="/pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope mr-2"></i> tienda@soulink.org</li>
+                        <li><i class="fas fa-phone mr-2"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-clock mr-2"></i> L-V: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK Tienda. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="/pages/privacidad.html" class="text-white mr-3">Política de Privacidad</a>
+                    <a href="/pages/terminos.html" class="text-white">Términos de Compra</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal del Carrito -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="fas fa-shopping-cart mr-2"></i>Mi Carrito
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItemsContainer">
+                        <!-- Los items del carrito se cargarán aquí -->
+                    </div>
+                    <div class="cart-total">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal:</span>
+                            <span id="cartSubtotal">$0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Envío:</span>
+                            <span id="cartShipping">$0</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <h5>Total:</h5>
+                            <h5 id="cartTotal">$0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Seguir Comprando</button>
+                    <button type="button" class="btn btn-primary checkout-btn" id="checkoutBtn">
+                        <i class="fas fa-credit-card mr-2"></i>Proceder al Pago
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/soulink.js"></script>
+    <script src="../js/darkmode.js"></script>
+    
+<!-- Lógica de la tienda con carga desde JSON -->
+<script>
+    // Clase Tienda MODIFICADA para cargar desde JSON
+    class Tienda {
+        constructor() {
+            this.productos = []; // Vacío al inicio
+            this.carrito = this.cargarCarrito();
+            this.categorias = ['all', 'amigurumis', 'stickers', 'ropa'];
+            this.cargarProductosDesdeJSON();
+        }
+
+        cargarProductosDesdeJSON() {
+            // Cambia esta ruta según donde esté tu archivo productos.json
+            fetch('../data/productos.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar productos.json');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.productos = data;
+                    this.inicializar();
+                })
+                .catch(error => {
+                    console.error('Error cargando productos:', error);
+                    // Mostrar mensaje de error
+                    document.getElementById('productGrid').innerHTML = `
+                        <div class="col-12 text-center">
+                            <i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+                            <h4>Error cargando productos</h4>
+                            <p>No se pudieron cargar los productos. Por favor, intenta nuevamente.</p>
+                            <button class="btn btn-primary" onclick="location.reload()">Reintentar</button>
+                        </div>
+                    `;
+                });
+        }
+
+        cargarCarrito() {
+            const carritoGuardado = localStorage.getItem('soulink_carrito');
+            return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+        }
+
+        guardarCarrito() {
+            localStorage.setItem('soulink_carrito', JSON.stringify(this.carrito));
+            this.actualizarBadgeCarrito();
+        }
+
+        actualizarBadgeCarrito() {
+            const totalItems = this.carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            
+            // 1. Badge en el modal del carrito
+            const badgeModal = document.getElementById('cartBadge');
+            if (badgeModal) {
+                badgeModal.textContent = totalItems;
+                badgeModal.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+            
+            // 2. Badge en la navegación principal - CORREGIDO
+            const badgeNav = document.getElementById('cartBadgeNav');
+            if (badgeNav) {
+                badgeNav.textContent = totalItems;
+                badgeNav.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+        }
+
+        agregarAlCarrito(productoId, cantidad = 1) {
+            const producto = this.productos.find(p => p.id === productoId);
+            if (!producto) return false;
+
+            const itemExistente = this.carrito.find(item => item.id === productoId);
+            
+            if (itemExistente) {
+                itemExistente.cantidad += cantidad;
+            } else {
+                this.carrito.push({
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    precio: producto.precio,
+                    cantidad: cantidad,
+                    imagen: producto.imagen
+                });
+            }
+
+            this.guardarCarrito();
+            this.mostrarNotificacion(`${producto.nombre} agregado al carrito`, 'success');
+            return true;
+        }
+
+        eliminarDelCarrito(productoId) {
+            this.carrito = this.carrito.filter(item => item.id !== productoId);
+            this.guardarCarrito();
+            this.mostrarNotificacion('Producto eliminado del carrito', 'info');
+        }
+
+        actualizarCantidad(productoId, nuevaCantidad) {
+            const item = this.carrito.find(item => item.id === productoId);
+            if (item && nuevaCantidad > 0) {
+                item.cantidad = nuevaCantidad;
+                this.guardarCarrito();
+            }
+        }
+
+        obtenerProductosPorCategoria(categoria) {
+            if (categoria === 'all') return this.productos;
+            return this.productos.filter(producto => producto.categoria === categoria);
+        }
+
+        obtenerCategorias() {
+            return [...new Set(this.productos.map(p => p.categoria))];
+        }
+
+        mostrarProductos(categoria = 'all') {
+            const productos = this.obtenerProductosPorCategoria(categoria);
+            const grid = document.getElementById('productGrid');
+            const loading = document.getElementById('loadingSpinner');
+            const empty = document.getElementById('emptyProducts');
+
+            if (loading) loading.style.display = 'none';
+            
+            if (productos.length === 0) {
+                if (grid) grid.style.display = 'none';
+                if (empty) empty.style.display = 'block';
+                return;
+            }
+
+            if (empty) empty.style.display = 'none';
+            if (grid) {
+                grid.style.display = 'flex';
+                grid.innerHTML = productos.map(producto => this.crearCardProducto(producto)).join('');
+            }
+
+            // Reasignar eventos a los botones
+            this.asignarEventosProductos();
+        }
+
+        crearCardProducto(producto) {
+            const stockClass = producto.stock < 5 ? 'low-stock' : 'in-stock';
+            const stockText = producto.stock < 5 ? `${producto.stock} disponibles` : 'Disponible';
+            const enCarrito = this.carrito.some(item => item.id === producto.id);
+            const btnClass = enCarrito ? 'btn-success cart-btn added' : 'btn-primary cart-btn';
+            const btnText = enCarrito ? '✓ Agregado' : 'Agregar al Carrito';
+            const btnIcon = enCarrito ? 'fa-check' : 'fa-cart-plus';
+
+            return `
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4" data-category="${producto.categoria}">
+                    <div class="card product-card h-100">
+                        ${producto.destacado ? '<span class="product-badge">Destacado</span>' : ''}
+                        <span class="product-category">${this.obtenerNombreCategoria(producto.categoria)}</span>
+                        
+                        <div class="product-img" style="background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; height: 200px; overflow: hidden;">
+                             <img src="${producto.imagen}" 
+                                  alt="${producto.nombre}"
+                                  style="max-width: 100%; max-height: 100%; object-fit: contain; padding: 10px;"
+                                  onerror="this.onerror=null; this.style.display='none'; this.parentElement.innerHTML='<i class=\"fas fa-' + this.obtenerIconoCategoria('${producto.categoria}') + ' fa-4x\" style=\"color: var(--primary-color);\"></i>';">
+                        </div>      
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">${producto.nombre}</h5>
+                            ${producto.autor ? `<p class="product-author">Por ${producto.autor}</p>` : ''}
+                            <p class="card-text product-description">${producto.descripcion}</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <div class="product-price">$${producto.precio.toLocaleString('es-CL')}</div>
+                                    <div class="product-stock ${stockClass}">
+                                        <i class="fas fa-${producto.stock < 5 ? 'exclamation-triangle' : 'check-circle'} mr-1"></i>
+                                        ${stockText}
+                                    </div>
+                                </div>
+                                <button class="btn ${btnClass} add-to-cart" 
+                                        data-id="${producto.id}"
+                                        ${producto.stock === 0 ? 'disabled' : ''}>
+                                    <i class="fas ${btnIcon} mr-1"></i> ${btnText}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        obtenerNombreCategoria(categoria) {
+            const nombres = {
+                'amigurumis': 'Amigurumi',
+                'stickers': 'Sticker',
+                'ropa': 'Ropa'
+            };
+            return nombres[categoria] || categoria;
+        }
+
+        obtenerIconoCategoria(categoria) {
+            const iconos = {
+                'amigurumis': 'paw',
+                'stickers': 'sticky-note',
+                'ropa': 'tshirt'
+            };
+            return iconos[categoria] || 'box';
+        }
+
+        mostrarCarrito() {
+            const container = document.getElementById('cartItemsContainer');
+            if (!container) return;
+
+            if (this.carrito.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart fa-4x text-muted mb-3"></i>
+                        <h4>Tu carrito está vacío</h4>
+                        <p>¡Agrega algunos productos para comenzar!</p>
+                    </div>
+                `;
+                this.actualizarTotales(0, 0);
+                return;
+            }
+
+            let subtotal = 0;
+            let html = '';
+
+            this.carrito.forEach(item => {
+                const itemTotal = item.precio * item.cantidad;
+                subtotal += itemTotal;
+
+                html += `
+                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                        <img src="../assets/images/tienda/${item.imagen || 'placeholder.jpg'}" 
+                             alt="${item.nombre}" 
+                             class="cart-modal-img mr-3"
+                             onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%2260%22%20height%3D%2260%22%20fill%3D%22%23f8f9fa%22/%3E%3Ctext%20x%3D%2230%22%20y%3D%2235%22%20font-family%3D%22Arial%22%20font-size%3D%2214%22%20text-anchor%3D%22middle%22%20fill%3D%22%236c757d%22%3EIMG%3C/text%3E%3C/svg%3E'">
+                        
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">${item.nombre}</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="text-muted">$${item.precio.toLocaleString('es-CL')} c/u</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm btn-outline-secondary mr-2 decrease-qty" 
+                                            data-id="${item.id}">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    
+                                    <input type="number" 
+                                           class="form-control cart-item-quantity" 
+                                           value="${item.cantidad}" 
+                                           min="1" 
+                                           max="10"
+                                           data-id="${item.id}">
+                                           
+                                    <button class="btn btn-sm btn-outline-secondary ml-2 increase-qty" 
+                                            data-id="${item.id}">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                    
+                                    <button class="btn btn-sm btn-outline-danger ml-3 remove-item" 
+                                            data-id="${item.id}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-right mt-1">
+                                <strong>Total: $${itemTotal.toLocaleString('es-CL')}</strong>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            this.actualizarTotales(subtotal);
+            this.asignarEventosCarrito();
+        }
+
+        actualizarTotales(subtotal) {
+            const envio = subtotal > 50000 ? 0 : 3000;
+            const total = subtotal + envio;
+
+            document.getElementById('cartSubtotal').textContent = `$${subtotal.toLocaleString('es-CL')}`;
+            document.getElementById('cartShipping').textContent = subtotal > 50000 ? 'Gratis' : `$${envio.toLocaleString('es-CL')}`;
+            document.getElementById('cartTotal').textContent = `$${total.toLocaleString('es-CL')}`;
+        }
+
+        mostrarNotificacion(mensaje, tipo = 'info') {
+            if (typeof Soulink !== 'undefined' && Soulink.utils) {
+                Soulink.utils.showNotification(mensaje, tipo);
+            } else {
+                // Fallback simple
+                alert(mensaje);
+            }
+        }
+
+        asignarEventosProductos() {
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productoId = parseInt(e.target.closest('.add-to-cart').dataset.id);
+                    const agregado = this.agregarAlCarrito(productoId);
+                    
+                    if (agregado) {
+                        const btnElement = e.target.closest('.add-to-cart');
+                        btnElement.innerHTML = '<i class="fas fa-check mr-1"></i> ✓ Agregado';
+                        btnElement.classList.remove('btn-primary');
+                        btnElement.classList.add('btn-success', 'added');
+                        btnElement.disabled = true;
+                        
+                        setTimeout(() => {
+                            btnElement.disabled = false;
+                        }, 1000);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const categoria = e.target.dataset.filter;
+                    
+                    // Actualizar botones activos
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    
+                    // Mostrar productos de la categoría seleccionada
+                    this.mostrarProductos(categoria);
+                    
+                    // Scroll suave a productos
+                    document.getElementById('productos').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+            });
+        }
+
+        asignarEventosCarrito() {
+            // Aumentar cantidad
+            document.querySelectorAll('.increase-qty').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productoId = parseInt(e.target.closest('button').dataset.id);
+                    const item = this.carrito.find(item => item.id === productoId);
+                    if (item && item.cantidad < 10) {
+                        this.actualizarCantidad(productoId, item.cantidad + 1);
+                        this.mostrarCarrito();
+                    }
+                });
+            });
+
+            // Disminuir cantidad
+            document.querySelectorAll('.decrease-qty').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productoId = parseInt(e.target.closest('button').dataset.id);
+                    const item = this.carrito.find(item => item.id === productoId);
+                    if (item && item.cantidad > 1) {
+                        this.actualizarCantidad(productoId, item.cantidad - 1);
+                        this.mostrarCarrito();
+                    }
+                });
+            });
+
+            // Cambiar cantidad manualmente
+            document.querySelectorAll('.cart-item-quantity').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const productoId = parseInt(e.target.dataset.id);
+                    const nuevaCantidad = parseInt(e.target.value);
+                    if (nuevaCantidad >= 1 && nuevaCantidad <= 10) {
+                        this.actualizarCantidad(productoId, nuevaCantidad);
+                        this.mostrarCarrito();
+                    } else {
+                        e.target.value = this.carrito.find(item => item.id === productoId).cantidad;
+                    }
+                });
+            });
+
+            // Eliminar producto
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productoId = parseInt(e.target.closest('button').dataset.id);
+                    this.eliminarDelCarrito(productoId);
+                    this.mostrarCarrito();
+                });
+            });
+
+            // Botón de checkout
+            document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+                if (this.carrito.length === 0) {
+                    this.mostrarNotificacion('Tu carrito está vacío', 'warning');
+                    return;
+                }
+                
+                // Simular proceso de checkout
+                this.mostrarNotificacion('Redirigiendo al proceso de pago...', 'info');
+                setTimeout(() => {
+                    $('#cartModal').modal('hide');
+                    this.mostrarNotificacion('¡Gracias por tu compra! Pronto recibirás un email con los detalles.', 'success');
+                    this.carrito = [];
+                    this.guardarCarrito();
+                    this.mostrarCarrito();
+                }, 1500);
+            });
+        }
+
+        inicializar() {
+            // Mostrar productos iniciales
+            setTimeout(() => {
+                this.mostrarProductos();
+            }, 500);
+
+            // Actualizar badge del carrito
+            this.actualizarBadgeCarrito();
+
+            // Mostrar carrito cuando se abra el modal
+            $('#cartModal').on('show.bs.modal', () => {
+                this.mostrarCarrito();
+            });
+
+            // Asignar evento para abrir carrito desde cualquier botón
+            document.querySelectorAll('[data-target="#cartModal"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.mostrarCarrito();
+                });
+            });
+
+            // Navegación suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            window.scrollTo({
+                                top: target.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            console.log('Tienda SOULINK inicializada correctamente');
+        }
+    }
+
+    // Inicializar tienda cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+        window.tienda = new Tienda();
+    });
+</script>
+</body>
+</html>

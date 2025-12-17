@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .cart-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            margin-top: -76px;
+            padding-top: 176px;
+            text-align: center;
+        }
+        
+        .cart-container {
+            padding: 40px 0;
+            min-height: 500px;
+        }
+        
+        .cart-item {
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .cart-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .cart-item-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .cart-item-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-category {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #dee2e6;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quantity-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 0 10px;
+        }
+        
+        .remove-btn {
+            color: #dc3545;
+            background: none;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .remove-btn:hover {
+            color: #bd2130;
+            transform: scale(1.1);
+        }
+        
+        .cart-summary {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .summary-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .checkout-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .continue-shopping {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .continue-shopping:hover {
+            background: #0056b3;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-cart-icon {
+            font-size: 5rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        
+        .cart-loading {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .shipping-info {
+            background: #e8f5e9;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .secure-payment {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-item-img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .cart-summary {
+                margin-top: 30px;
+            }
+        }
+        
+        .cart-breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .step.active .step-number {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .step-divider {
+            width: 60px;
+            height: 2px;
+            background: #e9ecef;
+            margin: 0 15px;
+        }
+        
+        /* Estilo para el badge del carrito en navegación */
+        .cart-badge-nav {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency">
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon">
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación COMPLETA DE SOULINK -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <!-- LOGO -->
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+
+                    <!-- ACERCA DE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" data-toggle="dropdown">
+                            Acerca de
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
+                            <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
+                            <a class="dropdown-item" href="acerca.html#faq">FAQ</a>
+                            <a class="dropdown-item" href="acerca.html#resultados">Resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">Ver Todo</a>
+                        </div>
+                    </li>
+
+                    <!-- SERVICIOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" data-toggle="dropdown">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
+                            <a class="dropdown-item" href="servicios.html#tests">Tests</a>
+                            <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
+                            <a class="dropdown-item" href="servicios.html#juegos">Juegos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
+                        </div>
+                    </li>
+
+                    <!-- COMUNIDAD -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" data-toggle="dropdown">
+                            Comunidad
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">Unirse</a>
+                        </div>
+                    </li>
+
+                    <!-- CONTACTO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" data-toggle="dropdown">
+                            Contacto
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
+                            <a class="dropdown-item" href="contacto.html#chat">Chat</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
+                        </div>
+                    </li>
+
+                    <!-- COLABORA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" data-toggle="dropdown">
+                            Colabora
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">Institucionales</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
+                        </div>
+                    </li>
+
+                    <!-- TIENDA -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="tienda.html">
+                            Tienda
+                        </a>
+                    </li>
+
+                    <!-- CARRITO (ACTIVO) -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.html" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
+                        </a>
+                    </li>
+
+                    <!-- USUARIO -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="login.html#login">Iniciar Sesión</a>
+                            <a class="dropdown-item" href="login.html#register">Crear Cuenta</a>
+                            <a class="dropdown-item" href="login.html#recover">Recuperar Contraseña</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="cart-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4">Mi Carrito</h1>
+                    <p class="lead">Revisa y gestiona los productos que has seleccionado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indicador de Pasos -->
+    <div class="container">
+        <div class="step-indicator">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <span>Carrito</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <span>Información</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <span>Pago</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <span>Confirmación</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="cart-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="tienda.html">Tienda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Carrito</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <section class="cart-container">
+        <div class="container">
+            <div id="cartLoading" class="cart-loading">
+                <i class="fas fa-spinner fa-spin fa-3x text-primary"></i>
+                <p class="mt-3">Cargando tu carrito...</p>
+            </div>
+
+            <div id="cartContent" style="display: none;">
+                <div class="row">
+                    <!-- Lista de Productos -->
+                    <div class="col-lg-8">
+                        <div id="cartItemsList">
+                            <!-- Los productos del carrito se cargarán aquí -->
+                        </div>
+
+                        <!-- Carrito Vacío -->
+                        <div id="emptyCart" class="empty-cart" style="display: none;">
+                            <div class="empty-cart-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3>Tu carrito está vacío</h3>
+                            <p class="text-muted mb-4">Parece que aún no has agregado ningún producto a tu carrito</p>
+                            <a href="tienda.html" class="btn continue-shopping">
+                                <i class="fas fa-arrow-left mr-2"></i> Explorar Productos
+                            </a>
+                        </div>
+
+                        <!-- Continuar Comprando -->
+                        <div class="text-center mt-4">
+                            <a href="tienda.html" class="btn continue-shopping">
+                                <i class="fas fa-arrow-left mr-2"></i> Seguir Comprando
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resumen del Pedido -->
+                    <div class="col-lg-4">
+                        <div class="cart-summary">
+                            <h4 class="mb-4">Resumen del Pedido</h4>
+                            
+                            <div class="summary-item">
+                                <span>Subtotal:</span>
+                                <span id="summarySubtotal">$0</span>
+                            </div>
+                            
+                            <div class="summary-item">
+                                <span>Envío:</span>
+                                <span id="summaryShipping">$0</span>
+                            </div>
+                            
+                            <div id="shippingMessage" class="shipping-info" style="display: none;">
+                                <i class="fas fa-shipping-fast mr-2"></i>
+                                <small>¡Envío gratis en compras mayores a $50.000!</small>
+                            </div>
+                            
+                            <div class="summary-item summary-total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$0</span>
+                            </div>
+                            
+                            <div class="secure-payment">
+                                <i class="fas fa-lock mr-2"></i>
+                                <small>Pago 100% seguro y encriptado</small>
+                            </div>
+                            
+                            <button id="checkoutButton" class="btn checkout-btn" disabled>
+                                <i class="fas fa-credit-card mr-2"></i> Proceder al Pago
+                            </button>
+                            
+                            <p class="text-center mt-3 mb-0">
+                                <small class="text-muted">
+                                    <i class="fas fa-heart text-primary mr-1"></i>
+                                    Tu compra apoya programas de bienestar emocional
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-shipping-fast fa-3x text-primary mb-3"></i>
+                        <h5>Envío Rápido</h5>
+                        <p>Despachamos en 24-48 horas hábiles a todo Chile</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                        <h5>Compra Segura</h5>
+                        <p>Pago encriptado con protección de datos</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                        <h5>Compra con Propósito</h5>
+                        <p>Tus compras financian apoyo emocional gratuito</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Carrito SOULINK</h5>
+                    <p>Gestiona tus productos y completa tu compra con propósito.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="tienda.html" class="text-white">Tienda</a></li>
+                        <li><a href="#como-funciona" class="text-white">Cómo Comprar</a></li>
+                        <li><a href="#" class="text-white">Envíos</a></li>
+                        <li><a href="/pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Ayuda</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Preguntas Frecuentes</a></li>
+                        <li><a href="#" class="text-white">Política de Envíos</a></li>
+                        <li><a href="#" class="text-white">Devoluciones</a></li>
+                        <li><a href="#" class="text-white">Términos de Compra</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope mr-2"></i> tienda@soulink.org</li>
+                        <li><i class="fas fa-phone mr-2"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-clock mr-2"></i> L-V: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK Carrito. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="/pages/privacidad.html" class="text-white mr-3">Política de Privacidad</a>
+                    <a href="/pages/terminos.html" class="text-white">Términos de Compra</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/soulink.js"></script>
+    
+    <!-- Lógica del Carrito -->
+    <script>
+        class CarritoPage {
+            constructor() {
+                this.carrito = this.cargarCarrito();
+                this.inicializar();
+            }
+
+            cargarCarrito() {
+                const carritoGuardado = localStorage.getItem('soulink_carrito');
+                return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+            }
+
+            guardarCarrito() {
+                localStorage.setItem('soulink_carrito', JSON.stringify(this.carrito));
+                this.actualizarBadge();
+            }
+
+            actualizarBadge() {
+                const totalItems = this.carrito.reduce((sum, item) => sum + item.cantidad, 0);
+                const badge = document.getElementById('cartBadgeNav');
+                if (badge) {
+                    badge.textContent = totalItems;
+                    badge.style.display = totalItems > 0 ? 'flex' : 'none';
+                }
+            }
+
+            mostrarCarrito() {
+                const loading = document.getElementById('cartLoading');
+                const content = document.getElementById('cartContent');
+                const itemsList = document.getElementById('cartItemsList');
+                const emptyCart = document.getElementById('emptyCart');
+                const checkoutBtn = document.getElementById('checkoutButton');
+
+                // Ocultar loading, mostrar contenido
+                if (loading) loading.style.display = 'none';
+                if (content) content.style.display = 'block';
+
+                if (this.carrito.length === 0) {
+                    if (itemsList) itemsList.style.display = 'none';
+                    if (emptyCart) emptyCart.style.display = 'block';
+                    if (checkoutBtn) {
+                        checkoutBtn.disabled = true;
+                        checkoutBtn.innerHTML = '<i class="fas fa-shopping-cart mr-2"></i> Carrito Vacío';
+                    }
+                    this.actualizarResumen(0);
+                    return;
+                }
+
+                if (emptyCart) emptyCart.style.display = 'none';
+                if (itemsList) {
+                    itemsList.style.display = 'block';
+                    itemsList.innerHTML = this.carrito.map(item => this.crearItemHTML(item)).join('');
+                }
+
+                if (checkoutBtn) {
+                    checkoutBtn.disabled = false;
+                    checkoutBtn.innerHTML = '<i class="fas fa-credit-card mr-2"></i> Proceder al Pago';
+                }
+
+                this.calcularTotales();
+                this.asignarEventosItems();
+            }
+
+            crearItemHTML(item) {
+                const itemTotal = item.precio * item.cantidad;
+                return `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 col-4">
+                                <img src="${item.imagen || '../assets/images/tienda/placeholder.jpg'}" 
+                                     alt="${item.nombre}" 
+                                     class="cart-item-img img-fluid"
+                                     onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23f8f9fa%22/%3E%3Ctext%20x%3D%2250%22%20y%3D%2255%22%20font-family%3D%22Arial%22%20font-size%3D%2214%22%20text-anchor%3D%22middle%22%20fill%3D%22%236c757d%22%3EIMG%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="col-md-5 col-8">
+                                <h5 class="cart-item-title">${item.nombre}</h5>
+                                <div class="cart-item-category">
+                                    <i class="fas fa-tag mr-1"></i> ${this.obtenerCategoria(item.categoria)}
+                                </div>
+                                <div class="d-md-none mt-2">
+                                    <div class="product-price">$${item.precio.toLocaleString('es-CL')} c/u</div>
+                                    <div class="text-primary font-weight-bold">Total: $${itemTotal.toLocaleString('es-CL')}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-8 offset-md-0 offset-4">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn decrease-qty" data-id="${item.id}">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" 
+                                           class="quantity-input" 
+                                           value="${item.cantidad}" 
+                                           min="1" 
+                                           max="10"
+                                           data-id="${item.id}">
+                                    <button class="quantity-btn increase-qty" data-id="${item.id}">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-4 text-right">
+                                <div class="d-none d-md-block">
+                                    <div class="product-price">$${item.precio.toLocaleString('es-CL')} c/u</div>
+                                    <div class="text-primary font-weight-bold">$${itemTotal.toLocaleString('es-CL')}</div>
+                                </div>
+                                <button class="remove-btn remove-item" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            obtenerCategoria(categoria) {
+                const categorias = {
+                    'amigurumis': 'Amigurumi',
+                    'stickers': 'Sticker',
+                    'ropa': 'Ropa'
+                };
+                return categorias[categoria] || categoria;
+            }
+
+            calcularTotales() {
+                let subtotal = 0;
+                
+                this.carrito.forEach(item => {
+                    subtotal += item.precio * item.cantidad;
+                });
+
+                this.actualizarResumen(subtotal);
+            }
+
+            actualizarResumen(subtotal) {
+                const envio = subtotal > 50000 ? 0 : 3000;
+                const total = subtotal + envio;
+
+                document.getElementById('summarySubtotal').textContent = `$${subtotal.toLocaleString('es-CL')}`;
+                document.getElementById('summaryShipping').textContent = envio === 0 ? 'Gratis' : `$${envio.toLocaleString('es-CL')}`;
+                document.getElementById('summaryTotal').textContent = `$${total.toLocaleString('es-CL')}`;
+
+                // Mostrar mensaje de envío gratis
+                const shippingMessage = document.getElementById('shippingMessage');
+                if (shippingMessage) {
+                    if (subtotal < 50000 && subtotal > 0) {
+                        const faltante = 50000 - subtotal;
+                        shippingMessage.innerHTML = `
+                            <i class="fas fa-shipping-fast mr-2"></i>
+                            <small>¡Faltan $${faltante.toLocaleString('es-CL')} para envío gratis!</small>
+                        `;
+                        shippingMessage.style.display = 'block';
+                    } else if (subtotal >= 50000) {
+                        shippingMessage.innerHTML = `
+                            <i class="fas fa-shipping-fast mr-2"></i>
+                            <small>¡Felicitaciones! Tienes envío gratis</small>
+                        `;
+                        shippingMessage.style.display = 'block';
+                    } else {
+                        shippingMessage.style.display = 'none';
+                    }
+                }
+            }
+
+            asignarEventosItems() {
+                // Aumentar cantidad
+                document.querySelectorAll('.increase-qty').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productoId = parseInt(e.target.closest('button').dataset.id);
+                        const item = this.carrito.find(item => item.id === productoId);
+                        if (item && item.cantidad < 10) {
+                            item.cantidad += 1;
+                            this.guardarCarrito();
+                            this.mostrarCarrito();
+                        }
+                    });
+                });
+
+                // Disminuir cantidad
+                document.querySelectorAll('.decrease-qty').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productoId = parseInt(e.target.closest('button').dataset.id);
+                        const item = this.carrito.find(item => item.id === productoId);
+                        if (item && item.cantidad > 1) {
+                            item.cantidad -= 1;
+                            this.guardarCarrito();
+                            this.mostrarCarrito();
+                        }
+                    });
+                });
+
+                // Cambiar cantidad manualmente
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const productoId = parseInt(e.target.dataset.id);
+                        const nuevaCantidad = parseInt(e.target.value);
+                        const item = this.carrito.find(item => item.id === productoId);
+                        
+                        if (item && nuevaCantidad >= 1 && nuevaCantidad <= 10) {
+                            item.cantidad = nuevaCantidad;
+                            this.guardarCarrito();
+                            this.mostrarCarrito();
+                        } else {
+                            e.target.value = item.cantidad;
+                        }
+                    });
+                });
+
+                // Eliminar producto
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productoId = parseInt(e.target.closest('button').dataset.id);
+                        this.carrito = this.carrito.filter(item => item.id !== productoId);
+                        this.guardarCarrito();
+                        this.mostrarCarrito();
+                        
+                        this.mostrarNotificacion('Producto eliminado del carrito', 'info');
+                    });
+                });
+            }
+
+            asignarEventosCheckout() {
+                document.getElementById('checkoutButton')?.addEventListener('click', () => {
+                    if (this.carrito.length === 0) {
+                        this.mostrarNotificacion('Tu carrito está vacío', 'warning');
+                        return;
+                    }
+                    
+                    // Guardar carrito para el proceso de pago
+                    localStorage.setItem('soulink_checkout_carrito', JSON.stringify(this.carrito));
+                    
+                    // Redirigir a página de checkout
+                    window.location.href = 'checkout.html';
+                });
+            }
+
+            mostrarNotificacion(mensaje, tipo = 'info') {
+                if (typeof Soulink !== 'undefined' && Soulink.utils) {
+                    Soulink.utils.showNotification(mensaje, tipo);
+                } else {
+                    // Fallback simple
+                    alert(mensaje);
+                }
+            }
+
+            inicializar() {
+                // Mostrar carrito
+                setTimeout(() => {
+                    this.mostrarCarrito();
+                }, 500);
+
+                // Actualizar badge
+                this.actualizarBadge();
+
+                // Asignar evento de checkout
+                this.asignarEventosCheckout();
+
+                console.log('Página del carrito inicializada correctamente');
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            window.carritoPage = new CarritoPage();
+        });
+    </script>
+</body>
+</html>
