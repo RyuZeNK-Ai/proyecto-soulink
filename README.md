@@ -87,15 +87,16 @@ proyecto-soulink/
 
 ## 📸 Screenshot 3 - Sección "Tienda"
 
-![Tienda](assets/images/Screenshots_tienda.png)
+![Tienda](assets/images/ss-tienda.png)
 
 ## 📸 Screenshot 4 - Sección "Carrito"
 
-![Carrito](assets/images/Screenshots_carrito.png)
+![Carrito](assets/images/ss-Carrito.png)
 
 ## 📸 Screenshot 5 - Sección "Artículos"
 
-![Artículos](assets/images/Screenshots_articulos.png)
+![Artículos](assets/images/ss-Articulos.png)
+
 
 
 
