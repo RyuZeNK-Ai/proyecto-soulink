@@ -20,7 +20,6 @@
 - Mauricio Narváez
 - Vicente Díaz
 
-
 </td>
 <td align="center" valign="middle" width="320">
   <img src="assets/images/logo_Q-ERO.png" alt="Logo Q-ERO v3 Protocol" width="270">
@@ -52,30 +51,33 @@ Repositorio principal para el desarrollo del sitio web de Soulink. Este proyecto
 
 ## 📁 Estructura del Proyecto
 ```
-proyecto-soulink/
-├── index.html           
+proyecto-soulink/          
 ├── assets/images               
-│           ├── Conejo/        
-│           ├── icons/        
-│           └── team/      
+│             ├── Conejo/        
+│             ├── MerchConsejin/        
+│             └── team/      
 ├── pages/                  
-│   ├── acerca.html         
-│   ├── servicios.html      
-│   ├── contacto.html             
-│   ├── admin.html      
-│   ├── comunidad.html       
-│   ├── colaboraciones.html   
-│   ├── login.html   
-│   └── comunidad.html   
+│     ├── acerca.html         
+│     ├── servicios.html      
+│     ├── contacto.html             
+│     ├── admin.html      
+│     ├── comunidad.html       
+│     ├── colaboraciones.html   
+│     ├── login.html   
+│     └── comunidad.html   
 ├── js/
-|  ├── darkmode.js   
-│  └── soulink.js   
-├── README.md              
+|    ├── darkmode.js   
+│    └── soulink.js                
 ├── css/             
-│   ├── admin.css        
-│   ├── responsive.css
-│   └── styles.css
-└── .gitignore             
+│     ├── admin.css        
+│     ├── responsive.css
+│     └── styles.css
+├── data/     
+│      └── productos.json
+├── README.md
+├── index.html                 
+└── .gitignore     
+    
 ```
 ## 📸 Screenshot 1 - Sección "Acerca de"
 
@@ -96,6 +98,7 @@ proyecto-soulink/
 ## 📸 Screenshot 5 - Sección "Artículos"
 
 ![Artículos](assets/images/ss-Articulos.png)
+
 
 
 
