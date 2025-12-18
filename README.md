@@ -100,7 +100,10 @@ Tu contribución ayuda a:
 - [ ] Programa para empresas
 - [ ] Podcast semanal de bienestar emocional
 
-## **📧 Contáctanos en:** [Soulink_quero@outlook.com](mailto:Soulink_quero@outlook.com)
+## 🔗 Links de Interés 🔗
+**📧 Contáctanos en:** [Soulink_quero@outlook.com](mailto:Soulink_quero@outlook.com)    
+**🔗 Repositorio de GitHub:** [Repositorio GitHub](https://github.com/RyuZeNK-Ai/proyecto-soulink)  
+**🔗 Pagina Web Temporal:** [Pagina WEB](https://ryuzenk-ai.github.io/proyecto-soulink)  
 
 ## 📁 Estructura del Proyecto
 ```
@@ -152,6 +155,7 @@ proyecto-soulink/
 ## 📸 Screenshot 5 - Sección "Artículos"
 
 ![Artículos](assets/images/ss-Articulos.png)
+
 
 
 
