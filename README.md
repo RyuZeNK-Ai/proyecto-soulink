@@ -60,9 +60,10 @@ proyecto-soulink/
 │     ├── acerca.html         
 │     ├── servicios.html      
 │     ├── contacto.html             
-│     ├── admin.html      
-│     ├── comunidad.html       
-│     ├── colaboraciones.html   
+│     ├── admin.html             
+│     ├── tienda.html
+│     ├── carrito.html
+│     ├── colaboraciones.html
 │     ├── login.html   
 │     └── comunidad.html   
 ├── js/
@@ -98,6 +99,7 @@ proyecto-soulink/
 ## 📸 Screenshot 5 - Sección "Artículos"
 
 ![Artículos](assets/images/ss-Articulos.png)
+
 
 
 
