@@ -120,7 +120,9 @@ proyecto-soulink/
 │     ├── tienda.html
 │     ├── carrito.html
 │     ├── colaboraciones.html
-│     ├── login.html   
+│     ├── agregar-articulo.html   
+│     ├── agregar-producto.html  
+│     ├── login.html  
 │     └── comunidad.html   
 ├── js/
 |    ├── darkmode.js   
@@ -170,6 +172,7 @@ proyecto-soulink/
 ![Agregar Producto](assets/images/ss-Formulario-AgregarArticulo.png)
 
 *Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
+
 
 
 
