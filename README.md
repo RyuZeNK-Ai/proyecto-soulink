@@ -1,4 +1,4 @@
- <h1 align="center" style="font-size: 2em; margin-bottom: 20px;">
+<h1 align="center" style="font-size: 2em; margin-bottom: 20px;">
   🌐 Soulink - Proyecto Web 🌐
 </h1>
 
@@ -156,6 +156,17 @@ proyecto-soulink/
 
 ![Artículos](assets/images/ss-Articulos.png)
 
+## 📸 Screenshot 6 - Formulario "Agregar Producto"
+
+![Agregar Producto](assets/images/ss-AgregarProducto.png)
+
+*Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
+
+## 📸 Screenshot 7 - Formulario "Agregar Articulo"
+
+![Agregar Producto](assets/images/ss-AgregarProducto.png)
+
+*Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
 
 
 
