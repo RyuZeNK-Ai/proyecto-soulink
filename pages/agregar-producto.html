@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+    /* Dropdowns en navbar se abren al hover en desktop */
+    @media (min-width: 992px) {
+        .navbar .dropdown:hover > .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <!-- ACERCA DE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Acerca de
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
+                            <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
+                            <a class="dropdown-item" href="acerca.html#faq">FAQ</a>
+                            <a class="dropdown-item" href="acerca.html#resultados">Resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">Ver Todo</a>
+                        </div>
+                    </li>
+                    <!-- SERVICIOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
+                            <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
+                            <a class="dropdown-item" href="servicios.html#tests">Tests</a>
+                            <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
+                            <a class="dropdown-item" href="servicios.html#juegos">Juegos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
+                        </div>
+                    </li>
+                    <!-- COMUNIDAD -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Comunidad
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">Unirse</a>
+                        </div>
+                    </li>
+                    <!-- CONTACTO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Contacto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
+                            <a class="dropdown-item" href="contacto.html#chat">Chat</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
+                        </div>
+                    </li>
+                    <!-- COLABORA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Colabora
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">Institucionales</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
+                        </div>
+                    </li>
+                    <!-- TIENDA -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="tienda.html">
+                            Tienda
+                        </a>
+                    </li>
+                    <!-- CARRITO en Navegación - AGREGADO -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.html" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
+                        </a>
+                    </li>
+                    <!-- USUARIO / LOGIN -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="login.html#login">Iniciar Sesión</a>
+                            <a class="dropdown-item" href="login.html#register">Crear Cuenta</a>
+                            <a class="dropdown-item" href="login.html#recover">Recuperar Contraseña</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Navbar -->
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh; padding-top: 90px;">
+        <div class="w-100" style="max-width: 500px;">
+            <h2 class="mb-4 text-center">Agregar Producto</h2>
+            <form id="formProducto" novalidate>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" id="precio" min="0.01" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" class="form-control" id="stock" min="0" step="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen (nombre de archivo)</label>
+                    <input type="text" class="form-control" id="imagen" placeholder="ej: producto.png" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Tienda SOULINK</h5>
+                    <p>Productos con propósito para tu bienestar emocional. Cada compra hace la diferencia.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5>Categorías</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="filter-btn text-white" data-filter="amigurumis">Amigurumis</a></li>
+                        <li><a href="#" class="filter-btn text-white" data-filter="stickers">Stickers</a></li>
+                        <li><a href="#" class="filter-btn text-white" data-filter="ropa">Ropa</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Ayuda</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#como-funciona" class="text-white">Cómo Comprar</a></li>
+                        <li><a href="#" class="text-white">Envíos y Entregas</a></li>
+                        <li><a href="#" class="text-white">Devoluciones</a></li>
+                        <li><a href="/pages/contacto.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope mr-2"></i> tienda@soulink.org</li>
+                        <li><i class="fas fa-phone mr-2"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-clock mr-2"></i> L-V: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK Tienda. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="/pages/privacidad.html" class="text-white mr-3">Política de Privacidad</a>
+                    <a href="/pages/terminos.html" class="text-white">Términos de Compra</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts necesarios para Bootstrap 4.6 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+    // Abre dropdowns al hover en desktop, mantiene click en mobile
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth >= 992) {
+            var dropdowns = document.querySelectorAll('.navbar .dropdown');
+            dropdowns.forEach(function(dropdown) {
+                dropdown.addEventListener('mouseenter', function() {
+                    var menu = this.querySelector('.dropdown-menu');
+                    if (menu) {
+                        menu.classList.add('show');
+                        this.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'true');
+                    }
+                });
+                dropdown.addEventListener('mouseleave', function() {
+                    var menu = this.querySelector('.dropdown-menu');
+                    if (menu) {
+                        menu.classList.remove('show');
+                        this.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        }
+    });
+    </script>
+    <script>
+    document.getElementById('formProducto').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value.trim();
+        const descripcion = document.getElementById('descripcion').value.trim();
+        const precio = parseFloat(document.getElementById('precio').value);
+        const stock = parseInt(document.getElementById('stock').value);
+        const imagen = document.getElementById('imagen').value.trim();
+        let errores = [];
+        if (!nombre) errores.push('El nombre es obligatorio.');
+        if (!descripcion) errores.push('La descripción es obligatoria.');
+        if (!precio || precio <= 0) errores.push('El precio debe ser mayor a 0.');
+        if (isNaN(stock) || stock < 0) errores.push('El stock debe ser mayor o igual a 0.');
+        if (!imagen) errores.push('La imagen es obligatoria.');
+        if (errores.length > 0) {
+            alert(errores.join('\n'));
+            return;
+        }
+        const producto = {
+            nombre,
+            descripcion,
+            precio,
+            stock,
+            imagen
+        };
+        console.log('Producto a agregar:', JSON.stringify(producto, null, 2));
+        // Lógica para persistencia futura aquí
+    });
+    </script>
+</body>
+</html>

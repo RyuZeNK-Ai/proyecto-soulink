@@ -1,381 +1,185 @@
-/* ===========================================
-   SOULINK - RESPONSIVE CSS CORREGIDO
-   Mobile-first - NO afecta escritorio (>992px)
-   Versión limpia y específica
-=========================================== */
+/* =========================
+   Responsive Global Styles
+   ========================= */
 
-/* ===== PARTE 1: SOLO MÓVILES (0px - 767px) ===== */
-@media (max-width: 767.98px) {
+/* --- Navbar Responsive --- */
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+    margin-top: 1rem;
+  }
   
-  /* 1.1 NAVBAR MÓVIL */
-  .navbar {
-    padding: 10px 0;
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  .navbar-collapse {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
   }
   
   .navbar-brand {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-brand img {
-    height: 35px;
-    width: auto;
-  }
-  
-  .brand-name {
-    font-size: 1.3rem;
-    margin-left: 8px;
-  }
-  
-  /* Hamburguesa */
-  .navbar-toggler {
-    padding: 6px 10px;
-    border: 2px solid #8C52FF;
-    border-radius: 5px;
-  }
-  
-  .navbar-toggler-icon {
-    width: 1em;
-    height: 1em;
-  }
-  
-  /* Menú desplegable */
-  .navbar-collapse {
-    position: absolute;
-    top: 100%;
-    left: 15px;
-    right: 15px;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    z-index: 1000;
-    max-height: 70vh;
-    overflow-y: auto;
-  }
-  
-  .nav-link {
-    padding: 12px 15px !important;
-    border-bottom: 1px solid #f5f5f5;
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-link:last-child {
-    border-bottom: none;
-  }
-  
-  .nav-link i {
-    width: 25px;
-    margin-right: 10px;
-  }
-  
-  .dropdown-menu {
-    background: transparent;
-    border: none;
-    padding-left: 25px;
-  }
-  
-  .dropdown-item {
-    padding: 8px 15px !important;
-  }
-  
-  /* 1.2 HERO MÓVIL */
-  .hero, .hero-about, .hero-community, .hero-contact, .hero-collaborations, .hero-services {
-    padding: 50px 0 !important;
-    padding-top: 100px !important;
-    text-align: center;
-  }
-  
-  .hero h1.display-4 {
-    font-size: 1.8rem !important;
-  }
-  
-  .hero p.lead {
-    font-size: 1rem !important;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 280px;
     margin: 0 auto;
-  }
-  
-  /* 1.3 SERVICIOS MÓVIL (2 por fila) */
-  .quick-services .col-md-3 {
-    flex: 0 0 50%;
-    max-width: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .service-card {
-    height: auto;
-    min-height: 200px;
-    padding: 15px;
-  }
-  
-  .service-card i.fa-3x {
-    font-size: 2rem;
-  }
-  
-  /* 1.4 ESTADÍSTICAS MÓVIL (2 por fila) */
-  .stats .col-md-3 {
-    flex: 0 0 50%;
-    max-width: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .stats h3.display-4 {
-    font-size: 2rem;
-  }
-  
-  /* 1.5 BOTÓN EMERGENCIA MÓVIL */
-  .emergency-btn {
-    bottom: 15px;
-    right: 15px;
-  }
-  
-  .chatbot-icon {
-    width: 45px;
-    height: 45px;
-    position: static !important;
-    margin: 0 auto 5px auto !important;
-    display: block;
-  }
-  
-  .btn-emergency {
-    padding: 10px 15px;
-    font-size: 0.8rem;
-    flex-direction: column;
-    min-width: 150px;
-  }
-  
-  /* 1.6 FOOTER MÓVIL */
-  .footer .col-md-4,
-  .footer .col-md-3,
-  .footer .col-md-2 {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-bottom: 25px;
-    text-align: center;
-  }
-  
-  .social-icons {
+    display: flex;
+    align-items: center;
     justify-content: center;
   }
   
-  .footer .text-md-right {
-    text-align: center !important;
+  .navbar .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* --- Navbar Responsive --- */
+/* --- Botones Globales y de Acción --- */
+@media (max-width: 992px) {
+  .btn,
+  a.btn,
+  button.btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
   }
   
-  /* 1.7 EQUIPO MÓVIL */
-  .team-card {
-    max-width: 280px;
-    margin: 0 auto 20px auto;
+  .btn-success,
+  a.btn-success {
+    font-size: 1.05rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
-  
-  .team-avatar img {
-    width: 90px;
-    height: 90px;
-  }
-  
-  /* 1.8 FORMULARIOS MÓVIL */
-  .form-container {
-    padding: 20px 15px;
+}
+
+@media (max-width: 576px) {
+  .btn,
+  a.btn,
+  button.btn {
     width: 100%;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.08rem;
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* --- Formularios (Agregar Producto/Artículo) --- */
+@media (max-width: 768px) {
+  .container.d-flex.align-items-center.justify-content-center {
+    min-height: unset;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  
+  .container .w-100[style*="max-width: 500px"] {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  form {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container .w-100[style*="max-width: 500px"] {
+    padding: 0;
+  }
+  
+  form {
+    padding: 0.5rem 0;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
   }
   
   .form-control {
-    font-size: 16px;
+    font-size: 1rem;
+    padding: 0.7rem 0.9rem;
+  }
+}
+
+/* --- Cards, Secciones y Contenedores --- */
+@media (max-width: 992px) {
+  .card,
+  .article-card,
+  .product-card {
+    margin-bottom: 1.5rem;
   }
   
-  /* 1.9 SECCIÓN EMERGENCIA MÓVIL */
-  #emergencia .col-md-4 {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card,
+  .article-card,
+  .product-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .row > [class^="col-"] {
     flex: 0 0 100%;
     max-width: 100%;
-    margin-bottom: 20px;
   }
   
-  .emergency-card {
-    padding: 20px;
+  .container,
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card,
+  .article-card,
+  .product-card {
+    margin-bottom: 1.2rem;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .container,
+  .container-fluid {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .footer .row > div {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* --- Footer Responsive --- */
+@media (max-width: 768px) {
+  .footer .row {
+    flex-direction: column;
     text-align: center;
   }
-}
-
-/* ===== PARTE 2: TABLETS (768px - 991px) ===== */
-@media (min-width: 768px) and (max-width: 991.98px) {
   
-  /* 2.1 NAVBAR TABLET */
-  .navbar-brand img {
-    height: 40px;
+  .footer .col-md-4,
+  .footer .col-md-2,
+  .footer .col-md-3,
+  .footer .col-md-6 {
+    margin-bottom: 1.5rem;
   }
   
-  .brand-name {
-    font-size: 1.4rem;
+  .footer .text-md-right {
+    text-align: center;
+    margin-top: 1rem;
   }
-  
-  .nav-link {
-    padding: 10px 12px !important;
-    font-size: 0.95rem;
-  }
-  
-  /* 2.2 HERO TABLET */
-  .hero h1.display-4 {
-    font-size: 2.2rem !important;
-  }
-  
-  /* 2.3 SERVICIOS TABLET (2 por fila) */
-  .quick-services .col-md-3 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  
-  /* 2.4 EQUIPO TABLET (3 por fila) */
-  .team-card {
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
-  }
-  
-  /* 2.5 FOOTER TABLET */
-  .footer .col-md-4 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  
-  .footer .col-md-3 {
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
-  }
-  
-  .footer .col-md-2 {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-}
-
-/* ===== PARTE 3: ESCRITORIO (992px+) ===== */
-/* IMPORTANTE: NO PONER NADA AQUÍ que afecte el diseño de escritorio */
-/* Solo ajustes mínimos si son necesarios */
-
-@media (min-width: 992px) {
-  /* Mantener diseño original de escritorio */
-  /* Solo ajustes de contenedor máximo */
-  .container {
-    max-width: 1140px;
-  }
-}
-
-/* ===== FIXES GLOBALES (sin media query) ===== */
-
-/* A. Imágenes responsivas */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* B. Tablas scroll en móvil */
-@media (max-width: 767.98px) {
-  .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* C. Touch-friendly para móvil */
-@media (hover: none) and (pointer: coarse) {
-  .btn, .nav-link {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-  }
-}
-
-/* D. Fix iOS */
-@supports (-webkit-touch-callout: none) {
-  input, select, textarea {
-    font-size: 16px;
-  }
-}
-
-/* E. Ocultar/mostrar elementos */
-@media (max-width: 767.98px) {
-  .d-mobile-hidden {
-    display: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .d-mobile-only {
-    display: none !important;
-  }
-}
-
-/* F. Scrollbar bonito */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 4px;
-}
-/* ===== FIX: LOGO NAVBAR EN ESCRITORIO ===== */
-
-/* 1. RESTAURAR TAMAÑO ORIGINAL EN ESCRITORIO */
-@media (min-width: 992px) {
-    .navbar-brand img {
-        height: 40px !important; /* Tamaño original */
-        width: auto !important;
-    }
-    
-    .brand-name {
-        font-size: 1.5rem !important; /* Tamaño original */
-        margin-left: 10px !important;
-    }
-    
-    .navbar {
-        padding: 0.5rem 1rem !important; /* Bootstrap default */
-    }
-}
-
-/* 2. LIMPIAR ESTILOS GLOBALES QUE AFECTAN ESCRITORIO */
-/* Si tienes esto, ELIMÍNALO o ponlo solo en móvil: */
-/*
-.navbar-brand img {  ← ESTO AFECTA WEB
-    height: 35px;
-}
-*/
-
-/* 3. ESTILOS SOLO PARA MÓVIL (0-767px) */
-@media (max-width: 767.98px) {
-    .navbar-brand img {
-        height: 35px;
-        width: auto;
-    }
-    
-    .brand-name {
-        font-size: 1.3rem;
-        margin-left: 8px;
-    }
-}
-
-/* 4. ESTILOS SOLO PARA TABLET (768-991px) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .navbar-brand img {
-        height: 38px;
-    }
-    
-    .brand-name {
-        font-size: 1.4rem;
-    }
 }

@@ -342,24 +342,22 @@
                 <span class="brand-name">SOULINK</span>
             </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-
                     <!-- INICIO -->
                     <li class="nav-item">
                         <a class="nav-link" href="../index.html">Inicio</a>
                     </li>
-
                     <!-- ACERCA DE -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="acerca.html" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Acerca de
                         </a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" aria-labelledby="acercaDropdown">
                             <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
                             <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
                             <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
@@ -369,13 +367,12 @@
                             <a class="dropdown-item" href="acerca.html">Ver Todo</a>
                         </div>
                     </li>
-
                     <!-- SERVICIOS -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="servicios.html" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" id="serviciosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Servicios
                         </a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" aria-labelledby="serviciosDropdown">
                             <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
                             <a class="dropdown-item" href="servicios.html#tests">Tests</a>
                             <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
@@ -384,13 +381,12 @@
                             <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
                         </div>
                     </li>
-
                     <!-- COMUNIDAD -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="comunidad.html" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" id="comunidadDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Comunidad
                         </a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" aria-labelledby="comunidadDropdown">
                             <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
                             <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
                             <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
@@ -399,13 +395,12 @@
                             <a class="dropdown-item" href="comunidad.html">Unirse</a>
                         </div>
                     </li>
-
                     <!-- CONTACTO -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="contacto.html" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" id="contactoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Contacto
                         </a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" aria-labelledby="contactoDropdown">
                             <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
                             <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
                             <a class="dropdown-item" href="contacto.html#chat">Chat</a>
@@ -413,13 +408,12 @@
                             <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
                         </div>
                     </li>
-
                     <!-- COLABORA -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" id="colaboraDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Colabora
                         </a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" aria-labelledby="colaboraDropdown">
                             <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
                             <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
                             <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
@@ -428,14 +422,12 @@
                             <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
                         </div>
                     </li>
-
                     <!-- TIENDA (ACTIVA) -->
                     <li class="nav-item active">
                         <a class="nav-link" href="tienda.html">
                             Tienda
                         </a>
                     </li>
-
                     <!-- CARRITO en Navegación - AGREGADO -->
                     <li class="nav-item active">
                         <a class="nav-link" href="carrito.html" style="position: relative;">
@@ -443,19 +435,17 @@
                             <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
                         </a>
                     </li>
-
                     <!-- USUARIO -->
                     <li class="nav-item dropdown" id="userMenuContainer">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span id="userMenuText">Iniciar Sesión</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="login.html#login">Iniciar Sesión</a>
                             <a class="dropdown-item" href="login.html#register">Crear Cuenta</a>
                             <a class="dropdown-item" href="login.html#recover">Recuperar Contraseña</a>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -523,18 +513,23 @@
     <section id="productos" class="py-5">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-md-6">
-                    <h2>Nuestros Productos</h2>
-                    <p class="text-muted">Recursos seleccionados para tu bienestar emocional</p>
-                </div>
-                <div class="col-md-6 text-md-right">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-outline-primary filter-btn active" data-filter="all">Todos</button>
-                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="amigurumis">Amigurumis</button>
-                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="stickers">Stickers</button>
-                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="ropa">Ropa</button>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
+                            <div>
+                                <h2 class="mb-0">Nuestros Productos</h2>
+                                <p class="text-muted mb-0">Recursos seleccionados para tu bienestar emocional</p>
+                            </div>
+                            <a href="agregar-producto.html" class="btn btn-success ml-2 mb-2 mb-md-0">
+                                + Agregar Producto
+                            </a>
+                        </div>
+                        <div class="btn-group mt-3 mt-md-0" role="group">
+                            <button type="button" class="btn btn-outline-primary filter-btn active" data-filter="all">Todos</button>
+                            <button type="button" class="btn btn-outline-primary filter-btn" data-filter="amigurumis">Amigurumis</button>
+                            <button type="button" class="btn btn-outline-primary filter-btn" data-filter="stickers">Stickers</button>
+                            <button type="button" class="btn btn-outline-primary filter-btn" data-filter="ropa">Ropa</button>
+                        </div>
                     </div>
-                </div>
             </div>
 
             <!-- Loading Spinner -->
@@ -648,6 +643,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- Footer -->
     <footer class="footer bg-dark text-white py-5">
