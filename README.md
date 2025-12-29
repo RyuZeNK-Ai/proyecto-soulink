@@ -158,15 +158,19 @@ proyecto-soulink/
 
 ## 📸 Screenshot 6 - Formulario "Agregar Producto"
 
-![Agregar Producto](assets/images/ss-AgregarProducto.png)
+![Agregar Producto](assets/images/ss-BOTON-AgregarProducto.png)
+![Agregar Producto](assets/images/ss-Formulario-AgregarProducto.png)
+
 
 *Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
 
 ## 📸 Screenshot 7 - Formulario "Agregar Articulo"
 
-![Agregar Producto](assets/images/ss-AgregarProducto.png)
+![Agregar Producto](assets/images/ss-BOTON-AgregarArticulo.png)
+![Agregar Producto](assets/images/ss-Formulario-AgregarArticulo.png)
 
 *Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
+
 
 
 
