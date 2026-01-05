@@ -141,45 +141,52 @@ proyecto-soulink/
 ## 📸 Screenshot 1 - Sección "Acerca de"
 
 ![Acerca de](assets/images/Screenshots_acerca.png)
+*Sección principal "Acerca de" mostrando la misión, visión y equipo de SOULINK*
 
 ## 📸 Screenshot 2 - Sección "Contacto"
 
 ![Contacto](assets/images/Screenshots_contacto.png)
+*Página de contacto con formulario de contacto general y opciones de emergencia*
 
 ## 📸 Screenshot 3 - Sección "Tienda"
 
 ![Tienda](assets/images/ss-Tienda.png)
+*Tienda de productos con categorías*
 
 ## 📸 Screenshot 4 - Sección "Carrito"
 
 ![Carrito](assets/images/ss-Carrito.png)
+*Carrito de compras con resumen de productos, cantidades y total a pagar*
 
 ## 📸 Screenshot 5 - Sección "Artículos"
 
 ![Artículos](assets/images/ss-Articulos.png)
+*Sección de artículos y recursos sobre salud mental y bienestar emocional*
 
 ## 📸 Screenshot 6 - Formulario "Agregar Producto"
 
 ![Agregar Producto](assets/images/ss-BOTON-AgregarProducto.png)
+*Botón de acceso al formulario para añadir nuevos productos*
+
 ![Agregar Producto](assets/images/ss-Formulario-AgregarProducto.png)
-
-
-*Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
+*Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio*
 
 ## 📸 Screenshot 7 - Formulario "Agregar Articulo"
 
 ![Agregar Producto](assets/images/ss-BOTON-AgregarArticulo.png)
+*Botón de acceso al formulario para publicar nuevos artículos*
 ![Agregar Producto](assets/images/ss-Formulario-AgregarArticulo.png)
-
 *Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
 
+## 📸 Screenshot 8 - Validación de Formularios "Iniciar Sesión"
 
+![Login In](assets/images/ss-v-iniciarsesion.png)
+*Validación en tiempo real de email y contraseña en el formulario de inicio de sesión*
 
+## 📸 Screenshot 9 - Validación de Formularios "Crear Cuenta"
 
-
-
-
-
+![Login Up](assets/images/ss-v-crearcuenta.png)
+*Validación completa de campos en el formulario de registro: nombre, email, contraseña y fecha*
 
 
 
