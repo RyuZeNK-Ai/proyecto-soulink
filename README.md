@@ -107,35 +107,47 @@ Tu contribución ayuda a:
 
 ## 📁 Estructura del Proyecto
 ```
-proyecto-soulink/          
-├── assets/images               
-│             ├── Conejo/        
-│             ├── MerchConsejin/        
-│             └── team/      
-├── pages/                  
-│     ├── acerca.html         
-│     ├── servicios.html      
-│     ├── contacto.html             
-│     ├── admin.html             
-│     ├── tienda.html
-│     ├── carrito.html
-│     ├── colaboraciones.html
-│     ├── agregar-articulo.html   
-│     ├── agregar-producto.html  
-│     ├── login.html  
-│     └── comunidad.html   
+proyecto-soulink/
+├── assets/images
+│   ├── Conejo/
+│   ├── MerchConsejin/
+│   └── team/
+├── pages/
+│   ├── acerca.html
+│   ├── servicios.html
+│   ├── contacto.html
+│   ├── tienda.html
+│   ├── carrito.html
+│   ├── configuracion.html
+│   ├── colaboraciones.html
+│   ├── perfil.html
+│   ├── login.html
+│   ├── comunidad.html
+│   └── admin/
+│       ├── index.html
+│       ├── admin_login.html
+│       ├── panel_admin.html
+│       ├── agregar-producto.html
+│       ├── agregar-articulo.html
+│       └── js/
+│           ├── login_admin.js
+│           └── admin-protection.js
 ├── js/
-|    ├── darkmode.js   
-│    └── soulink.js                
-├── css/             
-│     ├── admin.css        
-│     ├── responsive.css
-│     └── styles.css
-├── data/     
-│      └── productos.json
+│   ├── login.js
+│   └── soulink.js
+├── css/
+│   ├── responsive.css
+│   └── styles.css
+├── data/
+│   ├── usuarios.json
+│   └── productos.json
+├── database/
+│   ├── DER_soulink.png        
+│   └── soulink.sql
 ├── README.md
-├── index.html                 
-└── .gitignore     
+├── index.html
+├── ACCESO LOGIN Y ADMIN.txt
+└── .gitignore
     
 ```
 ## 📸 Screenshot 1 - Sección "Acerca de"
@@ -158,20 +170,42 @@ proyecto-soulink/
 
 ![Artículos](assets/images/ss-Articulos.png)
 
-## 📸 Screenshot 6 - Formulario "Agregar Producto"
+## 📸 Screenshot 6 - Formulario ADMIN "Agregar Articulo o Agregar Producto"
 
-![Agregar Producto](assets/images/ss-BOTON-AgregarProducto.png)
-![Agregar Producto](assets/images/ss-Formulario-AgregarProducto.png)
+![Agregar Articulo y Producto](assets/images/ss_agregarproducto-articulo.png)
 
+## 📸 Screenshot 7 - Login validar: Nombre - Numero - Mail - Contraseña
 
-*Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
+![ValidacionesLogin](assets/images/ss_validacionlogin.png)
 
-## 📸 Screenshot 7 - Formulario "Agregar Articulo"
+## 📸 Screenshot 8 - Login Usuario
 
-![Agregar Producto](assets/images/ss-BOTON-AgregarArticulo.png)
-![Agregar Producto](assets/images/ss-Formulario-AgregarArticulo.png)
+![LoginAceptado](assets/images/ss_loginclienteaceptado.png)
 
-*Formulario para añadir nuevos productos a la tienda, con campos de título, descripción y precio.*
+## 📸 Screenshot 9 - Configuracion Usuario
+
+![Configuracion Usuario](assets/images/ss_configuracionperfil.png)
+
+## 📸 Screenshot 10 - Perfil Usuario
+
+![Perfil Usuario](assets/images/ss_perfilusuario.png)
+
+## 📸 Screenshot 11 - Login ADMIN
+
+![LoginAdmin](assets/images/ss_loginadmin.png)
+![LoginAdmin2](assets/images/ss_loginadmin2.png)
+
+## 📸 Screenshot 12 - Tablas en DBeaver
+
+![Tablas](assets/images/ss_TablasPostgreSQL.png)
+
+## 📸 Screenshot 13 - Consulta Clientes
+
+![Consulta Clientes](assets/images/ss_ConsultaTablas.png)
+
+## 📸 Screenshot 14 - DER Soulink
+
+![DER Soulink](assets/images/DER_soulink.png)
 
 
 
