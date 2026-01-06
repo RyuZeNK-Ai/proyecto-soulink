@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* Estilos específicos para configuración */
+        .settings-header {
+            background: linear-gradient(135deg, #5CE1E6 0%, #8C52FF 100%);
+            color: white;
+            padding: 80px 0 40px;
+            margin-top: 56px;
+            text-align: center;
+        }
+        
+        .settings-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .settings-card .card-header {
+            background: linear-gradient(90deg, #8C52FF, #5CE1E6);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #8C52FF;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .danger-zone {
+            border-left: 4px solid #dc3545;
+            background-color: rgba(220, 53, 69, 0.05);
+        }
+        
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .preview-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px dashed #dee2e6;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .theme-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        
+        .theme-color.active {
+            border-color: #333;
+        }
+        
+        .data-usage-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .data-usage-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8C52FF, #5CE1E6);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency">
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon">
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+
+                    <!-- ACERCA DE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" data-toggle="dropdown">
+                            Acerca de
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
+                            <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
+                            <a class="dropdown-item" href="acerca.html#faq">FAQ</a>
+                            <a class="dropdown-item" href="acerca.html#resultados">Resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">Ver Todo</a>
+                        </div>
+                    </li>
+
+                    <!-- SERVICIOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" data-toggle="dropdown">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
+                            <a class="dropdown-item" href="servicios.html#tests">Tests</a>
+                            <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
+                            <a class="dropdown-item" href="servicios.html#juegos">Juegos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
+                        </div>
+                    </li>
+
+                    <!-- COMUNIDAD -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" data-toggle="dropdown">
+                            Comunidad
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">Unirse</a>
+                        </div>
+                    </li>
+
+                    <!-- CONTACTO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" data-toggle="dropdown">
+                            Contacto
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
+                            <a class="dropdown-item" href="contacto.html#chat">Chat</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
+                        </div>
+                    </li>
+
+                    <!-- COLABORA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" data-toggle="dropdown">
+                            Colabora
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">Institucionales</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
+                        </div>
+                    </li>
+
+                    <!-- TIENDA -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="tienda.html">
+                            Tienda
+                        </a>
+                    </li>
+
+                    <!-- CARRITO -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.html" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
+                        </a>
+                    </li>
+
+                    <!-- USUARIO -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="perfil.html"><i class="fas fa-user"></i> Mi Perfil</a>
+                            <a class="dropdown-item" href="configuracion.html"><i class="fas fa-cog"></i> Configuración</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesionGlobal()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header de Configuración -->
+    <header class="settings-header">
+        <div class="container">
+            <h1 class="display-4">Configuración</h1>
+            <p class="lead">Personaliza tu experiencia en SOULINK</p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Menú Lateral de Configuración -->
+                <div class="col-lg-3 mb-4">
+                    <div class="list-group" id="settingsMenu">
+                        <a href="#privacidad" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-shield-alt mr-2"></i> Privacidad
+                        </a>
+                        <a href="#notificaciones" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-bell mr-2"></i> Notificaciones
+                        </a>
+                        <a href="#apariencia" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-palette mr-2"></i> Apariencia
+                        </a>
+                        <a href="#seguridad" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-lock mr-2"></i> Seguridad
+                        </a>
+                        <a href="#datos" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-database mr-2"></i> Datos
+                        </a>
+                        <a href="#avanzado" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-sliders-h mr-2"></i> Avanzado
+                        </a>
+                        <a href="#cuenta" class="list-group-item list-group-item-action" data-toggle="list">
+                            <i class="fas fa-user-cog mr-2"></i> Cuenta
+                        </a>
+                    </div>
+                    
+                    <div class="card mt-4 settings-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-question-circle fa-3x text-primary mb-3"></i>
+                            <h5>¿Necesitas ayuda?</h5>
+                            <p>Consulta nuestra documentación o contacta a soporte</p>
+                            <a href="contacto.html" class="btn btn-outline-primary btn-block">Contactar Soporte</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido de Configuración -->
+                <div class="col-lg-9">
+                    <div class="tab-content">
+                        <!-- Privacidad -->
+                        <div class="tab-pane fade show active" id="privacidad">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-shield-alt mr-2"></i> Configuración de Privacidad</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Perfil público</h6>
+                                            <p class="text-muted mb-0">Permitir que otros usuarios vean tu perfil</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="perfilPublico" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Mostrar actividad</h6>
+                                            <p class="text-muted mb-0">Compartir tu actividad reciente en la comunidad</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="mostrarActividad" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Testimonios anónimos</h6>
+                                            <p class="text-muted mb-0">Publicar testimonios de forma anónima</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="testimoniosAnonimos">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Compartir datos para investigación</h6>
+                                            <p class="text-muted mb-0">Ayuda a mejorar SOULINK compartiendo datos anónimos</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="compartirDatos" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary" onclick="guardarPrivacidad()">
+                                            <i class="fas fa-save"></i> Guardar configuración de privacidad
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notificaciones -->
+                        <div class="tab-pane fade" id="notificaciones">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-bell mr-2"></i> Configuración de Notificaciones</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="mb-3">Tipos de notificaciones</h6>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Recordatorios diarios</h6>
+                                            <p class="text-muted mb-0">Recordatorios para tu rutina de bienestar</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notifRecordatorios" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Respuestas en foro</h6>
+                                            <p class="text-muted mb-0">Cuando alguien responde a tus publicaciones</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notifForo" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Nuevos recursos</h6>
+                                            <p class="text-muted mb-0">Cuando hay nuevos recursos disponibles</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notifRecursos" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Eventos de la comunidad</h6>
+                                            <p class="text-muted mb-0">Recordatorios de eventos y talleres</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notifEventos">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Mensajes directos</h6>
+                                            <p class="text-muted mb-0">Cuando recibes mensajes de la comunidad</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notifMensajes" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <h6 class="mb-3">Frecuencia de notificaciones</h6>
+                                    <div class="form-group">
+                                        <select class="form-control" id="frecuenciaNotificaciones">
+                                            <option value="inmediato">Inmediatamente</option>
+                                            <option value="diario" selected>Resumen diario</option>
+                                            <option value="semanal">Resumen semanal</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary" onclick="guardarNotificaciones()">
+                                            <i class="fas fa-save"></i> Guardar configuración de notificaciones
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Apariencia -->
+                        <div class="tab-pane fade" id="apariencia">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-palette mr-2"></i> Personalización de Apariencia</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="mb-3">Tema de color</h6>
+                                    <div class="text-center mb-4">
+                                        <div class="theme-color" style="background: #8C52FF;" data-color="purple" onclick="cambiarTema('purple')"></div>
+                                        <div class="theme-color" style="background: #5CE1E6;" data-color="teal" onclick="cambiarTema('teal')"></div>
+                                        <div class="theme-color" style="background: #FF6B6B;" data-color="red" onclick="cambiarTema('red')"></div>
+                                        <div class="theme-color" style="background: #4ECDC4;" data-color="green" onclick="cambiarTema('green')"></div>
+                                        <div class="theme-color" style="background: #FFD166;" data-color="yellow" onclick="cambiarTema('yellow')"></div>
+                                    </div>
+                                    
+                                    <div class="preview-box" id="themePreview">
+                                        <h5>Vista previa del tema</h5>
+                                        <p>Este es un texto de ejemplo para mostrar cómo se verá el tema seleccionado.</p>
+                                        <button class="btn btn-primary">Botón de ejemplo</button>
+                                        <button class="btn btn-outline-primary ml-2">Botón secundario</button>
+                                    </div>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3">Modo de visualización</h6>
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Modo oscuro</h6>
+                                            <p class="text-muted mb-0">Activar el modo oscuro para mayor comodidad visual</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="modoOscuro">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Tamaño de fuente</h6>
+                                            <p class="text-muted mb-0">Ajustar el tamaño del texto para mejor legibilidad</p>
+                                        </div>
+                                        <select class="form-control" id="tamanoFuente" style="width: 150px;">
+                                            <option value="pequeno">Pequeño</option>
+                                            <option value="medio" selected>Medio</option>
+                                            <option value="grande">Grande</option>
+                                            <option value="muy-grande">Muy grande</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary" onclick="guardarApariencia()">
+                                            <i class="fas fa-save"></i> Guardar configuración de apariencia
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seguridad -->
+                        <div class="tab-pane fade" id="seguridad">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-lock mr-2"></i> Seguridad de la Cuenta</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle"></i> Protege tu cuenta con estas configuraciones de seguridad.
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="cambiarContrasena">Cambiar contraseña</label>
+                                        <input type="password" class="form-control" id="cambiarContrasena" placeholder="Nueva contraseña">
+                                        <small class="form-text text-muted">Mínimo 8 caracteres</small>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="confirmarContrasena">Confirmar nueva contraseña</label>
+                                        <input type="password" class="form-control" id="confirmarContrasena" placeholder="Confirmar nueva contraseña">
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Verificación en dos pasos</h6>
+                                            <p class="text-muted mb-0">Agrega una capa extra de seguridad a tu cuenta</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="verificacionDosPasos">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Correos de seguridad</h6>
+                                            <p class="text-muted mb-0">Recibir notificaciones por email sobre actividad sospechosa</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="correosSeguridad" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Sesión activa</h6>
+                                            <p class="text-muted mb-0">Cerrar sesión automáticamente después de 30 minutos de inactividad</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="sesionActiva" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <h6>Sesión actual</h6>
+                                    <div class="alert alert-light">
+                                        <p><strong>Dispositivo:</strong> Este navegador</p>
+                                        <p><strong>Última actividad:</strong> <span id="ultimaActividad">Hace unos momentos</span></p>
+                                        <p><strong>Ubicación:</strong> <span id="ubicacionActual">No detectada</span></p>
+                                    </div>
+                                    
+                                    <button class="btn btn-danger" onclick="cerrarOtrasSesiones()">
+                                        <i class="fas fa-sign-out-alt"></i> Cerrar todas las otras sesiones
+                                    </button>
+                                    
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary" onclick="guardarSeguridad()">
+                                            <i class="fas fa-save"></i> Guardar configuración de seguridad
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Datos -->
+                        <div class="tab-pane fade" id="datos">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-database mr-2"></i> Gestión de Datos</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="mb-3">Uso de almacenamiento</h6>
+                                    <div class="data-usage-bar">
+                                        <div class="data-usage-fill" id="usoDatosBar" style="width: 35%"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>0 MB</small>
+                                        <small id="usoDatosTexto">3.5 MB de 10 MB usados</small>
+                                        <small>10 MB</small>
+                                    </div>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3">Exportar datos</h6>
+                                    <p class="text-muted">Descarga una copia de todos tus datos en SOULINK</p>
+                                    <button class="btn btn-outline-primary" onclick="exportarDatos()">
+                                        <i class="fas fa-download"></i> Exportar mis datos
+                                    </button>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3">Limpiar datos temporales</h6>
+                                    <p class="text-muted">Elimina datos almacenados en caché para liberar espacio</p>
+                                    <button class="btn btn-outline-warning" onclick="limpiarCache()">
+                                        <i class="fas fa-broom"></i> Limpiar caché
+                                    </button>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3">Eliminar datos específicos</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="eliminarHistorialTests">
+                                        <label class="form-check-label" for="eliminarHistorialTests">
+                                            Historial de tests completados
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="eliminarRecursosGuardados">
+                                        <label class="form-check-label" for="eliminarRecursosGuardados">
+                                            Recursos guardados
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="eliminarPostsForo">
+                                        <label class="form-check-label" for="eliminarPostsForo">
+                                            Publicaciones en el foro
+                                        </label>
+                                    </div>
+                                    
+                                    <button class="btn btn-outline-danger mt-3" onclick="eliminarDatosSeleccionados()">
+                                        <i class="fas fa-trash-alt"></i> Eliminar datos seleccionados
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Avanzado -->
+                        <div class="tab-pane fade" id="avanzado">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-sliders-h mr-2"></i> Configuraciones Avanzadas</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-warning">
+                                        <i class="fas fa-exclamation-triangle"></i> Estas configuraciones están destinadas a usuarios avanzados.
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="apiKey">Clave API (solo para desarrolladores)</label>
+                                        <input type="text" class="form-control" id="apiKey" placeholder="Ingresa tu clave API" readonly>
+                                        <small class="form-text text-muted">Contáctanos para obtener una clave API</small>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Modo desarrollador</h6>
+                                            <p class="text-muted mb-0">Activar herramientas de desarrollo</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="modoDesarrollador">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Registro detallado</h6>
+                                            <p class="text-muted mb-0">Guardar registros detallados de actividad</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="registroDetallado">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="notification-item">
+                                        <div>
+                                            <h6>Enviar reportes de error automáticamente</h6>
+                                            <p class="text-muted mb-0">Ayuda a mejorar SOULINK reportando errores</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="reportesError" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6>Reiniciar configuración</h6>
+                                    <p class="text-muted">Restaura todas las configuraciones a sus valores predeterminados</p>
+                                    <button class="btn btn-outline-danger" onclick="reiniciarConfiguracion()">
+                                        <i class="fas fa-redo"></i> Reiniciar configuración
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cuenta -->
+                        <div class="tab-pane fade" id="cuenta">
+                            <div class="settings-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-user-cog mr-2"></i> Configuración de la Cuenta</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="mb-3">Información de la cuenta</h6>
+                                    <div class="alert alert-light">
+                                        <p><strong>Nombre de usuario:</strong> <span id="usernameDisplay">Usuario</span></p>
+                                        <p><strong>Email:</strong> <span id="emailDisplay">usuario@ejemplo.com</span></p>
+                                        <p><strong>Miembro desde:</strong> <span id="fechaRegistro">Enero 2025</span></p>
+                                        <p><strong>Tipo de cuenta:</strong> <span class="badge badge-primary">Estándar</span></p>
+                                    </div>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3">Suscripciones</h6>
+                                    <p class="text-muted">Actualmente tienes una cuenta gratuita</p>
+                                    <button class="btn btn-success" onclick="actualizarSuscripcion()">
+                                        <i class="fas fa-crown"></i> Actualizar a Premium
+                                    </button>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <!-- Zona de peligro -->
+                                    <div class="danger-zone p-4 rounded">
+                                        <h6 class="text-danger mb-3"><i class="fas fa-exclamation-triangle"></i> Zona de peligro</h6>
+                                        
+                                        <div class="mb-3">
+                                            <button class="btn btn-outline-danger" onclick="desactivarCuenta()">
+                                                <i class="fas fa-user-slash"></i> Desactivar cuenta temporalmente
+                                            </button>
+                                            <small class="form-text text-muted">Tu cuenta se desactivará por 30 días</small>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <button class="btn btn-outline-danger" onclick="eliminarCuenta()">
+                                                <i class="fas fa-user-times"></i> Eliminar cuenta permanentemente
+                                            </button>
+                                            <small class="form-text text-muted">Esta acción no se puede deshacer</small>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <button class="btn btn-danger" onclick="solicitarDatos()">
+                                                <i class="fas fa-file-download"></i> Solicitar todos mis datos
+                                            </button>
+                                            <small class="form-text text-muted">Recibirás un email con todos tus datos</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Tu espacio seguro de apoyo emocional.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="contacto.html#contacto-general">Formulario</a></li>
+                        <li><a href="contacto.html#emergencia">Emergencia</a></li>
+                        <li><a href="contacto.html#chat">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Información</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@soulink.cl</li>
+                        <li><i class="fas fa-phone"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Santiago, Chile</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Emergencia 24/7</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-phone"></i> 1412 (SENDA)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a>
+                    <a href="terminos.html" class="text-white">Términos</a>
+                    <a href="acerca.html#faq" class="text-white ml-3">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/soulink.js"></script>
+    <script>
+    // Cargar configuración
+    document.addEventListener('DOMContentLoaded', function() {
+        cargarConfiguracion();
+        actualizarMenuActivo();
+        
+        // Activar la primera pestaña
+        $('#settingsMenu a:first').tab('show');
+    });
+    
+    function actualizarMenuActivo() {
+        $('#settingsMenu a').on('click', function() {
+            $('#settingsMenu a').removeClass('active');
+            $(this).addClass('active');
+        });
+    }
+    
+    function cargarConfiguracion() {
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || JSON.stringify({
+            // Privacidad
+            perfilPublico: true,
+            mostrarActividad: true,
+            testimoniosAnonimos: false,
+            compartirDatos: true,
+            
+            // Notificaciones
+            notifRecordatorios: true,
+            notifForo: true,
+            notifRecursos: true,
+            notifEventos: false,
+            notifMensajes: true,
+            frecuenciaNotificaciones: 'diario',
+            
+            // Apariencia
+            tema: 'purple',
+            modoOscuro: false,
+            tamanoFuente: 'medio',
+            
+            // Seguridad
+            verificacionDosPasos: false,
+            correosSeguridad: true,
+            sesionActiva: true,
+            
+            // Datos
+            usoDatos: 3.5,
+            
+            // Avanzado
+            modoDesarrollador: false,
+            registroDetallado: false,
+            reportesError: true,
+            
+            // Cuenta
+            username: 'Usuario',
+            email: 'usuario@ejemplo.com',
+            fechaRegistro: 'Enero 2025',
+            tipoCuenta: 'Estándar'
+        }));
+        
+        // Cargar valores en los controles
+        document.getElementById('perfilPublico').checked = config.perfilPublico;
+        document.getElementById('mostrarActividad').checked = config.mostrarActividad;
+        document.getElementById('testimoniosAnonimos').checked = config.testimoniosAnonimos;
+        document.getElementById('compartirDatos').checked = config.compartirDatos;
+        
+        document.getElementById('notifRecordatorios').checked = config.notifRecordatorios;
+        document.getElementById('notifForo').checked = config.notifForo;
+        document.getElementById('notifRecursos').checked = config.notifRecursos;
+        document.getElementById('notifEventos').checked = config.notifEventos;
+        document.getElementById('notifMensajes').checked = config.notifMensajes;
+        document.getElementById('frecuenciaNotificaciones').value = config.frecuenciaNotificaciones;
+        
+        document.querySelector(`.theme-color[data-color="${config.tema}"]`).classList.add('active');
+        document.getElementById('modoOscuro').checked = config.modoOscuro;
+        document.getElementById('tamanoFuente').value = config.tamanoFuente;
+        
+        document.getElementById('verificacionDosPasos').checked = config.verificacionDosPasos;
+        document.getElementById('correosSeguridad').checked = config.correosSeguridad;
+        document.getElementById('sesionActiva').checked = config.sesionActiva;
+        
+        document.getElementById('usoDatosBar').style.width = `${(config.usoDatos / 10) * 100}%`;
+        document.getElementById('usoDatosTexto').textContent = `${config.usoDatos} MB de 10 MB usados`;
+        
+        document.getElementById('modoDesarrollador').checked = config.modoDesarrollador;
+        document.getElementById('registroDetallado').checked = config.registroDetallado;
+        document.getElementById('reportesError').checked = config.reportesError;
+        
+        document.getElementById('usernameDisplay').textContent = config.username;
+        document.getElementById('emailDisplay').textContent = config.email;
+        document.getElementById('fechaRegistro').textContent = config.fechaRegistro;
+        
+        // Cargar datos del usuario actual
+        const usuario = JSON.parse(localStorage.getItem('usuarioActual') || '{}');
+        if (usuario.email) {
+            document.getElementById('emailDisplay').textContent = usuario.email;
+            config.email = usuario.email;
+        }
+        if (usuario.nombre_completo) {
+            document.getElementById('usernameDisplay').textContent = usuario.nombre_completo;
+            config.username = usuario.nombre_completo;
+        }
+        
+        localStorage.setItem('configuracionUsuario', JSON.stringify(config));
+    }
+    
+    function guardarPrivacidad() {
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || '{}');
+        
+        config.perfilPublico = document.getElementById('perfilPublico').checked;
+        config.mostrarActividad = document.getElementById('mostrarActividad').checked;
+        config.testimoniosAnonimos = document.getElementById('testimoniosAnonimos').checked;
+        config.compartirDatos = document.getElementById('compartirDatos').checked;
+        
+        localStorage.setItem('configuracionUsuario', JSON.stringify(config));
+        alert('✅ Configuración de privacidad guardada');
+    }
+    
+    function guardarNotificaciones() {
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || '{}');
+        
+        config.notifRecordatorios = document.getElementById('notifRecordatorios').checked;
+        config.notifForo = document.getElementById('notifForo').checked;
+        config.notifRecursos = document.getElementById('notifRecursos').checked;
+        config.notifEventos = document.getElementById('notifEventos').checked;
+        config.notifMensajes = document.getElementById('notifMensajes').checked;
+        config.frecuenciaNotificaciones = document.getElementById('frecuenciaNotificaciones').value;
+        
+        localStorage.setItem('configuracionUsuario', JSON.stringify(config));
+        alert('✅ Configuración de notificaciones guardada');
+    }
+    
+    function cambiarTema(color) {
+        document.querySelectorAll('.theme-color').forEach(el => el.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || '{}');
+        config.tema = color;
+        localStorage.setItem('configuracionUsuario', JSON.stringify(config));
+        
+        // Actualizar vista previa
+        const preview = document.getElementById('themePreview');
+        const colors = {
+            purple: '#8C52FF',
+            teal: '#5CE1E6',
+            red: '#FF6B6B',
+            green: '#4ECDC4',
+            yellow: '#FFD166'
+        };
+        
+        preview.style.borderColor = colors[color];
+        preview.querySelector('.btn-primary').style.backgroundColor = colors[color];
+        preview.querySelector('.btn-outline-primary').style.borderColor = colors[color];
+        preview.querySelector('.btn-outline-primary').style.color = colors[color];
+    }
+    
+    function guardarApariencia() {
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || '{}');
+        
+        config.modoOscuro = document.getElementById('modoOscuro').checked;
+        config.tamanoFuente = document.getElementById('tamanoFuente').value;
+        
+        localStorage.setItem('configuracionUsuario', JSON.stringify(config));
+        alert('✅ Configuración de apariencia guardada');
+        
+        if (config.modoOscuro) {
+            alert('✨ Recarga la página para ver los cambios del modo oscuro');
+        }
+    }
+    
+    function guardarSeguridad() {
+        const nuevaContrasena = document.getElementById('cambiarContrasena').value;
+        const confirmarContrasena = document.getElementById('confirmarContrasena').value;
+        
+        if (nuevaContrasena && nuevaContrasena !== confirmarContrasena) {
+            alert('❌ Las contraseñas no coinciden');
+            return;
+        }
+        
+        if (nuevaContrasena && nuevaContrasena.length < 8) {
+            alert('❌ La contraseña debe tener al menos 8 caracteres');
+            return;
+        }
+        
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || '{}');
+        
+        config.verificacionDosPasos = document.getElementById('verificacionDosPasos').checked;
+        config.correosSeguridad = document.getElementById('correosSeguridad').checked;
+        config.sesionActiva = document.getElementById('sesionActiva').checked;
+        
+        localStorage.setItem('configuracionUsuario', JSON.stringify(config));
+        
+        if (nuevaContrasena) {
+            // Aquí normalmente se enviaría al servidor
+            alert('✅ Contraseña actualizada y configuración de seguridad guardada');
+            document.getElementById('cambiarContrasena').value = '';
+            document.getElementById('confirmarContrasena').value = '';
+        } else {
+            alert('✅ Configuración de seguridad guardada');
+        }
+    }
+    
+    function cerrarOtrasSesiones() {
+        if (confirm('¿Estás seguro de cerrar todas las otras sesiones?')) {
+            alert('✅ Todas las otras sesiones han sido cerradas');
+        }
+    }
+    
+    function exportarDatos() {
+        const config = JSON.parse(localStorage.getItem('configuracionUsuario') || '{}');
+        const datos = {
+            configuracion: config,
+            fechaExportacion: new Date().toISOString()
+        };
+        
+        const datosStr = JSON.stringify(datos, null, 2);
+        const blob = new Blob([datosStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `soulink-datos-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        alert('📥 Datos exportados correctamente');
+    }
+    
+    function limpiarCache() {
+        localStorage.removeItem('cacheTemporal');
+        alert('🧹 Caché limpiado correctamente');
+    }
+    
+    function eliminarDatosSeleccionados() {
+        const eliminarTests = document.getElementById('eliminarHistorialTests').checked;
+        const eliminarRecursos = document.getElementById('eliminarRecursosGuardados').checked;
+        const eliminarPosts = document.getElementById('eliminarPostsForo').checked;
+        
+        if (!eliminarTests && !eliminarRecursos && !eliminarPosts) {
+            alert('ℹ️ No hay datos seleccionados para eliminar');
+            return;
+        }
+        
+        if (confirm('¿Estás seguro de eliminar los datos seleccionados? Esta acción no se puede deshacer.')) {
+            if (eliminarTests) localStorage.removeItem('historialTests');
+            if (eliminarRecursos) localStorage.removeItem('recursosGuardados');
+            if (eliminarPosts) localStorage.removeItem('postsForo');
+            
+            alert('✅ Datos seleccionados eliminados');
+            
+            // Desmarcar checkboxes
+            document.getElementById('eliminarHistorialTests').checked = false;
+            document.getElementById('eliminarRecursosGuardados').checked = false;
+            document.getElementById('eliminarPostsForo').checked = false;
+        }
+    }
+    
+    function reiniciarConfiguracion() {
+        if (confirm('¿Estás seguro de reiniciar toda la configuración a los valores predeterminados?')) {
+            localStorage.removeItem('configuracionUsuario');
+            cargarConfiguracion();
+            alert('✅ Configuración reiniciada correctamente');
+        }
+    }
+    
+    function actualizarSuscripcion() {
+        alert('✨ Esta función te llevaría a actualizar tu suscripción. ¡Próximamente!');
+    }
+    
+    function desactivarCuenta() {
+        if (confirm('¿Estás seguro de desactivar tu cuenta por 30 días?')) {
+            localStorage.setItem('cuentaDesactivada', 'true');
+            alert('✅ Tu cuenta se desactivará en 30 días. Puedes reactivarla iniciando sesión.');
+        }
+    }
+    
+    function eliminarCuenta() {
+        if (confirm('¿ESTÁS ABSOLUTAMENTE SEGURO? Esta acción ELIMINARÁ PERMANENTEMENTE tu cuenta y todos tus datos.')) {
+            const confirmacion = prompt('Escribe "ELIMINAR" para confirmar:');
+            if (confirmacion === 'ELIMINAR') {
+                localStorage.clear();
+                alert('✅ Cuenta eliminada. Redirigiendo...');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 2000);
+            }
+        }
+    }
+    
+    function solicitarDatos() {
+        alert('📧 Se ha enviado una solicitud para recibir todos tus datos por email.');
+    }
+    </script>
+</body>
+</html>

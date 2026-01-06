@@ -13,7 +13,127 @@ const SoulinkConfig = {
     debug: true
 };
 
-// ===== 1. UTILIDADES BÁSICAS =====
+// ===== 0. FUNCIÓN PARA MANEJAR RUTAS RELATIVAS =====
+function obtenerRuta(archivo) {
+    // Verificar si estamos en la carpeta pages/ o en la raíz
+    const path = window.location.pathname;
+    console.log("📍 Ruta actual:", path);
+    
+    // Si estamos en index.html en la raíz o en cualquier página que NO esté en /pages/
+    const esIndex = path.endsWith('/index.html') || path.endsWith('/') || path === '' || path === '/';
+    const estaEnPages = path.includes('/pages/');
+    
+    let ruta = archivo;
+    
+    if (esIndex || !estaEnPages) {
+        // Si estamos en index.html (raíz) o no estamos en pages/, necesitamos agregar "pages/"
+        ruta = `pages/${archivo}`;
+        console.log(`🔗 Desde raíz: ${archivo} → ${ruta}`);
+    } else {
+        // Si ya estamos en pages/, mantener la ruta relativa
+        console.log(`🔗 Desde pages/: ${archivo} → ${archivo}`);
+    }
+    
+    return ruta;
+}
+
+// ===== 1. FUNCIONES DE SESIÓN =====
+function verificarSesionEnNavbar() {
+    const userMenuContainer = document.getElementById('userMenuContainer');
+    const userMenuText = document.getElementById('userMenuText');
+    const userDropdown = userMenuContainer ? userMenuContainer.querySelector('.dropdown-menu') : null;
+    
+    if (!userMenuContainer || !userMenuText) {
+        console.log("⚠️ No se encontró el menú de usuario");
+        return;
+    }
+    
+    // Verificar si hay sesión activa
+    const sesionActiva = localStorage.getItem('sesionActiva');
+    const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual') || 'null');
+    
+    console.log("🔍 Verificando sesión:", { sesionActiva, usuarioActual });
+    
+    if (sesionActiva === 'true' && usuarioActual) {
+        console.log("✅ Usuario autenticado detectado:", usuarioActual.nombre_completo);
+        
+        // Actualizar texto del menú (mostrar solo el primer nombre)
+        const primerNombre = usuarioActual.nombre_completo.split(' ')[0];
+        userMenuText.innerHTML = `
+            <i class="fas fa-user-circle mr-1"></i>
+            ${primerNombre}
+        `;
+        
+        // Actualizar dropdown del menú con rutas correctas
+        if (userDropdown) {
+            userDropdown.innerHTML = `
+                <a class="dropdown-item" href="${obtenerRuta('perfil.html')}">
+                    <i class="fas fa-user"></i> Mi Perfil
+                </a>
+                <a class="dropdown-item" href="${obtenerRuta('configuracion.html')}">
+                    <i class="fas fa-cog"></i> Configuración
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" onclick="cerrarSesionGlobal()">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </a>
+            `;
+        }
+        
+        // Agregar clases de estilo
+        userMenuContainer.classList.add('user-logged-in');
+        userMenuText.classList.add('text-primary', 'font-weight-bold');
+        
+    } else {
+        console.log("🔒 No hay sesión activa - Mostrando menú por defecto");
+        
+        // Restaurar menú por defecto con rutas correctas
+        userMenuText.innerHTML = 'Iniciar Sesión';
+        userMenuText.classList.remove('text-primary', 'font-weight-bold');
+        
+        if (userDropdown) {
+            userDropdown.innerHTML = `
+                <a class="dropdown-item" href="${obtenerRuta('login.html')}#login">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                </a>
+                <a class="dropdown-item" href="${obtenerRuta('login.html')}#register">
+                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                </a>
+                <a class="dropdown-item" href="${obtenerRuta('login.html')}#recover">
+                    <i class="fas fa-key"></i> Recuperar Contraseña
+                </a>
+            `;
+        }
+    }
+}
+
+function cerrarSesionGlobal() {
+    // Limpiar datos de sesión
+    localStorage.removeItem('sesionActiva');
+    localStorage.removeItem('usuarioActual');
+    
+    // Mostrar mensaje de confirmación
+    alert('✅ Sesión cerrada correctamente');
+    
+    // Determinar la ruta actual
+    const path = window.location.pathname;
+    const estaEnPages = path.includes('/pages/');
+    
+    // Recargar la página para actualizar el menú
+    setTimeout(() => {
+        if (estaEnPages) {
+            // Si estamos en pages/, ir al index de raíz
+            window.location.href = '../index.html';
+        } else {
+            // Si estamos en raíz, recargar la página actual
+            window.location.href = 'index.html';
+        }
+    }, 500);
+    
+    return false; // Prevenir comportamiento por defecto
+}
+
+// ===== 2. UTILIDADES BÁSICAS =====
 const SoulinkUtils = {
     log: function(message, data = null) {
         if (SoulinkConfig.debug) {
@@ -114,30 +234,35 @@ const SoulinkUtils = {
     }
 };
 
-// ===== 2. FUNCIONALIDADES GLOBALES =====
+// ===== 3. FUNCIONALIDADES GLOBALES =====
 const SoulinkCore = {
     init: function() {
         SoulinkUtils.log('Inicializando aplicación');
         
-        // Contador de visitas
+        // 1. VERIFICAR SESIÓN EN NAVBAR (IMPORTANTE)
+        verificarSesionEnNavbar();
+        
+        // 2. Configurar elementos admin si es necesario
+        if (typeof configurarElementosAdmin === 'function') {
+            configurarElementosAdmin();
+        }
+        
+        // 3. Contador de visitas
         this.trackVisits();
         
-        // Botón "volver arriba"
+        // 4. Botón "volver arriba"
         this.createBackToTop();
         
-        // Mejorar navegación
+        // 5. Mejorar navegación
         this.enhanceNavigation();
         
-        // Mejorar formularios
+        // 6. Mejorar formularios
         this.enhanceForms();
         
-        // Actualizar estado de login
-        this.updateLoginStatus();
-        
-        // Efectos en tarjetas
+        // 7. Efectos en tarjetas
         this.enhanceCards();
         
-        // Inicializar componentes específicos por página
+        // 8. Inicializar componentes específicos por página
         this.initPageSpecificFeatures();
     },
     
@@ -262,35 +387,6 @@ const SoulinkCore = {
         });
     },
     
-    updateLoginStatus: function() {
-        const isLoggedIn = this.load('user_logged_in') === true;
-        
-        // Actualizar menú de usuario
-        const loggedOutMenu = document.getElementById('loggedOutMenu');
-        const loggedInMenu = document.getElementById('loggedInMenu');
-        const userMenuText = document.getElementById('userMenuText');
-        
-        if (loggedOutMenu && loggedInMenu && userMenuText) {
-            if (isLoggedIn) {
-                loggedOutMenu.style.display = 'none';
-                loggedInMenu.style.display = 'block';
-                userMenuText.textContent = 'Mi Cuenta';
-            } else {
-                loggedOutMenu.style.display = 'block';
-                loggedInMenu.style.display = 'none';
-                userMenuText.textContent = 'Iniciar Sesión';
-            }
-        }
-        
-        // Configurar botón de logout
-        document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.save('user_logged_in', false);
-            SoulinkUtils.showNotification('Sesión cerrada correctamente', 'success');
-            setTimeout(() => location.reload(), 1000);
-        });
-    },
-    
     enhanceCards: function() {
         // Efecto hover en tarjetas
         document.querySelectorAll('.service-card, .team-card, .test-card, .resource-card, .card').forEach(card => {
@@ -325,7 +421,7 @@ const SoulinkCore = {
                 this.initContactPage();
                 break;
             case 'login.html':
-                this.initLoginPage();
+                // NO inicializar login aquí, ya tiene su propio script
                 break;
             case 'comunidad.html':
                 this.initCommunityPage();
@@ -338,6 +434,9 @@ const SoulinkCore = {
                 break;
             case 'admin.html':
                 this.initAdminPage();
+                break;
+            case 'tienda.html':
+                this.initTiendaPage();
                 break;
         }
     },
@@ -382,16 +481,6 @@ const SoulinkCore = {
         this.initContactForm();
     },
     
-    initLoginPage: function() {
-        SoulinkUtils.log('Inicializando página de login');
-        
-        // Toggle visibilidad de contraseña
-        this.initPasswordToggles();
-        
-        // Manejo de formularios de autenticación
-        this.initAuthForms();
-    },
-    
     initCommunityPage: function() {
         SoulinkUtils.log('Inicializando página de comunidad');
         
@@ -430,6 +519,13 @@ const SoulinkCore = {
         
         // Estadísticas
         this.initAdminStats();
+    },
+    
+    initTiendaPage: function() {
+        SoulinkUtils.log('Inicializando página de tienda');
+        
+        // Configurar carrito
+        this.initCarrito();
     },
     
     // Más funciones específicas...
@@ -586,76 +682,17 @@ const SoulinkCore = {
         }
     },
     
-    initPasswordToggles: function() {
-        document.querySelectorAll('.input-group-append button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const input = this.closest('.input-group').querySelector('input');
-                const icon = this.querySelector('i');
-                
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    icon.classList.replace('fa-eye', 'fa-eye-slash');
-                } else {
-                    input.type = 'password';
-                    icon.classList.replace('fa-eye-slash', 'fa-eye');
-                }
-            });
-        });
-    },
-    
-    initAuthForms: function() {
-        // Formulario de login
-        const loginForm = document.getElementById('loginForm');
-        if (loginForm) {
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const email = document.getElementById('loginEmail')?.value;
-                const password = document.getElementById('loginPassword')?.value;
-                
-                if (email && password && password.length >= 6) {
-                    // Simular login exitoso
-                    this.save('user_logged_in', true);
-                    this.save('user_email', email);
-                    
-                    SoulinkUtils.showNotification('¡Inicio de sesión exitoso!', 'success');
-                    
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 1500);
-                } else {
-                    SoulinkUtils.showNotification('Credenciales incorrectas', 'danger');
-                }
-            });
-        }
-        
-        // Formulario de registro
-        const registerForm = document.getElementById('registerForm');
-        if (registerForm) {
-            registerForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const password = document.getElementById('regPassword')?.value;
-                const confirmPassword = document.getElementById('regConfirmPassword')?.value;
-                
-                if (password !== confirmPassword) {
-                    SoulinkUtils.showNotification('Las contraseñas no coinciden', 'danger');
-                    return;
-                }
-                
-                if (password.length < 8) {
-                    SoulinkUtils.showNotification('La contraseña debe tener al menos 8 caracteres', 'danger');
-                    return;
-                }
-                
-                // Simular registro exitoso
-                this.save('user_logged_in', true);
-                SoulinkUtils.showNotification('¡Cuenta creada exitosamente!', 'success');
-                
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1500);
-            });
+    initCarrito: function() {
+        // Actualizar badge del carrito
+        const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+        const cartBadge = document.getElementById('cartBadgeNav');
+        if (cartBadge) {
+            if (carrito.length > 0) {
+                cartBadge.textContent = carrito.length;
+                cartBadge.style.display = 'inline';
+            } else {
+                cartBadge.style.display = 'none';
+            }
         }
     },
     
@@ -669,7 +706,74 @@ const SoulinkCore = {
     }
 };
 
-// ===== 3. INICIALIZACIÓN =====
+// ===== FUNCIÓN PARA VERIFICAR SI ES ADMIN =====
+function esUsuarioAdmin() {
+    const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual') || 'null');
+    
+    if (!usuarioActual) {
+        return false;
+    }
+    
+    // Buscar usuario en la lista para obtener el rol actualizado
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuarioDB = usuarios.find(u => u.email === usuarioActual.email);
+    
+    if (usuarioDB && usuarioDB.rol === 'admin') {
+        console.log("👑 Usuario admin detectado:", usuarioDB.email);
+        return true;
+    }
+    
+    return false;
+}
+
+// ===== FUNCIÓN PARA MOSTRAR/OCULTAR ELEMENTOS ADMIN =====
+function configurarElementosAdmin() {
+    const esAdmin = esUsuarioAdmin();
+    
+    // Botón "Agregar producto" en tienda.html
+    const btnAgregarProducto = document.getElementById('btnAgregarProducto');
+    const linkAgregarProducto = document.querySelector('a[href="agregar-producto.html"]');
+    
+    if (btnAgregarProducto) {
+        btnAgregarProducto.style.display = esAdmin ? 'block' : 'none';
+    }
+    
+    if (linkAgregarProducto && linkAgregarProducto.closest('.text-center')) {
+        linkAgregarProducto.closest('.text-center').style.display = esAdmin ? 'block' : 'none';
+    }
+    
+    // Botón "Agregar artículo" en comunidad.html
+    const btnAgregarArticulo = document.getElementById('btnAgregarArticulo');
+    const linkAgregarArticulo = document.querySelector('a[href="agregar-articulo.html"]');
+    
+    if (btnAgregarArticulo) {
+        btnAgregarArticulo.style.display = esAdmin ? 'block' : 'none';
+    }
+    
+    if (linkAgregarArticulo && linkAgregarArticulo.closest('.text-center')) {
+        linkAgregarArticulo.closest('.text-center').style.display = esAdmin ? 'block' : 'none';
+    }
+    
+    // Panel de administración en navbar (opcional)
+    const adminMenu = document.getElementById('adminMenu');
+    if (adminMenu) {
+        adminMenu.style.display = esAdmin ? 'block' : 'none';
+    }
+    
+    // También ocultar las páginas de admin si no es admin
+    const currentPage = window.location.pathname.split('/').pop();
+    const paginasAdmin = ['agregar-producto.html', 'agregar-articulo.html', 'admin.html'];
+    
+    if (paginasAdmin.includes(currentPage) && !esAdmin) {
+        alert('⛔ Acceso denegado. Solo administradores pueden acceder a esta página.');
+        // Redirigir según ubicación
+        const path = window.location.pathname;
+        const estaEnPages = path.includes('/pages/');
+        window.location.href = estaEnPages ? '../index.html' : 'index.html';
+    }
+}
+
+// ===== 4. INICIALIZACIÓN =====
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar la aplicación
@@ -687,5 +791,11 @@ window.Soulink = {
     core: SoulinkCore,
     config: SoulinkConfig
 };
+
+// Hacer funciones de sesión disponibles globalmente
+window.verificarSesionEnNavbar = verificarSesionEnNavbar;
+window.cerrarSesionGlobal = cerrarSesionGlobal;
+window.esUsuarioAdmin = esUsuarioAdmin;
+window.obtenerRuta = obtenerRuta; // También exportar esta función
 
 SoulinkUtils.log('Módulo SOULINK cargado correctamente');

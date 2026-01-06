@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <!-- Estilos para validación -->
     <style>
         .is-invalid {
             border-color: #dc3545 !important;
@@ -33,7 +32,6 @@
             display: block !important;
         }
         
-        /* Para el checkbox de términos */
         #acceptTerms.is-invalid {
             outline: 2px solid #dc3545;
         }
@@ -46,8 +44,87 @@
             color: #dc3545;
             text-decoration: underline;
         }
+        
+        /* Estilos para Task 10 */
+        .login-error {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        /* ========== CORRECCIÓN BUG FOOTER ========== */
+        .auth-card {
+            min-height: 500px !important;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .auth-card .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
+        
+        #authTabsContent {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tab-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #loginForm, #registerForm, #recoverForm {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Contenedor de éxito que mantiene altura */
+        .login-success-container {
+            flex: 1;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        /* Asegurar que la sección ocupe espacio */
+        section.py-5 {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* El footer siempre abajo */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        footer.footer {
+            margin-top: auto;
+        }
+        /* =========================================== */
     </style>
 </head>
+
+<!-- Scripts de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Tu script de login al final -->
+<script src="../js/login.js"></script>
+
 <body>
     <!-- Botón de Emergencia -->
     <div class="emergency-btn">
@@ -188,7 +265,6 @@
                                         <div class="form-group">
                                             <label for="loginEmail">Email *</label>
                                             <input type="email" class="form-control" id="loginEmail" required>
-                                            <!-- Aquí aparecerá el mensaje de error -->
                                         </div>
 
                                         <div class="form-group">
@@ -201,7 +277,6 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <!-- Aquí aparecerá el mensaje de error -->
                                         </div>
 
                                         <div class="form-group form-check">
@@ -213,12 +288,6 @@
                                         <button type="submit" class="btn btn-primary btn-block btn-lg">
                                             <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                                         </button>
-
-                                        <div class="text-center mt-3">
-                                            <p>O inicia sesión con:</p>
-                                            <button type="button" class="btn btn-outline-primary mr-2"><i class="fab fa-google"></i> Google</button>
-                                            <button type="button" class="btn btn-outline-primary"><i class="fab fa-facebook"></i> Facebook</button>
-                                        </div>
 
                                         <div class="alert alert-info mt-4">
                                             <i class="fas fa-info-circle"></i>
@@ -235,22 +304,24 @@
                                                 <div class="form-group">
                                                     <label for="regNombre">Nombre *</label>
                                                     <input type="text" class="form-control" id="regNombre" required>
-                                                    <!-- Aquí aparecerá el mensaje de error -->
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="regApellido">Apellido *</label>
                                                     <input type="text" class="form-control" id="regApellido" required>
-                                                    <!-- Aquí aparecerá el mensaje de error -->
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="regTelefono">Número de Teléfono *</label>
+                                            <input type="tel" class="form-control" id="regTelefono" placeholder="Ej: +34 612 345 678" required>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="regEmail">Email *</label>
                                             <input type="email" class="form-control" id="regEmail" required>
-                                            <!-- Aquí aparecerá el mensaje de error -->
                                         </div>
 
                                         <div class="row">
@@ -266,14 +337,12 @@
                                                         </div>
                                                     </div>
                                                     <small class="form-text text-muted">Mínimo 8 caracteres</small>
-                                                    <!-- Aquí aparecerá el mensaje de error -->
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="regConfirmPassword">Confirmar Contraseña *</label>
                                                     <input type="password" class="form-control" id="regConfirmPassword" required>
-                                                    <!-- Aquí aparecerá el mensaje de error -->
                                                 </div>
                                             </div>
                                         </div>
@@ -281,7 +350,6 @@
                                         <div class="form-group">
                                             <label for="regFechaNacimiento">Fecha de Nacimiento</label>
                                             <input type="date" class="form-control" id="regFechaNacimiento">
-                                            <!-- Aquí aparecerá el mensaje de error -->
                                         </div>
 
                                         <div class="form-group">
@@ -311,7 +379,6 @@
                                             <label class="form-check-label" for="acceptTerms">
                                                 Acepto los <a href="terminos.html" target="_blank">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank">Política de Privacidad</a> *
                                             </label>
-                                            <!-- Aquí aparecerá el mensaje de error -->
                                         </div>
 
                                         <div class="form-group form-check">
@@ -331,7 +398,6 @@
                                         <div class="form-group">
                                             <label for="recoverEmail">Email registrado *</label>
                                             <input type="email" class="form-control" id="recoverEmail" required>
-                                            <!-- Aquí aparecerá el mensaje de error -->
                                             <small class="form-text text-muted">Te enviaremos un enlace para restablecer tu contraseña</small>
                                         </div>
 
@@ -376,443 +442,51 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer bg-dark text-white py-4">
+<!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
         <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Tu espacio seguro de apoyo emocional.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#contacto-general">Formulario</a></li> <!-- Misma página: solo # -->
+                        <li><a href="#emergencia">Emergencia</a></li> <!-- Misma página: solo # -->
+                        <li><a href="#chat">Chat</a></li> <!-- Misma página: solo # -->
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Información</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@soulink.cl</li>
+                        <li><i class="fas fa-phone"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Santiago, Chile</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Emergencia 24/7</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-phone"></i> 1412 (SENDA)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
             <div class="row">
                 <div class="col-md-6">
                     <p>&copy; 2025 SOULINK. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-md-right">
-                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a>
-                    <a href="terminos.html" class="text-white">Términos</a>
-                    <a href="contacto.html" class="text-white ml-3">Contacto</a>
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="terminos.html" class="text-white">Términos</a> <!-- Misma carpeta: sin ../ -->
+                    <a href="acerca.html#faq" class="text-white ml-3">FAQ</a> <!-- Misma carpeta: sin ../ -->
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Script de validación -->
-    <script>
-    // auth-validation.js - Validación en tiempo real para formularios de autenticación
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Inicializar todas las validaciones
-        initLoginValidation();
-        initRegisterValidation();
-        initRecoverValidation();
-        
-        // Configurar toggle para contraseñas
-        setupPasswordToggles();
-    });
-
-    // ==================== CONFIGURACIÓN DE TOGGLE PASSWORD ====================
-    function setupPasswordToggles() {
-        // Toggle para login
-        const togglePassword = document.getElementById('togglePassword');
-        if (togglePassword) {
-            togglePassword.addEventListener('click', function() {
-                const passwordInput = document.getElementById('loginPassword');
-                togglePasswordVisibility(passwordInput, this);
-            });
-        }
-        
-        // Toggle para registro
-        const toggleRegPassword = document.getElementById('toggleRegPassword');
-        if (toggleRegPassword) {
-            toggleRegPassword.addEventListener('click', function() {
-                const passwordInput = document.getElementById('regPassword');
-                togglePasswordVisibility(passwordInput, this);
-            });
-        }
-    }
-
-    function togglePasswordVisibility(input, button) {
-        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-        input.setAttribute('type', type);
-        
-        // Cambiar icono
-        const icon = button.querySelector('i');
-        if (type === 'text') {
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    }
-
-    // ==================== VALIDACIÓN COMÚN ====================
-    function showError(input, message) {
-        const formGroup = input.closest('.form-group');
-        
-        // Remover error previo si existe
-        const existingError = formGroup.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
-        
-        // Remover clase de error previa
-        input.classList.remove('is-invalid');
-        
-        // Si hay mensaje, mostrar error
-        if (message) {
-            input.classList.add('is-invalid');
-            
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message invalid-feedback d-block';
-            errorDiv.textContent = message;
-            formGroup.appendChild(errorDiv);
-        }
-    }
-
-    function validateRequired(input) {
-        const value = input.value.trim();
-        if (!value) {
-            showError(input, 'Este campo es requerido');
-            return false;
-        }
-        showError(input, '');
-        return true;
-    }
-
-    function validateEmail(input) {
-        const email = input.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if (!email) {
-            showError(input, 'El email es requerido');
-            return false;
-        }
-        
-        if (!emailRegex.test(email)) {
-            showError(input, 'Por favor ingresa un email válido (ejemplo@dominio.com)');
-            return false;
-        }
-        
-        showError(input, '');
-        return true;
-    }
-
-    function validateName(input) {
-        const name = input.value.trim();
-        const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s-]+$/;
-        
-        if (!name) {
-            showError(input, 'Este campo es requerido');
-            return false;
-        }
-        
-        if (name.length < 2) {
-            showError(input, 'Debe tener al menos 2 caracteres');
-            return false;
-        }
-        
-        if (!nameRegex.test(name)) {
-            showError(input, 'Solo se permiten letras, espacios y guiones');
-            return false;
-        }
-        
-        showError(input, '');
-        return true;
-    }
-
-    function validatePassword(input) {
-        const password = input.value;
-        
-        if (!password) {
-            showError(input, 'La contraseña es requerida');
-            return false;
-        }
-        
-        if (password.length < 8) {
-            showError(input, 'La contraseña debe tener al menos 8 caracteres');
-            return false;
-        }
-        
-        showError(input, '');
-        return true;
-    }
-
-    function validateConfirmPassword(passwordInput, confirmInput) {
-        const password = passwordInput.value;
-        const confirm = confirmInput.value;
-        
-        if (!confirm) {
-            showError(confirmInput, 'Por favor confirma tu contraseña');
-            return false;
-        }
-        
-        if (password !== confirm) {
-            showError(confirmInput, 'Las contraseñas no coinciden');
-            return false;
-        }
-        
-        showError(confirmInput, '');
-        return true;
-    }
-
-    function validateBirthDate(input) {
-        const dateValue = input.value;
-        
-        if (!dateValue) {
-            // La fecha es opcional, así que no mostramos error si está vacía
-            showError(input, '');
-            return true;
-        }
-        
-        const birthDate = new Date(dateValue);
-        const today = new Date();
-        const minAgeDate = new Date();
-        minAgeDate.setFullYear(today.getFullYear() - 13);
-        
-        if (birthDate > today) {
-            showError(input, 'La fecha no puede ser futura');
-            return false;
-        }
-        
-        if (birthDate > minAgeDate) {
-            showError(input, 'Debes tener al menos 13 años para registrarte');
-            return false;
-        }
-        
-        showError(input, '');
-        return true;
-    }
-
-    // ==================== VALIDACIÓN LOGIN ====================
-    function initLoginValidation() {
-        const loginForm = document.getElementById('loginForm');
-        if (!loginForm) return;
-        
-        const loginEmail = document.getElementById('loginEmail');
-        const loginPassword = document.getElementById('loginPassword');
-        
-        // Validación en tiempo real
-        if (loginEmail) {
-            loginEmail.addEventListener('blur', () => validateEmail(loginEmail));
-            loginEmail.addEventListener('input', () => {
-                if (loginEmail.classList.contains('is-invalid')) {
-                    validateEmail(loginEmail);
-                }
-            });
-        }
-        
-        if (loginPassword) {
-            loginPassword.addEventListener('blur', () => validatePassword(loginPassword));
-            loginPassword.addEventListener('input', () => {
-                if (loginPassword.classList.contains('is-invalid')) {
-                    validatePassword(loginPassword);
-                }
-            });
-        }
-        
-        // Validación al enviar
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            
-            if (!validateEmail(loginEmail)) isValid = false;
-            if (!validatePassword(loginPassword)) isValid = false;
-            
-            if (isValid) {
-                // Aquí iría la lógica de envío real
-                console.log('Login válido, enviando...');
-                alert('Login exitoso (simulación)');
-                // loginForm.submit(); // Descomentar para enviar realmente
-            }
-        });
-    }
-
-    // ==================== VALIDACIÓN REGISTRO ====================
-    function initRegisterValidation() {
-        const registerForm = document.getElementById('registerForm');
-        if (!registerForm) return;
-        
-        // Obtener elementos
-        const regNombre = document.getElementById('regNombre');
-        const regApellido = document.getElementById('regApellido');
-        const regEmail = document.getElementById('regEmail');
-        const regPassword = document.getElementById('regPassword');
-        const regConfirmPassword = document.getElementById('regConfirmPassword');
-        const regFechaNacimiento = document.getElementById('regFechaNacimiento');
-        const acceptTerms = document.getElementById('acceptTerms');
-        
-        // Validación en tiempo real para nombre
-        if (regNombre) {
-            regNombre.addEventListener('blur', () => validateName(regNombre));
-            regNombre.addEventListener('input', () => {
-                if (regNombre.classList.contains('is-invalid')) {
-                    validateName(regNombre);
-                }
-            });
-        }
-        
-        // Validación en tiempo real para apellido
-        if (regApellido) {
-            regApellido.addEventListener('blur', () => validateName(regApellido));
-            regApellido.addEventListener('input', () => {
-                if (regApellido.classList.contains('is-invalid')) {
-                    validateName(regApellido);
-                }
-            });
-        }
-        
-        // Validación en tiempo real para email
-        if (regEmail) {
-            regEmail.addEventListener('blur', () => validateEmail(regEmail));
-            regEmail.addEventListener('input', () => {
-                if (regEmail.classList.contains('is-invalid')) {
-                    validateEmail(regEmail);
-                }
-            });
-        }
-        
-        // Validación en tiempo real para contraseña
-        if (regPassword) {
-            regPassword.addEventListener('blur', () => {
-                validatePassword(regPassword);
-                if (regConfirmPassword && regConfirmPassword.value) {
-                    validateConfirmPassword(regPassword, regConfirmPassword);
-                }
-            });
-            regPassword.addEventListener('input', () => {
-                if (regPassword.classList.contains('is-invalid')) {
-                    validatePassword(regPassword);
-                }
-                if (regConfirmPassword && regConfirmPassword.value) {
-                    validateConfirmPassword(regPassword, regConfirmPassword);
-                }
-            });
-        }
-        
-        // Validación en tiempo real para confirmar contraseña
-        if (regConfirmPassword) {
-            regConfirmPassword.addEventListener('blur', () => validateConfirmPassword(regPassword, regConfirmPassword));
-            regConfirmPassword.addEventListener('input', () => {
-                if (regConfirmPassword.classList.contains('is-invalid')) {
-                    validateConfirmPassword(regPassword, regConfirmPassword);
-                }
-            });
-        }
-        
-        // Validación en tiempo real para fecha de nacimiento
-        if (regFechaNacimiento) {
-            regFechaNacimiento.addEventListener('blur', () => validateBirthDate(regFechaNacimiento));
-            regFechaNacimiento.addEventListener('change', () => validateBirthDate(regFechaNacimiento));
-        }
-        
-        // Validación al enviar
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            
-            // Validar todos los campos
-            if (!validateName(regNombre)) isValid = false;
-            if (!validateName(regApellido)) isValid = false;
-            if (!validateEmail(regEmail)) isValid = false;
-            if (!validatePassword(regPassword)) isValid = false;
-            if (!validateConfirmPassword(regPassword, regConfirmPassword)) isValid = false;
-            if (!validateBirthDate(regFechaNacimiento)) isValid = false;
-            
-            // Validar términos y condiciones
-            if (!acceptTerms.checked) {
-                showError(acceptTerms, 'Debes aceptar los términos y condiciones');
-                isValid = false;
-            } else {
-                showError(acceptTerms, '');
-            }
-            
-            if (isValid) {
-                // Aquí iría la lógica de envío real
-                console.log('Registro válido, enviando...');
-                alert('Registro exitoso (simulación)');
-                // registerForm.submit(); // Descomentar para enviar realmente
-            }
-        });
-    }
-
-    // ==================== VALIDACIÓN RECUPERACIÓN ====================
-    function initRecoverValidation() {
-        const recoverForm = document.getElementById('recoverForm');
-        if (!recoverForm) return;
-        
-        const recoverEmail = document.getElementById('recoverEmail');
-        const recoverSuccess = document.getElementById('recoverSuccess');
-        
-        // Validación en tiempo real
-        if (recoverEmail) {
-            recoverEmail.addEventListener('blur', () => validateEmail(recoverEmail));
-            recoverEmail.addEventListener('input', () => {
-                if (recoverEmail.classList.contains('is-invalid')) {
-                    validateEmail(recoverEmail);
-                }
-            });
-        }
-        
-        // Validación al enviar
-        recoverForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (validateEmail(recoverEmail)) {
-                // Mostrar mensaje de éxito
-                recoverSuccess.style.display = 'block';
-                
-                // Ocultar después de 5 segundos
-                setTimeout(() => {
-                    recoverSuccess.style.display = 'none';
-                }, 5000);
-                
-                // Aquí iría la lógica de envío real
-                console.log('Recuperación válida, enviando email...');
-            }
-        });
-    }
-
-    // ==================== FUNCIÓN PARA LIMPIAR FORMULARIO ====================
-    function clearFormValidation(formId) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-        
-        // Remover clases de error
-        const invalidInputs = form.querySelectorAll('.is-invalid');
-        invalidInputs.forEach(input => {
-            input.classList.remove('is-invalid');
-        });
-        
-        // Remover mensajes de error
-        const errorMessages = form.querySelectorAll('.error-message');
-        errorMessages.forEach(error => error.remove());
-    }
-
-    // ==================== MANEJO DE TABS ====================
-    document.addEventListener('DOMContentLoaded', function() {
-        // Limpiar validación al cambiar de tab
-        const authTabs = document.querySelectorAll('a[data-toggle="tab"]');
-        authTabs.forEach(tab => {
-            tab.addEventListener('shown.bs.tab', function(e) {
-                const target = e.target.getAttribute('href');
-                
-                switch(target) {
-                    case '#login':
-                        clearFormValidation('loginForm');
-                        break;
-                    case '#register':
-                        clearFormValidation('registerForm');
-                        break;
-                    case '#recover':
-                        clearFormValidation('recoverForm');
-                        break;
-                }
-            });
-        });
-    });
-    </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+http://127.0.0.1:5500/pages/admin
+admin@soulink.com
+admin123
+
+
+
+
+Carpeta admin
+admin123
+
+
+
+
+Login 
+ana@ejemplo.com
+Password123

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Admin - Soulink</title>
+  <script>
+    // VERIFICAR DOBLE:
+    // 1. ¿Puede acceder a la carpeta?
+    // 2. ¿Está logueado como admin?
+    
+    if (sessionStorage.getItem('puedeAccederCarpeta') !== 'true' || 
+        sessionStorage.getItem('adminAutenticado') !== 'true') {
+        window.location.href = 'index.html';
+    }
+  </script>
+</head>
+<body>
+  <h2>Panel de Administración Soulink</h2>
+  <button onclick="location.href='agregar-producto.html'">Agregar Producto</button>
+  <button onclick="location.href='agregar-articulo.html'">Agregar Artículo</button>
+  <button onclick="cerrarSesionAdmin()">Cerrar Sesión Admin</button>
+  <button onclick="salirCompletamente()" style="background: orange; margin-left: 10px;">
+    Salir Completamente
+  </button>
+
+  <script>
+    function cerrarSesionAdmin() {
+      if (confirm('¿Cerrar sesión de administrador?')) {
+        sessionStorage.removeItem('adminAutenticado');
+        alert('✅ Sesión admin cerrada');
+        window.location.href = 'admin_login.html';
+      }
+    }
+    
+    function salirCompletamente() {
+      if (confirm('¿Salir completamente del área administrativa?')) {
+        sessionStorage.removeItem('puedeAccederCarpeta');
+        sessionStorage.removeItem('adminAutenticado');
+        alert('✅ Acceso administrativo cerrado completamente');
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html>

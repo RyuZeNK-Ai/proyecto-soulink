@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin - Soulink</title>
+  <style>
+    /* Solo estilo básico */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input {
+      padding: 8px;
+      margin: 5px 0;
+      width: 300px;
+    }
+  </style>
+  <script>
+    // VERIFICACIÓN INICIAL:
+    // 1. ¿Puede acceder a la carpeta admin?
+    if (sessionStorage.getItem('puedeAccederCarpeta') !== 'true') {
+        window.location.href = 'index.html';
+    }
+  </script>
+</head>
+<body>
+  <h2>Login Administrador Soulink</h2>
+  
+  <form id="adminLoginForm">
+    <label for="adminEmail">Email:</label><br>
+    <input type="email" id="adminEmail" required placeholder="admin@soulink.com"><br><br>
+
+    <label for="adminPassword">Contraseña:</label><br>
+    <input type="password" id="adminPassword" required placeholder="admin123"><br><br>
+
+    <button type="submit">Ingresar</button>
+  </form>
+
+  <p id="loginError" style="color: red; display: none;">
+    Credenciales incorrectas. Usa: admin@soulink.com / admin123
+  </p>
+
+  <!-- Incluir el script JS externo -->
+  <script src="js/login_admin.js"></script>
+</body>
+</html>

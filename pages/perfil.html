@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* Estilos específicos para perfil */
+        .profile-header {
+            background: linear-gradient(135deg, #8C52FF 0%, #5CE1E6 100%);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 56px;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+        }
+        
+        .profile-stats {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: -40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8C52FF;
+        }
+        
+        .activity-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .activity-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #8C52FF;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #8C52FF;
+            border: 2px solid white;
+        }
+        
+        .badge-custom {
+            background: linear-gradient(135deg, #8C52FF, #5CE1E6);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .progress-custom {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+        
+        .progress-custom .progress-bar {
+            background: linear-gradient(90deg, #8C52FF, #5CE1E6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency">
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon">
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+
+                    <!-- ACERCA DE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" id="acercaDropdown" data-toggle="dropdown">
+                            Acerca de
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
+                            <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
+                            <a class="dropdown-item" href="acerca.html#faq">FAQ</a>
+                            <a class="dropdown-item" href="acerca.html#resultados">Resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">Ver Todo</a>
+                        </div>
+                    </li>
+
+                    <!-- SERVICIOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" data-toggle="dropdown">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
+                            <a class="dropdown-item" href="servicios.html#tests">Tests</a>
+                            <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
+                            <a class="dropdown-item" href="servicios.html#juegos">Juegos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
+                        </div>
+                    </li>
+
+                    <!-- COMUNIDAD -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" data-toggle="dropdown">
+                            Comunidad
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">Unirse</a>
+                        </div>
+                    </li>
+
+                    <!-- CONTACTO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" data-toggle="dropdown">
+                            Contacto
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
+                            <a class="dropdown-item" href="contacto.html#chat">Chat</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
+                        </div>
+                    </li>
+
+                    <!-- COLABORA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" data-toggle="dropdown">
+                            Colabora
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">Institucionales</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
+                        </div>
+                    </li>
+
+                    <!-- TIENDA -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="tienda.html">
+                            Tienda
+                        </a>
+                    </li>
+
+                    <!-- CARRITO -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.html" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
+                        </a>
+                    </li>
+
+                    <!-- USUARIO -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="perfil.html"><i class="fas fa-user"></i> Mi Perfil</a>
+                            <a class="dropdown-item" href="configuracion.html"><i class="fas fa-cog"></i> Configuración</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesionGlobal()">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header del Perfil -->
+    <header class="profile-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4">Mi Perfil</h1>
+                    <p class="lead">Bienvenido a tu espacio personal en SOULINK</p>
+                </div>
+                <div class="col-lg-4 text-lg-right">
+                    <img src="../assets/images/Conejo/perfil.png" alt="Avatar de perfil" class="profile-avatar" id="profileAvatar">
+                    <button class="btn btn-light mt-3" onclick="cambiarAvatar()">
+                        <i class="fas fa-camera"></i> Cambiar foto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Estadísticas del Usuario -->
+    <section class="profile-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number" id="diasConsecutivos">0</div>
+                    <p>Días consecutivos</p>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number" id="testsCompletados">0</div>
+                    <p>Tests completados</p>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number" id="recursosGuardados">0</div>
+                    <p>Recursos guardados</p>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number" id="puntosComunidad">0</div>
+                    <p>Puntos comunidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Información Personal -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fas fa-user-circle mr-2"></i> Información Personal</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileForm">
+                                <div class="form-group">
+                                    <label for="nombreCompleto">Nombre completo</label>
+                                    <input type="text" class="form-control" id="nombreCompleto" placeholder="Ingresa tu nombre completo">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" placeholder="+56 9 1234 5678">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                                    <input type="date" class="form-control" id="fechaNacimiento">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Género</label>
+                                    <select class="form-control" id="genero">
+                                        <option value="">Seleccionar</option>
+                                        <option value="femenino">Femenino</option>
+                                        <option value="masculino">Masculino</option>
+                                        <option value="otro">Otro</option>
+                                        <option value="prefiero-no-decir">Prefiero no decir</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="fas fa-save"></i> Guardar cambios
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Carrito Rápido -->
+                    <div class="card mt-4">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0"><i class="fas fa-shopping-cart mr-2"></i> Mi Carrito</h5>
+                        </div>
+                        <div class="card-body">
+                            <p id="carritoVacio">Tu carrito está vacío</p>
+                            <div id="carritoItems" style="display: none;">
+                                <ul class="list-group mb-3" id="carritoLista">
+                                    <!-- Items del carrito se cargarán aquí -->
+                                </ul>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Total:</span>
+                                    <span id="carritoTotal">$0</span>
+                                </div>
+                                <a href="carrito.html" class="btn btn-warning btn-block">
+                                    <i class="fas fa-shopping-bag"></i> Ir al carrito
+                                </a>
+                            </div>
+                            <a href="tienda.html" class="btn btn-outline-warning btn-block mt-2">
+                                <i class="fas fa-store"></i> Ir a la tienda
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actividad Reciente y Metas -->
+                <div class="col-lg-8">
+                    <!-- Metas de Bienestar -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="fas fa-bullseye mr-2"></i> Mis Metas de Bienestar</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label>Diario de gratitud (7 días seguidos)</label>
+                                <div class="progress progress-custom mb-3">
+                                    <div class="progress-bar" id="metaGratitud" role="progressbar" style="width: 0%"></div>
+                                </div>
+                                <small class="text-muted" id="textoMetaGratitud">0/7 días completados</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label>Ejercicios de respiración (10 minutos diarios)</label>
+                                <div class="progress progress-custom mb-3">
+                                    <div class="progress-bar" id="metaRespiración" role="progressbar" style="width: 0%"></div>
+                                </div>
+                                <small class="text-muted" id="textoMetaRespiración">0/10 minutos hoy</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label>Participación en foro (2 veces por semana)</label>
+                                <div class="progress progress-custom mb-3">
+                                    <div class="progress-bar" id="metaForo" role="progressbar" style="width: 0%"></div>
+                                </div>
+                                <small class="text-muted" id="textoMetaForo">0/2 participaciones esta semana</small>
+                            </div>
+                            
+                            <button class="btn btn-success btn-sm" onclick="actualizarMetas()">
+                                <i class="fas fa-sync-alt"></i> Actualizar progreso
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Actividad Reciente -->
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="fas fa-history mr-2"></i> Actividad Reciente</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-timeline" id="timelineActividad">
+                                <!-- Actividades se cargarán aquí -->
+                                <div class="timeline-item">
+                                    <h6>Bienvenido a SOULINK</h6>
+                                    <p class="text-muted mb-1">Comenzaste tu viaje de bienestar emocional</p>
+                                    <small class="text-muted">Hoy</small>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-3">
+                                <button class="btn btn-outline-info btn-sm" onclick="verTodasActividades()">
+                                    <i class="fas fa-list"></i> Ver toda la actividad
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logros y Reconocimientos -->
+                    <div class="card mt-4">
+                        <div class="card-header bg-purple text-white">
+                            <h5 class="mb-0"><i class="fas fa-trophy mr-2"></i> Mis Logros</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="logrosContainer">
+                                <!-- Logros se cargarán aquí -->
+                                <div class="col-md-6 mb-3">
+                                    <div class="text-center">
+                                        <i class="fas fa-seedling fa-2x text-success mb-2"></i>
+                                        <h6>Primeros Pasos</h6>
+                                        <p class="small">Completaste tu primer test</p>
+                                        <span class="badge-custom">Obtenido</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button class="btn btn-outline-purple btn-sm" onclick="verTodosLogros()">
+                                    <i class="fas fa-medal"></i> Ver todos los logros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Tu espacio seguro de apoyo emocional.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="contacto.html#contacto-general">Formulario</a></li>
+                        <li><a href="contacto.html#emergencia">Emergencia</a></li>
+                        <li><a href="contacto.html#chat">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Información</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@soulink.cl</li>
+                        <li><i class="fas fa-phone"></i> +56 9 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Santiago, Chile</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Emergencia 24/7</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-phone"></i> 1412 (SENDA)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="privacidad.html" class="text-white mr-3">Privacidad</a>
+                    <a href="terminos.html" class="text-white">Términos</a>
+                    <a href="acerca.html#faq" class="text-white ml-3">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/soulink.js"></script>
+    <script>
+    // Cargar datos del usuario
+    document.addEventListener('DOMContentLoaded', function() {
+        cargarDatosUsuario();
+        cargarCarrito();
+        cargarMetas();
+        cargarActividades();
+        cargarLogros();
+    });
+    
+    function cargarDatosUsuario() {
+        const usuario = JSON.parse(localStorage.getItem('usuarioActual') || 'null');
+        
+        if (usuario) {
+            // Rellenar formulario
+            document.getElementById('nombreCompleto').value = usuario.nombre_completo || '';
+            document.getElementById('email').value = usuario.email || '';
+            document.getElementById('telefono').value = usuario.telefono || '';
+            document.getElementById('fechaNacimiento').value = usuario.fecha_nacimiento || '';
+            document.getElementById('genero').value = usuario.genero || '';
+            
+            // Actualizar estadísticas
+            const estadisticas = JSON.parse(localStorage.getItem('estadisticasUsuario') || '{}');
+            document.getElementById('diasConsecutivos').textContent = estadisticas.diasConsecutivos || 0;
+            document.getElementById('testsCompletados').textContent = estadisticas.testsCompletados || 0;
+            document.getElementById('recursosGuardados').textContent = estadisticas.recursosGuardados || 0;
+            document.getElementById('puntosComunidad').textContent = estadisticas.puntosComunidad || 0;
+        }
+    }
+    
+    function cargarCarrito() {
+        const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+        
+        if (carrito.length > 0) {
+            document.getElementById('carritoVacio').style.display = 'none';
+            document.getElementById('carritoItems').style.display = 'block';
+            
+            let total = 0;
+            let listaHTML = '';
+            
+            carrito.slice(0, 3).forEach(item => {
+                listaHTML += `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${item.nombre}
+                        <span>$${item.precio}</span>
+                    </li>
+                `;
+                total += item.precio;
+            });
+            
+            document.getElementById('carritoLista').innerHTML = listaHTML;
+            document.getElementById('carritoTotal').textContent = `$${total}`;
+        }
+    }
+    
+    function cargarMetas() {
+        const metas = JSON.parse(localStorage.getItem('metasUsuario') || JSON.stringify({
+            gratitud: { completado: 0, total: 7 },
+            respiracion: { minutos: 0, total: 10 },
+            foro: { participaciones: 0, total: 2 }
+        }));
+        
+        // Meta gratitud
+        const porcentajeGratitud = (metas.gratitud.completado / metas.gratitud.total) * 100;
+        document.getElementById('metaGratitud').style.width = `${porcentajeGratitud}%`;
+        document.getElementById('textoMetaGratitud').textContent = 
+            `${metas.gratitud.completado}/${metas.gratitud.total} días completados`;
+        
+        // Meta respiración
+        const porcentajeRespiración = (metas.respiracion.minutos / metas.respiracion.total) * 100;
+        document.getElementById('metaRespiración').style.width = `${porcentajeRespiración}%`;
+        document.getElementById('textoMetaRespiración').textContent = 
+            `${metas.respiracion.minutos}/${metas.respiracion.total} minutos hoy`;
+        
+        // Meta foro
+        const porcentajeForo = (metas.foro.participaciones / metas.foro.total) * 100;
+        document.getElementById('metaForo').style.width = `${porcentajeForo}%`;
+        document.getElementById('textoMetaForo').textContent = 
+            `${metas.foro.participaciones}/${metas.foro.total} participaciones esta semana`;
+    }
+    
+    function cargarActividades() {
+        const actividades = JSON.parse(localStorage.getItem('actividadesUsuario') || JSON.stringify([
+            { titulo: 'Bienvenido a SOULINK', descripcion: 'Comenzaste tu viaje de bienestar emocional', fecha: 'Hoy' }
+        ]));
+        
+        let timelineHTML = '';
+        actividades.forEach(actividad => {
+            timelineHTML += `
+                <div class="timeline-item">
+                    <h6>${actividad.titulo}</h6>
+                    <p class="text-muted mb-1">${actividad.descripcion}</p>
+                    <small class="text-muted">${actividad.fecha}</small>
+                </div>
+            `;
+        });
+        
+        document.getElementById('timelineActividad').innerHTML = timelineHTML;
+    }
+    
+    function cargarLogros() {
+        const logros = JSON.parse(localStorage.getItem('logrosUsuario') || JSON.stringify([
+            { icono: 'fa-seedling', titulo: 'Primeros Pasos', descripcion: 'Completaste tu primer test', obtenido: true },
+            { icono: 'fa-heart', titulo: 'Corazón Valiente', descripcion: 'Compartiste tu primera experiencia', obtenido: false },
+            { icono: 'fa-book', titulo: 'Aprendiz Dedicado', descripcion: 'Completaste 5 recursos', obtenido: false },
+            { icono: 'fa-comments', titulo: 'Comunidad Activa', descripcion: '10 participaciones en foro', obtenido: false }
+        ]));
+        
+        let logrosHTML = '';
+        logros.forEach(logro => {
+            logrosHTML += `
+                <div class="col-md-6 mb-3">
+                    <div class="text-center">
+                        <i class="fas ${logro.icono} fa-2x ${logro.obtenido ? 'text-success' : 'text-muted'} mb-2"></i>
+                        <h6>${logro.titulo}</h6>
+                        <p class="small">${logro.descripcion}</p>
+                        ${logro.obtenido ? 
+                            '<span class="badge-custom">Obtenido</span>' : 
+                            '<span class="badge badge-secondary">Por obtener</span>'}
+                    </div>
+                </div>
+            `;
+        });
+        
+        document.getElementById('logrosContainer').innerHTML = logrosHTML;
+    }
+    
+    // Guardar cambios del perfil
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const usuario = JSON.parse(localStorage.getItem('usuarioActual') || '{}');
+        
+        usuario.nombre_completo = document.getElementById('nombreCompleto').value;
+        usuario.email = document.getElementById('email').value;
+        usuario.telefono = document.getElementById('telefono').value;
+        usuario.fecha_nacimiento = document.getElementById('fechaNacimiento').value;
+        usuario.genero = document.getElementById('genero').value;
+        
+        localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+        
+        alert('✅ Cambios guardados correctamente');
+        
+        // Actualizar el menú de navegación
+        if (typeof verificarSesionEnNavbar === 'function') {
+            verificarSesionEnNavbar();
+        }
+    });
+    
+    function cambiarAvatar() {
+        const avatares = [
+            '../assets/images/Conejo/perfil.png',
+            '../assets/images/Conejo/inicio.png',
+            '../assets/images/Conejo/ansiedad.png'
+        ];
+        
+        const avatarActual = document.getElementById('profileAvatar').src;
+        const indiceActual = avatares.indexOf(avatarActual.split('/').pop());
+        const nuevoIndice = (indiceActual + 1) % avatares.length;
+        
+        document.getElementById('profileAvatar').src = avatares[nuevoIndice];
+        localStorage.setItem('avatarUsuario', avatares[nuevoIndice]);
+    }
+    
+    function actualizarMetas() {
+        const metas = JSON.parse(localStorage.getItem('metasUsuario') || JSON.stringify({
+            gratitud: { completado: 0, total: 7 },
+            respiracion: { minutos: 0, total: 10 },
+            foro: { participaciones: 0, total: 2 }
+        }));
+        
+        // Simular progreso
+        metas.gratitud.completado = Math.min(metas.gratitud.completado + 1, metas.gratitud.total);
+        metas.respiracion.minutos = Math.min(metas.respiracion.minutos + 2, metas.respiracion.total);
+        metas.foro.participaciones = Math.min(metas.foro.participaciones + 1, metas.foro.total);
+        
+        localStorage.setItem('metasUsuario', JSON.stringify(metas));
+        cargarMetas();
+        
+        // Actualizar estadísticas
+        const estadisticas = JSON.parse(localStorage.getItem('estadisticasUsuario') || '{}');
+        estadisticas.puntosComunidad = (estadisticas.puntosComunidad || 0) + 10;
+        localStorage.setItem('estadisticasUsuario', JSON.stringify(estadisticas));
+        cargarDatosUsuario();
+        
+        alert('✨ ¡Progreso actualizado! Ganaste 10 puntos de comunidad.');
+    }
+    
+    function verTodasActividades() {
+        alert('🔍 Esta función mostraría todas tus actividades. ¡Próximamente!');
+    }
+    
+    function verTodosLogros() {
+        alert('🏆 Esta función mostraría todos tus logros. ¡Próximamente!');
+    }
+    </script>
+</body>
+</html>

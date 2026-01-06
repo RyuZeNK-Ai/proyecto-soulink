@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "nombre_completo": "Ana García López",
+    "email": "ana@ejemplo.com",
+    "telefono": "+34 612 345 678",
+    "contrasena_codificada": "UGFzc3dvcmQxMjM=",
+    "fecha_registro": "2025-01-15",
+    "rol": "usuario"
+  },
+  {
+    "id": 2, 
+    "nombre_completo": "Carlos Martínez",
+    "email": "carlos@ejemplo.com",
+    "telefono": "+34 600 111 222",
+    "contrasena_codificada": "VGVzdDEyMzQ=",
+    "fecha_registro": "2025-01-10",
+    "rol": "usuario"
+  }
+]
+
