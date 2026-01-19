@@ -264,8 +264,30 @@ async function loginWithBackend(email, password, backendUrl) {
         });
         
         if (response.ok) {
-            const usuario = await response.json();
+            const data = await response.json();
+            
+            // DEBUG: Ver estructura real
+            console.log("🔍 Respuesta backend RAW:", data);
+            
+            // El backend devuelve: {usuario: {...}, token: "..."}
+            // Pero el frontend espera que 'usuario' tenga el token dentro
+            
+            let usuario;
+            if (data.usuario && data.token) {
+                // Backend nuevo: {usuario: {...}, token: "..."}
+                usuario = {
+                    id: data.usuario.id,
+                    nombre: data.usuario.nombre,
+                    email: data.usuario.email,
+                    token: data.token
+                };
+            } else {
+                // Backend viejo o estructura diferente
+                usuario = data;
+            }
+            
             return { success: true, usuario };
+            
         } else {
             const errorText = await response.text();
             if (LOGIN_DEBUG) console.log(`❌ Backend error ${response.status}:`, errorText);

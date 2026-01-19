@@ -12,6 +12,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long id_usuario;
 
     @Column(nullable = false)
@@ -23,6 +24,6 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "id_rol")
-    private Long id_rol; // Solo guardamos el ID del rol
+    @Column(name = "id_rol", nullable = false)
+    private Long id_rol;
 }

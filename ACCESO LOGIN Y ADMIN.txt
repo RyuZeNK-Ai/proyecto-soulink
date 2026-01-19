@@ -12,6 +12,10 @@ ana@ejemplo.com              Solo el JSON
 Password123
 
 
+LoginServidor
+Kevincio@example.com
+12345678
+
 
 frontend/js/config.js     SI LA PAGINA SE ESCALA A SERVIDOR
 backendUrls: { 

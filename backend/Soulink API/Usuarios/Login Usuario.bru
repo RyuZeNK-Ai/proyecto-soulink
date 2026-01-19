@@ -6,10 +6,22 @@ meta {
 
 post {
   url: {{local}}/usuarios/login
-  body: none
+  body: json
   auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "Kevincio@example.com",
+    "password": "12345678"
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
