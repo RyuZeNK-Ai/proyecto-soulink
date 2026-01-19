@@ -2,6 +2,7 @@ package com.soulink.service.impl;
 
 import com.soulink.config.JwtTokenProvider;
 import com.soulink.dto.request.UsuarioRegisterDTO;
+import com.soulink.dto.request.UsuarioUpdateDTO;
 import com.soulink.model.Usuario;
 import com.soulink.repository.UsuarioRepository;
 import com.soulink.service.UsuarioService;
@@ -91,16 +92,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario actualizar(Long id, Usuario usuario) {
+    public Usuario actualizar(Long id, UsuarioUpdateDTO dto) {
         Usuario existente = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        existente.setNombre(usuario.getNombre());
-        existente.setEmail(usuario.getEmail());
-        existente.setId_rol(usuario.getId_rol());
-
-        if (usuario.getPassword() != null && !usuario.getPassword().isEmpty()) {
-            existente.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        if (dto.getNombre() != null) existente.setNombre(dto.getNombre());
+        if (dto.getEmail() != null) existente.setEmail(dto.getEmail());
+        if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
+            existente.setPassword(passwordEncoder.encode(dto.getPassword()));
         }
 
         return usuarioRepository.save(existente);

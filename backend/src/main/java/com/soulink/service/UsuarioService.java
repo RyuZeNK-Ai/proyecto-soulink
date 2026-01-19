@@ -3,6 +3,8 @@ package com.soulink.service;
 import com.soulink.dto.request.UsuarioRegisterDTO;
 import com.soulink.model.Usuario;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import com.soulink.dto.request.UsuarioUpdateDTO;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +23,7 @@ public interface UsuarioService extends UserDetailsService {
 
     String generarToken(Usuario usuario);
 
-    Usuario actualizar(Long id, Usuario usuario);
+    Usuario actualizar(Long id, UsuarioUpdateDTO dto);
 
     void eliminar(Long id);
 

@@ -1,0 +1,28 @@
+meta {
+  name: Actualizar Usuario
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{local}}/usuarios/33
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXBpdG8xMjNAZXhhbXBsZS5jb20iLCJpYXQiOjE3Njg4NTc0ODYsImV4cCI6MTc2ODk0Mzg4Nn0.EH0uyY6_ul8tTGF6OZ7hliOksijeb5bOClLWzR5_EziLoEgllAvo0IHlO3vgO_HHzkS_-zDDEHVRx2lR8VxZTg
+}
+
+body:json {
+  {
+    "nombre": "Alonso Zuñiga",
+    "email": "Alonso@example.com",
+    "password": "12345678"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

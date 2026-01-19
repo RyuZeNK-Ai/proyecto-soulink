@@ -12,6 +12,7 @@ import com.soulink.model.Usuario;
 import com.soulink.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import com.soulink.dto.request.UsuarioUpdateDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -93,11 +94,13 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public Usuario actualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
-        if (usuario.getPassword() != null && usuario.getPassword().length() < 4) {
+    public UsuarioResponseDTO actualizar(@PathVariable Long id, @RequestBody UsuarioUpdateDTO dto) {
+        if (dto.getPassword() != null && dto.getPassword().length() < 4) {
             throw new BadRequestException("La contraseña debe tener al menos 4 caracteres");
         }
-        return usuarioService.actualizar(id, usuario);
+
+        Usuario usuarioActualizado = usuarioService.actualizar(id, dto);
+        return usuarioMapper.toResponseDTO(usuarioActualizado);
     }
 
     @DeleteMapping("/{id}")
