@@ -9,17 +9,17 @@ const SoulinkConfig = {
     // 'json-only' = solo usuarios.json (GitHub Pages)
     mode: 'local',
     
-    // URLs del BACKEND - ¡CAMBIAR LA PRODUCCIÓN POR TU DOMINIO REAL!
+    // URLs del BACKEND - se lee de la variable de entorno VITE_BACKEND_URL
     backendUrls: {
         local: 'http://localhost:8080',
-        production: 'https://api.soulink.org'
+        production: import.meta.env.VITE_BACKEND_URL 
     },
     
     // Rutas de la API
     apiEndpoints: {
-        login: '/api/usuarios/login',
-        register: '/api/usuarios/register',
-        getUser: '/api/usuarios/{id}'
+        login: '/usuarios/login',
+        register: '/usuarios/register',
+        getUser: '/usuarios/{id}'
     },
     
     // Configuración de fallback
