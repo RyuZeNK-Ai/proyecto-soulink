@@ -2,7 +2,7 @@
   🌐 Soulink - Proyecto Web 🌐
 </h1>
 
-## 👥 Integrantes del equipo
+</div>
 
 <div align="center">
 
@@ -31,25 +31,14 @@
 
 <div align="center">
 
-[![🔗 Ingresar a LOCAL Soulink](https://img.shields.io/badge/🔗_Ingresar_a_LOCAL_Soulink-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://ryuzenk-ai.github.io/proyecto-soulink/)
+| Página Local | Página Web |
+|--------------|------------|
+| <div align="center">[![🔗 Local Soulink](https://img.shields.io/badge/🔗_Ingresar_a_LOCAL_Soulink-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://ryuzenk-ai.github.io/proyecto-soulink/)</div> | <div align="center">[![🔗 Web Soulink](https://img.shields.io/badge/🔗_Ingresar_a_WEB_Soulink-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://proyecto-soulink.vercel.app/)</div> |
+| [![🔗 Local Admin](https://img.shields.io/badge/🔗_Ingresar_a_LOCAL_Soulink_Como_Administrador-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://ryuzenk-ai.github.io/proyecto-soulink/pages/admin) | [![🔗 Web Admin](https://img.shields.io/badge/🔗_Ingresar_a_WEB_Soulink_Como_Administrador-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://proyecto-soulink.vercel.app/pages/admin/index.html) |
 
 </div>
-<div align="center">
 
-[![🔗 Ingresar a LOCAL Soulink como Administrador](https://img.shields.io/badge/🔗_Ingresar_a_LOCAL_Soulink_Como_Administrador-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://ryuzenk-ai.github.io/proyecto-soulink/pages/admin)
 
-</div>
-
-<div align="center">
-
-[![🔗 Ingresar a WEB Soulink](https://img.shields.io/badge/🔗_Ingresar_a_WEB_Soulink-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://proyecto-soulink.vercel.app/)
-
-</div>
-<div align="center">
-
-[![🔗 Ingresar a WEB Soulink como Administrador](https://img.shields.io/badge/🔗_Ingresar_a_WEB_Soulink_Como_Administrador-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://proyecto-soulink.vercel.app/pages/admin/index.html)
-
-</div>
 
 ## 📋 ¿Qué es Soulink?
 **SOULINK es una plataforma segura de apoyo emocional preventivo.** 
@@ -375,6 +364,7 @@ proyecto-soulink/
 ## 📸 Screenshot 22 - DBeaver - Usuarios CIFRADOS
 
 ![DBeaver - Usuarios CIFRADOS](frontend/assets/images/ss_bdcifrada.png)
+
 
 
 
