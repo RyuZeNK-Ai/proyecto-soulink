@@ -6,6 +6,7 @@ import com.soulink.dto.request.UsuarioUpdateDTO;
 import com.soulink.model.Usuario;
 import com.soulink.repository.UsuarioRepository;
 import com.soulink.service.UsuarioService;
+import com.soulink.exception.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -63,7 +64,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario registrar(UsuarioRegisterDTO dto) {
         if (usuarioRepository.findByEmail(dto.getEmail()).isPresent()) {
-            throw new RuntimeException("El email ya está registrado");
+            throw new BadRequestException("El email ya está registrado");
+
         }
 
         Usuario usuario = new Usuario();
