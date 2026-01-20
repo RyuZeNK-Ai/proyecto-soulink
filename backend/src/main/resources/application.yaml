@@ -2,4 +2,4 @@ spring:
   application:
     name: soulink
   profiles:
-    active: dev  # o dev, según tu convención
+    active: dev

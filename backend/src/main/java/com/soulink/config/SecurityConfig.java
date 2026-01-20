@@ -1,6 +1,5 @@
 package com.soulink.config;
 
-import com.soulink.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,54 +21,68 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final UsuarioService usuarioService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authConfig
+    ) throws Exception {
         return authConfig.getAuthenticationManager();
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> {}) // Habilita CORS según CorsConfigurationSource
+                .cors(cors -> {})
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
                 .authorizeHttpRequests(auth -> auth
-                        // Endpoints públicos para pruebas locales
+
+                        // 🔓 PÚBLICO
                         .requestMatchers(
-                                "/usuarios/login",
-                                "/usuarios/register",
-                                "/api/usuarios" // <-- permite fetch desde frontend local
+                                "/auth/**",        // login
+                                "/usuarios/registro" // registro
                         ).permitAll()
-                        .requestMatchers("/public/**").permitAll()
-                        // El resto requiere JWT
+
+                        // 🔒 PRIVADO (JWT)
+                        .requestMatchers("/usuarios/**").authenticated()
+
+                        // 🔒 TODO LO DEMÁS
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(
+                        jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
     }
 
-    // Configuración de CORS para Spring Security
+    // 🌐 CORS – FRONTEND VERCEL + LOCAL
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+
         configuration.setAllowedOrigins(
                 Arrays.asList(
-                        "http://127.0.0.1:5500",   // frontend local
-                        "http://localhost:5500",   // por si usas localhost
-                        "https://soulink.com"      // frontend en nube
+                        "http://localhost:5500",
+                        "http://127.0.0.1:5500",
+                        "https://proyecto-soulink.vercel.app"
                 )
         );
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        configuration.setAllowedMethods(
+                Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")
+        );
+
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-
         return source;
     }
 }

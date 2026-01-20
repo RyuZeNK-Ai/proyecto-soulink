@@ -4,15 +4,13 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
 
-jpa:
-  hibernate:
-    ddl-auto: none
-    show-sql: true
-    properties:
-      hibernate:
-        default_schema: public
-
-jwt:
-  secret: TdhcWvC9vXQgSJvXx4UvV3wzMpLqR8yB2nF5tG7jH1kZ3xQ6wV9bY2cE5gH8jM4qR7tF0vC2xZ5pB8nV1qW4yU7sJ3mA6dG9tH2kZ5rC8w
-  expiration: 86400000
+  jpa:
+    hibernate:
+      ddl-auto: none
+      show-sql: true
+      properties:
+        hibernate:
+          default_schema: public

@@ -1,0 +1,15 @@
+meta {
+  name: Login Prod Usuario
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{prod}}/usuarios/login
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
