@@ -70,7 +70,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setNombre(dto.getNombre());
         usuario.setEmail(dto.getEmail());
         usuario.setPassword(passwordEncoder.encode(dto.getPassword()));
-        usuario.setId_rol(2L);
+        usuario.setId_rol(3L);
 
         return usuarioRepository.save(usuario);
     }
