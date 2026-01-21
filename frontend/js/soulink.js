@@ -38,7 +38,16 @@ function obtenerRuta(archivo) {
 }
 
 // ===== 1. FUNCIONES DE SESIÓN =====
+// ===== 1. FUNCIONES DE SESIÓN =====
 function verificarSesionEnNavbar() {
+    // 🔥 NUEVO: Usar AuthManager si está disponible (prioridad)
+    if (typeof AuthManager !== 'undefined') {
+        console.log("🔐 Usando AuthManager para verificar sesión en navbar");
+        AuthManager.updateNavbar();
+        return;
+    }
+    
+    // 🔥 CÓDIGO ORIGINAL (mantenido como fallback)
     const userMenuContainer = document.getElementById('userMenuContainer');
     const userMenuText = document.getElementById('userMenuText');
     const userDropdown = userMenuContainer ? userMenuContainer.querySelector('.dropdown-menu') : null;
@@ -48,14 +57,14 @@ function verificarSesionEnNavbar() {
         return;
     }
     
-    // Verificar si hay sesión activa
+    // Verificar si hay sesión activa (sistema antiguo)
     const sesionActiva = localStorage.getItem('sesionActiva');
     const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual') || 'null');
     
-    console.log("🔍 Verificando sesión:", { sesionActiva, usuarioActual });
+    console.log("🔍 Verificando sesión (sistema antiguo):", { sesionActiva, usuarioActual });
     
     if (sesionActiva === 'true' && usuarioActual) {
-        console.log("✅ Usuario autenticado detectado:", usuarioActual.nombre_completo);
+        console.log("✅ Usuario autenticado detectado (sistema antiguo):", usuarioActual.nombre_completo);
         
         // Actualizar texto del menú (mostrar solo el primer nombre)
         const primerNombre = usuarioActual.nombre.split(' ')[0];

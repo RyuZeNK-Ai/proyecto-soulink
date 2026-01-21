@@ -857,20 +857,63 @@
                 });
             }
 
-            asignarEventosCheckout() {
-                document.getElementById('checkoutButton')?.addEventListener('click', () => {
-                    if (this.carrito.length === 0) {
-                        this.mostrarNotificacion('Tu carrito está vacío', 'warning');
+        // ESTO es lo que DEBES PONER:
+        asignarEventosCheckout() {
+            const checkoutButton = document.getElementById('checkoutButton');
+            if (!checkoutButton) return;
+            
+            checkoutButton.addEventListener('click', () => {
+                if (this.carrito.length === 0) {
+                    this.mostrarNotificacion('Tu carrito está vacío', 'warning');
+                    return;
+                }
+                
+                console.log('🛒 Intentando proceder al pago...');
+                console.log('📦 Carrito actual:', this.carrito.length, 'productos');
+                
+                // 🔥 NUEVO: Verificar autenticación ANTES de redirigir
+                if (typeof AuthManager !== 'undefined') {
+                    // Usar AuthManager para verificar
+                    if (!AuthManager.requireAuth('checkout.html')) {
+                        console.log('🔒 Usuario no autenticado, redirigiendo a login...');
+                        
+                        // Guardar carrito actual para después del login
+                        const cartData = JSON.stringify(this.carrito);
+                        localStorage.setItem('soulink_pending_cart', cartData);
+                        localStorage.setItem('soulink_redirect_checkout', 'checkout.html');
+                        console.log('🛒 Carrito guardado como pendiente');
+                        
+                        return; // AuthManager ya redirigió
+                    }
+                } else {
+                    // Fallback: verificar sesión antigua
+                    const sesionActiva = localStorage.getItem('sesionActiva');
+                    const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual') || 'null');
+                    
+                    if (sesionActiva !== 'true' || !usuarioActual) {
+                        console.log('🔒 Usuario no autenticado (sistema antiguo), guardando carrito...');
+                        
+                        // Guardar carrito actual para después del login
+                        const cartData = JSON.stringify(this.carrito);
+                        localStorage.setItem('soulink_pending_cart', cartData);
+                        localStorage.setItem('soulink_redirect_checkout', 'checkout.html');
+                        
+                        // Redirigir a login
+                        window.location.href = 'login.html';
                         return;
                     }
-                    
-                    // Guardar carrito para el proceso de pago
-                    localStorage.setItem('soulink_checkout_carrito', JSON.stringify(this.carrito));
-                    
-                    // Redirigir a página de checkout
-                    window.location.href = 'checkout.html';
-                });
-            }
+                }
+                
+                // Si está autenticado, proceder normalmente
+                console.log('✅ Usuario autenticado, procediendo a checkout...');
+                
+                // Guardar carrito para el proceso de pago
+                localStorage.setItem('soulink_checkout_carrito', JSON.stringify(this.carrito));
+                
+                // Redirigir a página de checkout
+                window.location.href = 'checkout.html';
+            });
+        }
 
             mostrarNotificacion(mensaje, tipo = 'info') {
                 if (typeof Soulink !== 'undefined' && Soulink.utils) {

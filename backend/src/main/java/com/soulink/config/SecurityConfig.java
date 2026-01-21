@@ -40,23 +40,28 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
 
-                        // 🔓 PÚBLICO
+                        // 🔓 PÚBLICO (sin autenticación)
                         .requestMatchers(
                                 "/auth/**",                 // login auth
                                 "/usuarios/register",      // registro usuarios
                                 "/usuarios/login",         // login usuarios
-                                "/api/stock/**",           // ← NUEVO: endpoints de stock (checkout)
-                                "/api/productos/**",       // ver productos
+                                "/api/stock/**",           // endpoints de stock
+                                "/api/productos/**",       // ver productos (público)
                                 "/test/**",                // endpoints de test
                                 "/swagger-ui/**",          // Swagger UI
                                 "/v3/api-docs/**",         // OpenAPI docs
                                 "/webjars/**"              // recursos Swagger
                         ).permitAll()
 
-                        // 🔒 PRIVADO (JWT)
-                        .requestMatchers("/usuarios/**").authenticated()
+                        // 🔒 PRIVADO (requiere autenticación JWT)
+                        .requestMatchers(
+                                "/api/checkout/**",        // checkout y pagos
+                                "/api/compras/**",         // historial de compras
+                                "/api/usuarios/perfil/**", // perfil de usuario
+                                "/usuarios/**"             // gestión de usuarios
+                        ).authenticated()
 
-                        // 🔒 TODO LO DEMÁS
+                        // 🔒 TODO LO DEMÁS (por defecto protegido)
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(
@@ -79,7 +84,9 @@ public class SecurityConfig {
                         "http://127.0.0.1:8081",
                         "http://localhost:3000",
                         "http://localhost:4200",
-                        "https://proyecto-soulink.vercel.app"
+                        "https://proyecto-soulink.vercel.app",
+                        "https://*.vercel.app",
+                        "https://*.github.io"
                 )
         );
 

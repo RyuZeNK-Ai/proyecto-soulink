@@ -11,6 +11,7 @@ const SoulinkConfig = {
 
     // URLs del BACKEND - ahora apunta directamente a Render
     backendUrls: {
+        local: 'http://localhost:8080',  
         production: 'https://proyecto-soulink.onrender.com'
     },
 

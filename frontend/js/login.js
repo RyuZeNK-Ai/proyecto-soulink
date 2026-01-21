@@ -35,7 +35,7 @@ function getBackendUrls() {
     // Fallback hardcoded
     return {
         local: 'http://localhost:8080',
-        production: 'https://api.soulink.org'
+        production: 'https://proyecto-soulink.onrender.com'
     };
 }
 
@@ -205,37 +205,37 @@ function initRealTimeValidation() {
     }
     
     // Validación de teléfono en tiempo real
-const regTelefono = document.getElementById('regTelefono');
-if (regTelefono) {
-    regTelefono.addEventListener('blur', () => validatePhone(regTelefono));
-    
-    regTelefono.addEventListener('input', function() {
-        if (this.classList.contains('is-invalid')) {
-            validatePhone(this);
-        }
-    });
+    const regTelefono = document.getElementById('regTelefono');
+    if (regTelefono) {
+        regTelefono.addEventListener('blur', () => validatePhone(regTelefono));
+        
+        regTelefono.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+                validatePhone(this);
+            }
+        });
 
-    // Formateo automático de teléfono
-    regTelefono.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, ''); // solo números
+        // Formateo automático de teléfono
+        regTelefono.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, ''); // solo números
 
-        // Si empieza con 56, eliminamos para reinsertar
-        if (value.startsWith('56')) {
-            value = value.substring(2);
-        }
+            // Si empieza con 56, eliminamos para reinsertar
+            if (value.startsWith('56')) {
+                value = value.substring(2);
+            }
 
-        // Tomamos máximo 9 dígitos (celular chileno)
-        value = value.substring(0, 9);
+            // Tomamos máximo 9 dígitos (celular chileno)
+            value = value.substring(0, 9);
 
-        // Formateo: +56 9 1234 5678
-        let formatted = '+56';
-        if (value.length > 0) formatted += ' ' + value.charAt(0); // primer dígito del celular
-        if (value.length > 1) formatted += ' ' + value.substring(1, 5); // siguientes 4 dígitos
-        if (value.length > 5) formatted += ' ' + value.substring(5, 9); // últimos 4 dígitos
+            // Formateo: +56 9 1234 5678
+            let formatted = '+56';
+            if (value.length > 0) formatted += ' ' + value.charAt(0); // primer dígito del celular
+            if (value.length > 1) formatted += ' ' + value.substring(1, 5); // siguientes 4 dígitos
+            if (value.length > 5) formatted += ' ' + value.substring(5, 9); // últimos 4 dígitos
 
-        this.value = formatted;
-    });
-}
+            this.value = formatted;
+        });
+    }
     
     // Validación de email en tiempo real
     const regEmail = document.getElementById('regEmail');
@@ -280,6 +280,7 @@ async function loginWithBackend(email, password, backendUrl) {
                     id: data.usuario.id,
                     nombre: data.usuario.nombre,
                     email: data.usuario.email,
+                    telefono: data.usuario.telefono,
                     token: data.token
                 };
             } else {
@@ -461,6 +462,7 @@ function initLoginValidation() {
             let strategy = { mode: 'json-only' };
             if (typeof getLoginStrategy === 'function') {
                 strategy = getLoginStrategy();
+                console.log('🎯 Estrategia de login:', strategy);
             }
             
             const BACKEND_URLS = getBackendUrls();
@@ -469,35 +471,37 @@ function initLoginValidation() {
             if (strategy.mode !== 'json-only') {
                 const backendUrl = strategy.backendUrl;
                 
-                if (LOGIN_DEBUG) console.log(`1. Probando backend (${strategy.mode})...`);
+                console.log(`1. 🔄 Probando backend (${strategy.mode}) en: ${backendUrl}`);
                 const result = await loginWithBackend(email, password, backendUrl);
                 
                 if (result.success) {
                     usuario = result.usuario;
                     fuente = `backend-${strategy.mode}`;
-                    if (LOGIN_DEBUG) console.log(`✅ Login exitoso con backend ${strategy.mode}`);
+                    console.log(`✅ Login exitoso con backend ${strategy.mode}`);
+                    console.log('📦 Datos usuario backend:', usuario);
                 } else {
                     errorMessage = result.error;
-                    if (LOGIN_DEBUG) console.log(`❌ Falló backend ${strategy.mode}:`, errorMessage);
+                    console.log(`❌ Falló backend ${strategy.mode}:`, errorMessage);
                 }
             }
             
             // ESTRATEGIA 2: JSON fallback
             if (!usuario) {
-                if (LOGIN_DEBUG) console.log('2. Probando usuarios.json...');
+                console.log('2. 📄 Probando usuarios.json...');
                 usuario = await loginWithUsuariosJSON(email, password);
                 
                 if (usuario) {
                     fuente = 'json-fallback';
-                    if (LOGIN_DEBUG) console.log('✅ Login exitoso con usuarios.json');
+                    console.log('✅ Login exitoso con usuarios.json');
+                    console.log('📦 Datos usuario JSON:', usuario);
                 } else {
-                    if (LOGIN_DEBUG) console.log('❌ Falló usuarios.json');
+                    console.log('❌ Falló usuarios.json');
                 }
             }
 
             // RESULTADO FINAL
             if (usuario) {
-                // Guardar sesión
+                // 🔥 GUARDAR SESIÓN CON DEPURACIÓN
                 const usuarioParaStorage = {
                     id: usuario.id,
                     nombre: usuario.nombre || usuario.nombre_completo,
@@ -506,25 +510,49 @@ function initLoginValidation() {
                     rol: usuario.rol || "usuario",
                     avatar: usuario.avatar || "",
                     loginSource: fuente,
-                    loginTime: new Date().toISOString()
+                    loginTime: new Date().toISOString(),
+                    token: usuario.token || null  // Guardar token si existe
                 };
                 
-                localStorage.setItem('usuarioActual', JSON.stringify(usuarioParaStorage));
-                localStorage.setItem('sesionActiva', 'true');
+                console.log('💾 Datos para guardar en sesión:', usuarioParaStorage);
+                console.log('🔑 Token disponible:', usuario.token ? 'SÍ' : 'NO');
                 
-                if (LOGIN_DEBUG) console.log('💾 Sesión guardada:', usuarioParaStorage);
-                
-                // Mostrar éxito
-                mostrarExitoLogin(usuarioParaStorage.nombre);
-                
-                // Redirigir después de 2 segundos
-                setTimeout(() => {
-                    if (typeof obtenerRuta === 'function') {
-                        window.location.href = obtenerRuta('../index.html');
+                // Usar AuthManager si está disponible
+                if (typeof AuthManager !== 'undefined') {
+                    console.log('🔐 AuthManager disponible, guardando sesión...');
+                    
+                    // Si hay token JWT, usar sistema nuevo
+                    if (usuario.token) {
+                        AuthManager.saveSession(usuario.token, usuarioParaStorage);
+                        console.log('✅ Sesión guardada con AuthManager + JWT');
                     } else {
-                        window.location.href = '../index.html';
+                        // Si no hay token, guardar solo datos de usuario
+                        console.log('⚠️ No hay token JWT, guardando solo datos de usuario');
+                        AuthManager.saveSession(null, usuarioParaStorage);
                     }
-                }, 2000);
+                } else {
+                    console.log('⚠️ AuthManager NO disponible, usando sistema antiguo');
+                    localStorage.setItem('usuarioActual', JSON.stringify(usuarioParaStorage));
+                    localStorage.setItem('sesionActiva', 'true');
+                    console.log('✅ Sesión guardada en sistema antiguo');
+                }
+                
+                // 🔥 VERIFICAR QUE SE GUARDÓ CORRECTAMENTE
+                setTimeout(() => {
+                    console.log('🔍 VERIFICANDO ALMACENAMIENTO:');
+                    console.log('- soulink_jwt_token:', localStorage.getItem('soulink_jwt_token') ? 'SÍ' : 'NO');
+                    console.log('- soulink_user_data:', localStorage.getItem('soulink_user_data'));
+                    console.log('- usuarioActual:', localStorage.getItem('usuarioActual'));
+                    console.log('- sesionActiva:', localStorage.getItem('sesionActiva'));
+                    
+                    // Verificar autenticación
+                    if (typeof AuthManager !== 'undefined') {
+                        console.log('🔐 AuthManager.isAuthenticated():', AuthManager.isAuthenticated());
+                    }
+                }, 100);
+                
+                // 🔥 REDIRECCIÓN INTELIGENTE
+                mostrarExitoLoginConRedireccion(usuarioParaStorage.nombre);
                 
             } else {
                 // Mostrar error
@@ -535,12 +563,54 @@ function initLoginValidation() {
             }
 
         } catch (error) {
-            if (LOGIN_DEBUG) console.error("❌ Error crítico en proceso de login:", error);
+            console.error("❌ Error crítico en proceso de login:", error);
             mostrarErrorLogin("❌ Error inesperado al iniciar sesión");
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }
     });
+}
+
+// 🔥 NUEVA FUNCIÓN: Mostrar éxito con redirección inteligente
+function mostrarExitoLoginConRedireccion(nombreUsuario) {
+    const loginForm = document.getElementById('loginForm');
+    const cardBody = loginForm.closest('.card-body');
+
+    cardBody.innerHTML = `
+        <div class="login-success-container d-flex flex-column align-items-center justify-content-center py-5">
+            <i class="fas fa-check-circle text-success mb-3" style="font-size:3.5rem"></i>
+            <h4 class="mb-2 text-center">¡Bienvenido/a, ${nombreUsuario}!</h4>
+            <p class="text-muted mb-4 text-center">Sesión iniciada correctamente</p>
+            <div class="spinner-border text-primary mb-3" style="width:2.5rem;height:2.5rem"></div>
+            <p class="mb-0 text-center"><strong>Redirigiendo...</strong></p>
+        </div>
+    `;
+
+    // 🔥 LÓGICA DE REDIRECCIÓN INTELIGENTE
+    setTimeout(() => {
+        let redirectUrl = '../index.html'; // Por defecto
+        
+        // Verificar si hay carrito pendiente
+        const pendingCart = localStorage.getItem('soulink_pending_cart');
+        const redirectToCheckout = localStorage.getItem('soulink_redirect_checkout');
+        
+        if (pendingCart && redirectToCheckout) {
+            // Restaurar carrito pendiente
+            localStorage.setItem('soulink_carrito', pendingCart);
+            localStorage.removeItem('soulink_pending_cart');
+            localStorage.removeItem('soulink_redirect_checkout');
+            
+            // Redirigir a checkout
+            redirectUrl = 'checkout.html';
+            console.log('🛒 Carrito restaurado, redirigiendo a checkout...');
+        } else if (typeof AuthManager !== 'undefined') {
+            // Usar AuthManager para obtener URL de redirección
+            redirectUrl = AuthManager.getRedirectUrl();
+        }
+        
+        console.log('📍 Redirigiendo a:', redirectUrl);
+        window.location.href = redirectUrl;
+    }, 2000);
 }
 
 // ==================== REGISTRO ====================
@@ -653,8 +723,13 @@ function initRegisterValidation() {
                     registerTime: new Date().toISOString()
                 };
                 
-                localStorage.setItem('usuarioActual', JSON.stringify(usuarioParaStorage));
-                localStorage.setItem('sesionActiva', 'true');
+                // Usar AuthManager si está disponible
+                if (typeof AuthManager !== 'undefined') {
+                    AuthManager.saveSession(null, usuarioParaStorage); // Sin token para registro local
+                } else {
+                    localStorage.setItem('usuarioActual', JSON.stringify(usuarioParaStorage));
+                    localStorage.setItem('sesionActiva', 'true');
+                }
                 
                 // Mostrar mensaje de éxito
                 alert(`✅ ¡Registro exitoso! Bienvenido/a ${usuarioParaStorage.nombre}`);
@@ -665,11 +740,11 @@ function initRegisterValidation() {
                 
                 // Redirigir después de 2 segundos
                 setTimeout(() => {
-                    if (typeof obtenerRuta === 'function') {
-                        window.location.href = obtenerRuta('../index.html');
-                    } else {
-                        window.location.href = '../index.html';
+                    let redirectUrl = '../index.html';
+                    if (typeof AuthManager !== 'undefined') {
+                        redirectUrl = AuthManager.getRedirectUrl();
                     }
+                    window.location.href = redirectUrl;
                 }, 2000);
                 
             } else {
@@ -751,22 +826,9 @@ function mostrarErrorLogin(mensaje) {
     setTimeout(() => loginForm.classList.remove('login-error'), 500);
 }
 
+// Reemplazar la función mostrarExitoLogin antigua
 function mostrarExitoLogin(nombreUsuario) {
-    const loginForm = document.getElementById('loginForm');
-    const cardBody = loginForm.closest('.card-body');
-
-    cardBody.innerHTML = `
-        <div class="login-success-container d-flex flex-column align-items-center justify-content-center py-5">
-            <i class="fas fa-check-circle text-success mb-3" style="font-size:3.5rem"></i>
-            <h4 class="mb-2 text-center">¡Bienvenido/a, ${nombreUsuario}!</h4>
-            <p class="text-muted mb-4 text-center">Sesión iniciada correctamente</p>
-            <div class="spinner-border text-primary mb-3" style="width:2.5rem;height:2.5rem"></div>
-            <p class="mb-0 text-center"><strong>Redirigiendo al inicio...</strong></p>
-            <a href="../index.html" class="btn btn-primary btn-sm mt-3">
-                <i class="fas fa-home"></i> Ir al inicio ahora
-            </a>
-        </div>
-    `;
+    mostrarExitoLoginConRedireccion(nombreUsuario);
 }
 
 // ==================== EXPORTAR FUNCIONES ÚTILES ====================
