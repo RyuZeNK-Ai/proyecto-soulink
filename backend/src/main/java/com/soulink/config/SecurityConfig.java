@@ -42,9 +42,15 @@ public class SecurityConfig {
 
                         // 🔓 PÚBLICO
                         .requestMatchers(
-                                "/auth/**",        // login
-                                "/usuarios/register", // registro
-                                "/usuarios/login"   // <--- login ahora permitido
+                                "/auth/**",                 // login auth
+                                "/usuarios/register",      // registro usuarios
+                                "/usuarios/login",         // login usuarios
+                                "/api/stock/**",           // ← NUEVO: endpoints de stock (checkout)
+                                "/api/productos/**",       // ver productos
+                                "/test/**",                // endpoints de test
+                                "/swagger-ui/**",          // Swagger UI
+                                "/v3/api-docs/**",         // OpenAPI docs
+                                "/webjars/**"              // recursos Swagger
                         ).permitAll()
 
                         // 🔒 PRIVADO (JWT)
@@ -61,7 +67,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // 🌐 CORS – FRONTEND VERCEL + LOCAL
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -70,16 +75,27 @@ public class SecurityConfig {
                 Arrays.asList(
                         "http://localhost:5500",
                         "http://127.0.0.1:5500",
+                        "http://localhost:8081",
+                        "http://127.0.0.1:8081",
+                        "http://localhost:3000",
+                        "http://localhost:4200",
                         "https://proyecto-soulink.vercel.app"
                 )
         );
 
         configuration.setAllowedMethods(
-                Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
         );
 
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
+
+        configuration.setExposedHeaders(Arrays.asList(
+                "Authorization",
+                "Content-Type",
+                "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials"
+        ));
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();

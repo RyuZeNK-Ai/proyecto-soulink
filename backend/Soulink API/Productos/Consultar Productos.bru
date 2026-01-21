@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{local}}/productos
+  url: {{prod}}/productos
   body: none
   auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBbG9uc29AZXhhbXBsZS5jb20iLCJpYXQiOjE3Njg5NjMwNzUsImV4cCI6MTc2OTA0OTQ3NX0.ywpIYmYxtPZ5Yf8Tkv4Yr1njdd03xT_nC_M9MBx6MJzgOW_Lvpq8454N_H3_5M6UYcHniYVq4ptbTSnedlnfLA
 }
 
 settings {

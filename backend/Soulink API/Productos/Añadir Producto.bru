@@ -5,11 +5,18 @@ meta {
 }
 
 post {
-  url: {{local}}/productos
-  body: none
+  url: http://localhost:8080/api/stock/descontar
+  body: json
   auth: inherit
+}
+
+body:json {
+  [
+    {"id": 1, "cantidad": 1}
+  ]
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

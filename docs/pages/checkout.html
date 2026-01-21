@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SOULINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .checkout-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            margin-top: -76px;
+            padding-top: 176px;
+            text-align: center;
+        }
+        
+        .checkout-container {
+            padding: 40px 0;
+            min-height: 500px;
+        }
+        
+        .checkout-step {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .checkout-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checkout-summary {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .summary-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .payment-method {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary-color);
+            background: #f8f9fa;
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary-color);
+            background: rgba(108, 99, 255, 0.05);
+        }
+        
+        .payment-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+        }
+        
+        .btn-checkout {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-checkout:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-checkout:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .order-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .order-item-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        
+        .order-item-info {
+            flex-grow: 1;
+        }
+        
+        .secure-badge {
+            background: #e8f5e9;
+            color: #28a745;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .result-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .result-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .result-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .result-icon.success {
+            color: #28a745;
+        }
+        
+        .result-icon.error {
+            color: #dc3545;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .step.active .step-number {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .step.completed .step-number {
+            background: #28a745;
+            color: white;
+        }
+        
+        .step-divider {
+            width: 60px;
+            height: 2px;
+            background: #e9ecef;
+            margin: 0 15px;
+        }
+        
+        /* Estilos para validación */
+        .validation-message {
+            font-size: 0.8rem;
+            margin-top: 2px;
+            display: none;
+        }
+        
+        .validation-message.error {
+            color: #dc3545;
+            display: block;
+        }
+        
+        .validation-message.success {
+            color: #28a745;
+            display: block;
+        }
+        
+        .is-valid {
+            border-color: #28a745 !important;
+        }
+        
+        .is-invalid {
+            border-color: #dc3545 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .step-divider {
+                width: 30px;
+            }
+            
+            .step span {
+                display: none;
+            }
+            
+            .checkout-step {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Emergencia -->
+    <div class="emergency-btn">
+        <a href="contacto.html#emergencia" class="btn-emergency">
+            <img src="../assets/images/ChatBot.png" alt="Icono de asistente virtual" class="chatbot-icon">
+            <i class="fas fa-phone-alt"></i> NECESITO AYUDA AHORA
+        </a>
+    </div>
+
+    <!-- Navegación COMPLETA DE SOULINK -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <!-- LOGO -->
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/images/logo_sin_nombre.png" alt="SOULINK Logo" height="40">
+                <span class="brand-name">SOULINK</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- INICIO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+
+                    <!-- ACERCA DE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="acerca.html" data-toggle="dropdown">
+                            Acerca de
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="acerca.html#quienes-somos">¿Quiénes Somos?</a>
+                            <a class="dropdown-item" href="acerca.html#mision-vision">Misión, Visión y Valores</a>
+                            <a class="dropdown-item" href="acerca.html#equipo">Nuestro Equipo</a>
+                            <a class="dropdown-item" href="acerca.html#faq">FAQ</a>
+                            <a class="dropdown-item" href="acerca.html#resultados">Resultados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="acerca.html">Ver Todo</a>
+                        </div>
+                    </li>
+
+                    <!-- SERVICIOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="servicios.html" data-toggle="dropdown">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="servicios.html#foro">Foro Comunitario</a>
+                            <a class="dropdown-item" href="servicios.html#tests">Tests</a>
+                            <a class="dropdown-item" href="servicios.html#recursos">Recursos</a>
+                            <a class="dropdown-item" href="servicios.html#juegos">Juegos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="servicios.html">Explorar Todos</a>
+                        </div>
+                    </li>
+
+                    <!-- COMUNIDAD -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="comunidad.html" data-toggle="dropdown">
+                            Comunidad
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="comunidad.html#testimonios">Testimonios</a>
+                            <a class="dropdown-item" href="comunidad.html#experiencias">Experiencias</a>
+                            <a class="dropdown-item" href="comunidad.html#articulos">Artículos</a>
+                            <a class="dropdown-item" href="comunidad.html#eventos">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="comunidad.html">Unirse</a>
+                        </div>
+                    </li>
+
+                    <!-- CONTACTO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="contacto.html" data-toggle="dropdown">
+                            Contacto
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="contacto.html#contacto-general">Contacto General</a>
+                            <a class="dropdown-item" href="contacto.html#emergencia">Emergencias</a>
+                            <a class="dropdown-item" href="contacto.html#chat">Chat</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="contacto.html">Ver Contactos</a>
+                        </div>
+                    </li>
+
+                    <!-- COLABORA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="colaboraciones.html" data-toggle="dropdown">
+                            Colabora
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="colaboraciones.html#trabajo">Trabaja con Nosotros</a>
+                            <a class="dropdown-item" href="colaboraciones.html#donaciones">Donaciones</a>
+                            <a class="dropdown-item" href="colaboraciones.html#voluntariado">Voluntariado</a>
+                            <a class="dropdown-item" href="colaboraciones.html#colaboraciones-institucionales">Institucionales</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="colaboraciones.html">Ver Oportunidades</a>
+                        </div>
+                    </li>
+
+                    <!-- TIENDA -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="tienda.html">
+                            Tienda
+                        </a>
+                    </li>
+
+                    <!-- CARRITO -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.html" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadgeNav" class="cart-badge-nav" style="display: none;">0</span>
+                        </a>
+                    </li>
+
+                    <!-- USUARIO -->
+                    <li class="nav-item dropdown" id="userMenuContainer">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span id="userMenuText">Iniciar Sesión</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="login.html#login">Iniciar Sesión</a>
+                            <a class="dropdown-item" href="login.html#register">Crear Cuenta</a>
+                            <a class="dropdown-item" href="login.html#recover">Recuperar Contraseña</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="checkout-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4">Finaliza tu Compra</h1>
+                    <p class="lead">Completa tus datos y selecciona tu método de pago seguro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indicador de Pasos -->
+    <div class="container">
+        <div class="step-indicator">
+            <div class="step completed">
+                <div class="step-number">1</div>
+                <span>Carrito</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step completed">
+                <div class="step-number">2</div>
+                <span>Información</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step active">
+                <div class="step-number">3</div>
+                <span>Pago</span>
+            </div>
+            <div class="step-divider"></div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <span>Confirmación</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <section class="checkout-container">
+        <div class="container">
+            <div class="row">
+                <!-- Formulario de Checkout -->
+                <div class="col-lg-8">
+                    <div class="checkout-step">
+                        <h3 class="checkout-step-title">
+                            <i class="fas fa-user-circle"></i>
+                            Información de Contacto
+                        </h3>
+                        
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">Nombre *</label>
+                                        <input type="text" class="form-control" id="firstName" 
+                                               placeholder="Ej: María" 
+                                               pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+                                               title="Solo se permiten letras (A-Z, a-z, acentos y espacios)">
+                                        <div class="validation-message" id="firstNameError">
+                                            <i class="fas fa-exclamation-circle"></i> Solo se permiten letras
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName">Apellido *</label>
+                                        <input type="text" class="form-control" id="lastName" 
+                                               placeholder="Ej: González" 
+                                               pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+                                               title="Solo se permiten letras (A-Z, a-z, acentos y espacios)">
+                                        <div class="validation-message" id="lastNameError">
+                                            <i class="fas fa-exclamation-circle"></i> Solo se permiten letras
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Correo Electrónico *</label>
+                                        <input type="email" class="form-control" id="email" 
+                                               placeholder="ejemplo@correo.com"
+                                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                               title="Ingresa un email válido (ejemplo: usuario@correo.com)">
+                                        <div class="validation-message" id="emailError">
+                                            <i class="fas fa-exclamation-circle"></i> Ingresa un email válido
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Teléfono *</label>
+                                        <input type="tel" class="form-control" id="phone" 
+                                               placeholder="Ej: 912345678"
+                                               pattern="[0-9]{8,12}"
+                                               title="Solo números (8-12 dígitos)">
+                                        <div class="validation-message" id="phoneError">
+                                            <i class="fas fa-exclamation-circle"></i> Solo números (8-12 dígitos)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="checkout-step">
+                        <h3 class="checkout-step-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Dirección de Envío
+                        </h3>
+                        
+                        <form id="shippingForm">
+                            <div class="form-group">
+                                <label for="address">Dirección *</label>
+                                <input type="text" class="form-control" id="address" 
+                                       placeholder="Calle, número, departamento"
+                                       minlength="5"
+                                       title="Mínimo 5 caracteres">
+                                <div class="validation-message" id="addressError">
+                                    <i class="fas fa-exclamation-circle"></i> Mínimo 5 caracteres
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">Ciudad *</label>
+                                        <input type="text" class="form-control" id="city" 
+                                               placeholder="Ej: Santiago"
+                                               pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+                                               title="Solo letras y espacios">
+                                        <div class="validation-message" id="cityError">
+                                            <i class="fas fa-exclamation-circle"></i> Solo letras y espacios
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postalCode">Código Postal *</label>
+                                        <input type="text" class="form-control" id="postalCode" 
+                                               placeholder="Ej: 1234567"
+                                               pattern="[0-9]{5,8}"
+                                               title="Solo números (5-8 dígitos)">
+                                        <div class="validation-message" id="postalCodeError">
+                                            <i class="fas fa-exclamation-circle"></i> Solo números (5-8 dígitos)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="region">Región *</label>
+                                <select class="form-control" id="region" required>
+                                    <option value="">Selecciona tu región</option>
+                                    <option value="rm">Región Metropolitana de Santiago</option>
+                                    <option value="v">Región de Valparaíso</option>
+                                    <option value="viii">Región del Biobío</option>
+                                    <option value="x">Región de Los Lagos</option>
+                                    <option value="xv">Región de Arica y Parinacota</option>
+                                    <option value="i">Región de Tarapacá</option>
+                                    <option value="ii">Región de Antofagasta</option>
+                                    <option value="iii">Región de Atacama</option>
+                                    <option value="iv">Región de Coquimbo</option>
+                                    <option value="vi">Región del Libertador Bernardo O'Higgins</option>
+                                    <option value="vii">Región del Maule</option>
+                                    <option value="ix">Región de La Araucanía</option>
+                                    <option value="xi">Región de Aysén</option>
+                                    <option value="xii">Región de Magallanes</option>
+                                </select>
+                                <div class="validation-message" id="regionError">
+                                    <i class="fas fa-exclamation-circle"></i> Selecciona una región
+                                </div>
+                            </div>
+                            
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="saveAddress">
+                                <label class="form-check-label" for="saveAddress">Guardar esta dirección para futuras compras</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="checkout-step">
+                        <h3 class="checkout-step-title">
+                            <i class="fas fa-credit-card"></i>
+                            Método de Pago
+                        </h3>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method" data-method="creditCard">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-credit-card payment-icon"></i>
+                                    <div>
+                                        <h6 class="mb-0">Tarjeta de Crédito/Débito</h6>
+                                        <small class="text-muted">Paga con Visa, Mastercard o Redcompra</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method" data-method="paypal">
+                                <div class="d-flex align-items-center">
+                                    <i class="fab fa-paypal payment-icon"></i>
+                                    <div>
+                                        <h6 class="mb-0">PayPal</h6>
+                                        <small class="text-muted">Paga de forma segura con tu cuenta PayPal</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method" data-method="transfer">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-university payment-icon"></i>
+                                    <div>
+                                        <h6 class="mb-0">Transferencia Bancaria</h6>
+                                        <small class="text-muted">Realiza tu transferencia en 24 horas</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Formulario de Tarjeta (se muestra dinámicamente) -->
+                        <div id="creditCardForm" style="display: none;">
+                            <div class="mt-4">
+                                <div class="form-group">
+                                    <label for="cardNumber">Número de Tarjeta *</label>
+                                    <input type="text" class="form-control" id="cardNumber" 
+                                           placeholder="1234 5678 9012 3456"
+                                           title="16 dígitos de tarjeta (puedes usar espacios)">
+                                    <div class="validation-message" id="cardNumberError">
+                                        <i class="fas fa-exclamation-circle"></i> 16 dígitos de tarjeta
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="expiryDate">Fecha de Expiración *</label>
+                                            <input type="text" class="form-control" id="expiryDate" 
+                                                   placeholder="MM/AA"
+                                                   pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                                                   title="Formato: MM/AA (ej: 12/25)">
+                                            <div class="validation-message" id="expiryDateError">
+                                                <i class="fas fa-exclamation-circle"></i> Formato: MM/AA (ej: 12/25)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cvv">CVV *</label>
+                                            <input type="password" class="form-control" id="cvv" 
+                                                   placeholder="123"
+                                                   pattern="[0-9]{3,4}"
+                                                   title="3-4 dígitos del CVV">
+                                            <div class="validation-message" id="cvvError">
+                                                <i class="fas fa-exclamation-circle"></i> 3-4 dígitos del CVV
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cardName">Nombre en la Tarjeta *</label>
+                                    <input type="text" class="form-control" id="cardName"
+                                           pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+                                           title="Solo letras (como aparece en la tarjeta)">
+                                    <div class="validation-message" id="cardNameError">
+                                        <i class="fas fa-exclamation-circle"></i> Solo letras (como aparece en la tarjeta)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Info para Transferencia (se muestra dinámicamente) -->
+                        <div id="transferInfo" style="display: none;">
+                            <div class="alert alert-info mt-4">
+                                <h6><i class="fas fa-info-circle mr-2"></i>Instrucciones para Transferencia Bancaria</h6>
+                                <p class="mb-0">
+                                    <strong>Banco:</strong> Banco de Chile<br>
+                                    <strong>Tipo de Cuenta:</strong> Cuenta Corriente<br>
+                                    <strong>Número:</strong> 123-45678-90<br>
+                                    <strong>RUT:</strong> 76.543.210-9<br>
+                                    <strong>Beneficiario:</strong> SOULINK SpA<br>
+                                    <strong>Email de confirmación:</strong> pagos@soulink.cl
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="carrito.html" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left mr-2"></i> Volver al Carrito
+                        </a>
+                        <button id="processPaymentBtn" class="btn btn-checkout" disabled>
+                            <i class="fas fa-lock mr-2"></i> Realizar Pago
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resumen del Pedido -->
+                <div class="col-lg-4">
+                    <div class="checkout-summary">
+                        <h4 class="mb-4">Resumen del Pedido</h4>
+                        
+                        <div id="orderItems">
+                            <!-- Los productos se cargarán aquí dinámicamente -->
+                            <div class="text-center py-3">
+                                <i class="fas fa-spinner fa-spin"></i> Cargando productos...
+                            </div>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span>Subtotal:</span>
+                            <span id="summarySubtotal">$0</span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span>Envío:</span>
+                            <span id="summaryShipping">$0</span>
+                        </div>
+                        
+                        <div class="summary-item summary-total">
+                            <span>Total:</span>
+                            <span id="summaryTotal">$0</span>
+                        </div>
+                        
+                        <div class="secure-badge text-center mt-3">
+                            <i class="fas fa-shield-alt mr-2"></i> Pago 100% Seguro
+                        </div>
+                        
+                        <div class="alert alert-success mt-4">
+                            <small>
+                                <i class="fas fa-heart mr-1"></i>
+                                Tu compra contribuye a programas de apoyo emocional gratuito
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="text-white mt-3" style="position: absolute; bottom: 40%;">
+            <h4>Procesando tu pago...</h4>
+            <p>Por favor, no cierres esta ventana</p>
+        </div>
+    </div>
+
+    <!-- Modal de Resultado -->
+    <div class="result-modal" id="resultModal">
+        <div class="result-content">
+            <div class="result-icon success" id="successIcon" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="result-icon error" id="errorIcon" style="display: none;">
+                <i class="fas fa-times-circle"></i>
+            </div>
+            
+            <h3 id="resultTitle">¡Pago Completado!</h3>
+            <p id="resultMessage">Tu compra ha sido procesada exitosamente.</p>
+            
+            <div class="mt-4">
+                <button id="continueShoppingBtn" class="btn btn-primary btn-block">
+                    <i class="fas fa-shopping-bag mr-2"></i> Continuar Comprando
+                </button>
+                <!-- Botón de detalles ELIMINADO -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>SOULINK</h5>
+                    <p>Plataforma de apoyo emocional preventivo. Un espacio seguro para tu bienestar mental.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="pages/acerca.html">Acerca de</a></li>
+                        <li><a href="pages/servicios.html">Servicios</a></li>
+                        <li><a href="pages/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pages/servicios.html#foro">Foro Comunitario</a></li>
+                        <li><a href="pages/servicios.html#tests">Tests</a></li>
+                        <li><a href="pages/servicios.html#recursos">Recursos</a></li>
+                        <li><a href="pages/servicios.html#mapa">Centros de Ayuda</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto de Emergencia</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> 4141 (MINSAL)</li>
+                        <li><i class="fas fa-phone"></i> 600 360 7777</li>
+                        <li><i class="fas fa-globe"></i> saludresponde.gob.cl</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2026 SOULINK. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="pages/privacidad.html" class="text-white mr-3">Política de Privacidad</a>
+                    <a href="pages/terminos.html" class="text-white">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/soulink.js"></script>
+    
+    <!-- Lógica del Checkout con Validación Mejorada -->
+    <script>
+        class CheckoutPage {
+            constructor() {
+                this.carrito = this.cargarCarritoCheckout();
+                this.paymentMethod = null;
+                this.validationRules = {
+                    firstName: /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/,
+                    lastName: /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/,
+                    email: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i,
+                    phone: /^[0-9]{8,12}$/,
+                    address: (value) => value.trim().length >= 5,
+                    city: /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/,
+                    postalCode: /^[0-9]{5,8}$/,
+                    region: (value) => value.trim() !== '',
+                    // SIN algoritmo de Luhn - solo valida 16 dígitos
+                    cardNumber: (value) => this.validarNumeroTarjeta(value),
+                    expiryDate: /^(0[1-9]|1[0-2])\/[0-9]{2}$/,
+                    cvv: /^[0-9]{3,4}$/,
+                    cardName: /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/
+                };
+                this.inicializar();
+            }
+
+            cargarCarritoCheckout() {
+                const checkoutCarrito = localStorage.getItem('soulink_checkout_carrito');
+                if (checkoutCarrito) {
+                    return JSON.parse(checkoutCarrito);
+                }
+                
+                const carritoNormal = localStorage.getItem('soulink_carrito');
+                return carritoNormal ? JSON.parse(carritoNormal) : [];
+            }
+
+            inicializar() {
+                this.cargarResumenPedido();
+                this.asignarEventos();
+                this.validarFormularios();
+                console.log('✅ Checkout inicializado');
+            }
+
+            corregirRutaImagen(ruta) {
+                if (!ruta) return '../assets/images/tienda/placeholder.jpg';
+                
+                if (ruta.startsWith('../') || ruta.startsWith('http') || ruta.startsWith('data:')) {
+                    return ruta;
+                }
+                if (ruta.startsWith('assets/')) {
+                    return '../' + ruta;
+                }
+                return '../' + ruta;
+            }
+
+            cargarResumenPedido() {
+                const orderItems = document.getElementById('orderItems');
+                
+                if (this.carrito.length === 0) {
+                    orderItems.innerHTML = `
+                        <div class="text-center py-4">
+                            <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                            <p>No hay productos en el carrito</p>
+                            <a href="tienda.html" class="btn btn-primary btn-sm">Ir a la Tienda</a>
+                        </div>
+                    `;
+                    this.actualizarTotales(0);
+                    return;
+                }
+
+                let subtotal = 0;
+                let html = '';
+
+                this.carrito.forEach(item => {
+                    const itemTotal = item.precio * item.cantidad;
+                    subtotal += itemTotal;
+                    
+                    const imagenCorregida = this.corregirRutaImagen(item.imagen);
+
+                    html += `
+                        <div class="order-item">
+                            <img src="${imagenCorregida}" 
+                                 alt="${item.nombre}" 
+                                 class="order-item-img"
+                                 onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%2260%22%20height%3D%2260%22%20fill%3D%22%23f8f9fa%22/%3E%3Ctext%20x%3D%2230%22%20y%3D%2235%22%20font-family%3D%22Arial%22%20font-size%3D%2212%22%20text-anchor%3D%22middle%22%20fill%3D%22%236c757d%22%3EIMG%3C/text%3E%3C/svg%3E'">
+                            <div class="order-item-info">
+                                <h6 class="mb-1">${item.nombre}</h6>
+                                <div class="d-flex justify-content-between">
+                                    <small>Cantidad: ${item.cantidad}</small>
+                                    <strong>$${itemTotal.toLocaleString('es-CL')}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                orderItems.innerHTML = html;
+                this.actualizarTotales(subtotal);
+            }
+
+            actualizarTotales(subtotal) {
+                const envio = subtotal > 50000 ? 0 : 3000;
+                const total = subtotal + envio;
+
+                document.getElementById('summarySubtotal').textContent = `$${subtotal.toLocaleString('es-CL')}`;
+                document.getElementById('summaryShipping').textContent = envio === 0 ? 'Gratis' : `$${envio.toLocaleString('es-CL')}`;
+                document.getElementById('summaryTotal').textContent = `$${total.toLocaleString('es-CL')}`;
+            }
+
+            asignarEventos() {
+                // Selección de método de pago
+                document.querySelectorAll('.payment-method').forEach(method => {
+                    method.addEventListener('click', (e) => {
+                        document.querySelectorAll('.payment-method').forEach(m => {
+                            m.classList.remove('selected');
+                        });
+                        
+                        e.currentTarget.classList.add('selected');
+                        this.paymentMethod = e.currentTarget.dataset.method;
+                        this.mostrarFormularioPago(this.paymentMethod);
+                        this.validarFormularios();
+                    });
+                });
+
+                // Configurar eventos de validación
+                this.setupValidationEvents();
+
+                // Formatear número de tarjeta (MEJORADO)
+                document.getElementById('cardNumber')?.addEventListener('input', function(e) {
+                    // Obtener cursor position
+                    const cursorPos = e.target.selectionStart;
+                    const originalValue = e.target.value;
+                    
+                    // Limpiar todo excepto números
+                    let value = originalValue.replace(/\D/g, '');
+                    
+                    // Limitar a 16 dígitos
+                    value = value.substring(0, 16);
+                    
+                    // Formatear con espacios cada 4 dígitos
+                    let formatted = '';
+                    for (let i = 0; i < value.length; i++) {
+                        if (i > 0 && i % 4 === 0) {
+                            formatted += ' ';
+                        }
+                        formatted += value[i];
+                    }
+                    
+                    // Establecer nuevo valor
+                    e.target.value = formatted;
+                    
+                    // Mantener cursor en posición similar
+                    const newCursorPos = this.calcularNuevaPosicionCursor(cursorPos, originalValue, formatted);
+                    e.target.setSelectionRange(newCursorPos, newCursorPos);
+                    
+                    // Validar
+                    window.checkoutPage.validarCampo('cardNumber', e.target.value);
+                });
+
+                // Formatear fecha de expiración
+                document.getElementById('expiryDate')?.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value.substring(0, 5);
+                    window.checkoutPage.validarCampo('expiryDate', e.target.value);
+                });
+
+                // Botón de procesar pago
+                document.getElementById('processPaymentBtn').addEventListener('click', () => {
+                    if (this.validarTodo()) {
+                        this.procesarPago();
+                    } else {
+                        this.mostrarErrorGeneral('Por favor, corrige los errores en el formulario.');
+                    }
+                });
+
+                // Botón para continuar comprando
+                document.getElementById('continueShoppingBtn').addEventListener('click', () => {
+                    window.location.href = 'tienda.html';
+                });
+            }
+
+            // Función auxiliar para mantener cursor en tarjeta
+            calcularNuevaPosicionCursor(oldPos, oldValue, newValue) {
+                // Si el usuario está borrando al final, mantener posición
+                if (oldPos === oldValue.length && newValue.length < oldValue.length) {
+                    return newValue.length;
+                }
+                
+                // Contar dígitos antes del cursor en el valor antiguo
+                const digitsBeforeCursor = oldValue.substring(0, oldPos).replace(/\D/g, '').length;
+                
+                // Encontrar posición en nuevo valor
+                let digitCount = 0;
+                for (let i = 0; i < newValue.length; i++) {
+                    if (/\d/.test(newValue[i])) {
+                        digitCount++;
+                    }
+                    if (digitCount === digitsBeforeCursor) {
+                        return i + 1;
+                    }
+                }
+                
+                return newValue.length;
+            }
+
+            setupValidationEvents() {
+                // Campos de contacto
+                ['firstName', 'lastName', 'email', 'phone'].forEach(field => {
+                    const input = document.getElementById(field);
+                    if (input) {
+                        input.addEventListener('input', () => {
+                            this.validarCampo(field, input.value);
+                            this.validarFormularios();
+                        });
+                        input.addEventListener('blur', () => {
+                            this.validarCampo(field, input.value);
+                        });
+                    }
+                });
+
+                // Campos de dirección
+                ['address', 'city', 'postalCode'].forEach(field => {
+                    const input = document.getElementById(field);
+                    if (input) {
+                        input.addEventListener('input', () => {
+                            this.validarCampo(field, input.value);
+                            this.validarFormularios();
+                        });
+                        input.addEventListener('blur', () => {
+                            this.validarCampo(field, input.value);
+                        });
+                    }
+                });
+
+                // Región
+                const regionSelect = document.getElementById('region');
+                if (regionSelect) {
+                    regionSelect.addEventListener('change', () => {
+                        this.validarCampo('region', regionSelect.value);
+                        this.validarFormularios();
+                    });
+                }
+
+                // Campos de tarjeta
+                ['cardNumber', 'expiryDate', 'cvv', 'cardName'].forEach(field => {
+                    const input = document.getElementById(field);
+                    if (input) {
+                        input.addEventListener('input', () => {
+                            this.validarCampo(field, input.value);
+                            this.validarFormularios();
+                        });
+                        input.addEventListener('blur', () => {
+                            this.validarCampo(field, input.value);
+                        });
+                    }
+                });
+            }
+
+            // VALIDACIÓN SIMPLIFICADA DE TARJETA - SOLO 16 DÍGITOS
+            validarNumeroTarjeta(numero) {
+                // Limpiar espacios
+                const cleaned = numero.replace(/\s/g, '');
+                
+                // Solo validar que sean exactamente 16 dígitos
+                // SIN algoritmo de Luhn
+                return /^[0-9]{16}$/.test(cleaned);
+            }
+
+            validarCampo(fieldName, value) {
+                const input = document.getElementById(fieldName);
+                const errorElement = document.getElementById(fieldName + 'Error');
+                
+                if (!input || !errorElement) return false;
+
+                const trimmedValue = value.toString().trim();
+                const rule = this.validationRules[fieldName];
+                let isValid = false;
+
+                if (typeof rule === 'function') {
+                    isValid = rule(trimmedValue);
+                } else if (rule instanceof RegExp) {
+                    isValid = rule.test(trimmedValue);
+                } else {
+                    isValid = trimmedValue !== '';
+                }
+
+                // Validaciones específicas
+                if (fieldName === 'email') {
+                    isValid = this.validarEmail(trimmedValue);
+                } else if (fieldName === 'phone') {
+                    isValid = this.validarTelefono(trimmedValue);
+                } else if (fieldName === 'expiryDate') {
+                    isValid = this.validarFechaExpiracion(trimmedValue);
+                }
+
+                // Actualizar UI
+                if (trimmedValue === '') {
+                    input.classList.remove('is-valid', 'is-invalid');
+                    errorElement.classList.remove('error', 'success');
+                    errorElement.style.display = 'none';
+                } else if (isValid) {
+                    input.classList.remove('is-invalid');
+                    input.classList.add('is-valid');
+                    errorElement.classList.remove('error');
+                    errorElement.classList.add('success');
+                    errorElement.innerHTML = `<i class="fas fa-check-circle"></i> Campo válido`;
+                    errorElement.style.display = 'block';
+                } else {
+                    input.classList.remove('is-valid');
+                    input.classList.add('is-invalid');
+                    errorElement.classList.remove('success');
+                    errorElement.classList.add('error');
+                    errorElement.style.display = 'block';
+                    
+                    // Mensajes de error específicos
+                    let mensaje = '';
+                    switch(fieldName) {
+                        case 'firstName':
+                        case 'lastName':
+                        case 'city':
+                        case 'cardName':
+                            mensaje = 'Solo se permiten letras (A-Z, a-z, acentos y espacios)';
+                            break;
+                        case 'email':
+                            mensaje = 'Ingresa un email válido (ejemplo: usuario@correo.com)';
+                            break;
+                        case 'phone':
+                            mensaje = 'Solo números (8-12 dígitos)';
+                            break;
+                        case 'postalCode':
+                            mensaje = 'Solo números (5-8 dígitos)';
+                            break;
+                        case 'cardNumber':
+                            // Mensaje más claro para tarjeta
+                            const digitCount = trimmedValue.replace(/\s/g, '').length;
+                            if (digitCount < 16) {
+                                mensaje = `Faltan ${16 - digitCount} dígitos (necesita 16)`;
+                            } else if (digitCount > 16) {
+                                mensaje = `Demasiados dígitos (solo 16 permitidos)`;
+                            } else {
+                                mensaje = '16 dígitos de tarjeta (puedes usar espacios)';
+                            }
+                            break;
+                        case 'expiryDate':
+                            mensaje = 'Formato: MM/AA (ej: 12/25)';
+                            break;
+                        case 'cvv':
+                            mensaje = '3-4 dígitos del CVV';
+                            break;
+                        case 'address':
+                            mensaje = 'Mínimo 5 caracteres';
+                            break;
+                        default:
+                            mensaje = 'Campo inválido';
+                    }
+                    errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${mensaje}`;
+                }
+
+                return isValid;
+            }
+
+            validarEmail(email) {
+                const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+                if (!emailRegex.test(email)) return false;
+                
+                const parts = email.split('@');
+                if (parts.length !== 2) return false;
+                
+                const domain = parts[1];
+                return domain.includes('.') && domain.split('.')[1].length >= 2;
+            }
+
+            validarTelefono(phone) {
+                const phoneRegex = /^[0-9]{8,12}$/;
+                return phoneRegex.test(phone);
+            }
+
+            validarFechaExpiracion(fecha) {
+                const fechaRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+                if (!fechaRegex.test(fecha)) return false;
+                
+                const [mes, año] = fecha.split('/');
+                const ahora = new Date();
+                const añoActual = ahora.getFullYear() % 100;
+                const mesActual = ahora.getMonth() + 1;
+                
+                const añoNum = parseInt(año);
+                const mesNum = parseInt(mes);
+                
+                if (añoNum < añoActual) return false;
+                if (añoNum === añoActual && mesNum < mesActual) return false;
+                
+                return true;
+            }
+
+            mostrarFormularioPago(method) {
+                document.getElementById('creditCardForm').style.display = 'none';
+                document.getElementById('transferInfo').style.display = 'none';
+
+                switch(method) {
+                    case 'creditCard':
+                        document.getElementById('creditCardForm').style.display = 'block';
+                        break;
+                    case 'transfer':
+                        document.getElementById('transferInfo').style.display = 'block';
+                        break;
+                    case 'paypal':
+                        break;
+                }
+            }
+
+            validarFormularios() {
+                const contactFields = ['firstName', 'lastName', 'email', 'phone'];
+                const shippingFields = ['address', 'city', 'postalCode', 'region'];
+                
+                let contactValid = true;
+                let shippingValid = true;
+                let paymentValid = true;
+                
+                contactFields.forEach(field => {
+                    const input = document.getElementById(field);
+                    if (input && !this.validarCampo(field, input.value)) {
+                        contactValid = false;
+                    }
+                });
+                
+                shippingFields.forEach(field => {
+                    const input = field === 'region' ? 
+                        document.getElementById(field) : 
+                        document.getElementById(field);
+                    if (input && !this.validarCampo(field, input.value)) {
+                        shippingValid = false;
+                    }
+                });
+                
+                if (this.paymentMethod === 'creditCard') {
+                    const cardFields = ['cardNumber', 'expiryDate', 'cvv', 'cardName'];
+                    cardFields.forEach(field => {
+                        const input = document.getElementById(field);
+                        if (input && !this.validarCampo(field, input.value)) {
+                            paymentValid = false;
+                        }
+                    });
+                } else {
+                    paymentValid = this.paymentMethod !== null;
+                }
+
+                const allValid = contactValid && shippingValid && paymentValid;
+                const processBtn = document.getElementById('processPaymentBtn');
+                
+                processBtn.disabled = !allValid;
+                processBtn.title = allValid ? 'Realizar pago' : 'Completa todos los campos requeridos correctamente';
+            }
+
+            validarTodo() {
+                let allValid = true;
+                
+                const allFields = ['firstName', 'lastName', 'email', 'phone', 
+                                  'address', 'city', 'postalCode', 'region'];
+                
+                allFields.forEach(field => {
+                    const input = document.getElementById(field);
+                    if (input && input.offsetParent !== null) {
+                        if (!this.validarCampo(field, input.value)) {
+                            allValid = false;
+                            if (allValid === false) {
+                                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                input.focus();
+                            }
+                        }
+                    }
+                });
+
+                if (this.paymentMethod === 'creditCard') {
+                    const cardFields = ['cardNumber', 'expiryDate', 'cvv', 'cardName'];
+                    cardFields.forEach(field => {
+                        const input = document.getElementById(field);
+                        if (input && !this.validarCampo(field, input.value)) {
+                            allValid = false;
+                        }
+                    });
+                }
+
+                return allValid && this.paymentMethod !== null;
+            }
+
+            mostrarErrorGeneral(mensaje) {
+                const notification = document.createElement('div');
+                notification.className = 'alert alert-danger soulink-notification';
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    min-width: 300px;
+                    max-width: 400px;
+                    animation: fadeIn 0.3s ease;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                `;
+                
+                notification.innerHTML = `
+                    <button type="button" class="close" onclick="this.parentElement.remove()">
+                        <span>&times;</span>
+                    </button>
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    ${mensaje}
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+            }
+
+            async procesarPago() {
+                if (this.carrito.length === 0) {
+                    this.mostrarErrorGeneral('Tu carrito está vacío');
+                    return;
+                }
+
+                if (!this.validarTodo()) {
+                    this.mostrarErrorGeneral('Por favor, corrige los errores en el formulario.');
+                    return;
+                }
+
+                document.getElementById('loadingOverlay').style.display = 'flex';
+                
+                try {
+                    // Preparar datos para descontar stock
+                    const productosParaDescontar = this.carrito.map(item => ({
+                        id: item.id,           // id_producto
+                        cantidad: item.cantidad,
+                        nombre: item.nombre
+                    }));
+                    
+                    console.log('Descontando stock:', productosParaDescontar);
+                    
+                    // IMPORTANTE: Cambia el puerto si tu backend usa otro
+                    const backendUrl = 'http://localhost:8080'; // o el puerto que uses
+                    
+                    // Enviar al endpoint de stock
+                    const response = await fetch(`${backendUrl}/api/stock/descontar`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(productosParaDescontar)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    
+                    if (result.success) {
+                        this.mostrarResultado(true);
+                        this.limpiarCarrito();
+                        console.log('✅ Stock actualizado:', result);
+                    } else {
+                        this.mostrarResultado(false, result.message || 'Error al actualizar stock');
+                        console.error('❌ Error backend:', result);
+                    }
+                    
+                } catch (error) {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    console.error('❌ Error de conexión:', error);
+                    this.mostrarResultado(false, 'Error de conexión con el servidor');
+                }
+            }
+
+            mostrarResultado(success, errorMessage = null) {
+                const modal = document.getElementById('resultModal');
+                const successIcon = document.getElementById('successIcon');
+                const errorIcon = document.getElementById('errorIcon');
+                const resultTitle = document.getElementById('resultTitle');
+                const resultMessage = document.getElementById('resultMessage');
+
+                if (success) {
+                    successIcon.style.display = 'block';
+                    errorIcon.style.display = 'none';
+                    resultTitle.textContent = '¡Pago Completado!';
+                    resultMessage.textContent = 'Tu compra ha sido procesada exitosamente. Recibirás un email con los detalles de tu pedido.';
+                    
+                    // Auto-redirección después de 10 segundos
+                    setTimeout(() => {
+                        window.location.href = 'tienda.html';
+                    }, 10000);
+                } else {
+                    successIcon.style.display = 'none';
+                    errorIcon.style.display = 'block';
+                    resultTitle.textContent = '¡Pago Rechazado!';
+                    resultMessage.textContent = errorMessage || 'Ha ocurrido un error al procesar tu pago. Por favor, intenta nuevamente.';
+                }
+
+                modal.style.display = 'flex';
+            }
+
+            limpiarCarrito() {
+                localStorage.removeItem('soulink_carrito');
+                localStorage.removeItem('soulink_checkout_carrito');
+                this.actualizarBadgeCarrito();
+            }
+
+            actualizarBadgeCarrito() {
+                const totalItems = 0;
+                const badge = document.getElementById('cartBadgeNav');
+                if (badge) {
+                    badge.textContent = totalItems;
+                    badge.style.display = totalItems > 0 ? 'flex' : 'none';
+                }
+            }
+
+            guardarOrden() {
+                const orden = {
+                    id: Date.now(),
+                    fecha: new Date().toISOString(),
+                    productos: this.carrito,
+                    total: this.calcularTotal(),
+                    estado: 'completado',
+                    datosContacto: {
+                        nombre: document.getElementById('firstName').value,
+                        apellido: document.getElementById('lastName').value,
+                        email: document.getElementById('email').value,
+                        telefono: document.getElementById('phone').value
+                    },
+                    direccion: {
+                        calle: document.getElementById('address').value,
+                        ciudad: document.getElementById('city').value,
+                        codigoPostal: document.getElementById('postalCode').value,
+                        region: document.getElementById('region').value
+                    }
+                };
+
+                let historial = JSON.parse(localStorage.getItem('soulink_historial_pedidos') || '[]');
+                historial.push(orden);
+                localStorage.setItem('soulink_historial_pedidos', JSON.stringify(historial));
+            }
+
+            calcularTotal() {
+                let subtotal = this.carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+                const envio = subtotal > 50000 ? 0 : 3000;
+                return subtotal + envio;
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            window.checkoutPage = new CheckoutPage();
+            
+            if (!document.querySelector('#checkout-styles')) {
+                const style = document.createElement('style');
+                style.id = 'checkout-styles';
+                style.textContent = `
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateX(100%); }
+                        to { opacity: 1; transform: translateX(0); }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; transform: translateX(0); }
+                        to { opacity: 0; transform: translateX(100%); }
+                    }
+                    .soulink-notification {
+                        font-size: 14px;
+                        padding: 12px 15px;
+                        border-radius: 8px;
+                        border-left: 4px solid #dc3545;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        });
+    </script>
+</body>
+</html>

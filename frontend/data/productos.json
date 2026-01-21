@@ -6,7 +6,7 @@
         "precio": 14990,
         "categoria": "amigurumis",
         "imagen": "../assets/images/MerchConsejin/Amigurumis/amigurumi1.png",
-        "stock": 15,
+        "stock": 300,
         "destacado": true,
         "autor": "Artista: María Fernández"
     },
@@ -17,7 +17,7 @@
         "precio": 8990,
         "categoria": "stickers",
         "imagen": "../assets/images/MerchConsejin/Stickers/sticker-pack.png",
-        "stock": 25,
+        "stock": 300,
         "destacado": true,
         "autor": "Diseño SOULINK"
     },
@@ -28,7 +28,7 @@
         "precio": 15990,
         "categoria": "ropa",
         "imagen": "../assets/images/MerchConsejin/Poleras/camiseta-soulink.png",
-        "stock": 8,
+        "stock": 300,
         "destacado": false,
         "autor": ""
     },
@@ -39,7 +39,7 @@
         "precio": 6990,
         "categoria": "stickers",
         "imagen": "../assets/images/MerchConsejin/Stickers/stickers-emociones.png",
-        "stock": 12,
+        "stock": 300,
         "destacado": true,
         "autor": "Equipo SOULINK"
     },
@@ -50,7 +50,7 @@
         "precio": 18990,
         "categoria": "amigurumis",
         "imagen": "../assets/images/MerchConsejin/Amigurumis/amigurumi2.png",
-        "stock": 18,
+        "stock": 300,
         "destacado": false,
         "autor": "Artista: Roberto Silva"
     },
@@ -61,7 +61,7 @@
         "precio": 29990,
         "categoria": "ropa",
         "imagen": "../assets/images/MerchConsejin/Poleras/hoodie-soulink.png",
-        "stock": 10,
+        "stock": 300,
         "destacado": false,
         "autor": ""
     },
@@ -72,7 +72,7 @@
         "precio": 7990,
         "categoria": "stickers",
         "imagen": "../assets/images/MerchConsejin/Stickers/stickers-frases.png",
-        "stock": 22,
+        "stock": 300,
         "destacado": true,
         "autor": "Equipo SOULINK"
     },
@@ -83,7 +83,7 @@
         "precio": 21990,
         "categoria": "amigurumis",
         "imagen": "../assets/images/MerchConsejin/Amigurumis/amigurumi3.png",
-        "stock": 10,
+        "stock": 300,
         "destacado": false,
         "autor": "Artista: Ana López"
     }

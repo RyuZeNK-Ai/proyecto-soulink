@@ -16,6 +16,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -24,6 +26,35 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final UsuarioService usuarioService;
+
+    // Lista de rutas públicas que NO deben pasar por el filtro JWT
+    private static final List<String> PUBLIC_PATHS = Arrays.asList(
+            "/auth/",
+            "/usuarios/register",
+            "/usuarios/login",
+            "/api/stock/",
+            "/api/productos/",
+            "/test/",
+            "/swagger-ui/",
+            "/v3/api-docs/",
+            "/webjars/",
+            "/favicon.ico",
+            "/error"
+    );
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+
+        // Si la ruta comienza con alguno de los prefijos públicos, no aplicar filtro
+        for (String publicPath : PUBLIC_PATHS) {
+            if (path.startsWith(publicPath)) {
+                log.debug("Ruta pública detectada: {} - Saltando filtro JWT", path);
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -42,9 +73,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+                log.debug("Usuario autenticado: {}", email);
             } catch (Exception e) {
                 log.error("No se pudo autenticar con el token JWT: {}", e.getMessage());
             }
+        } else {
+            log.debug("No hay token JWT válido en la request");
         }
 
         filterChain.doFilter(request, response);
