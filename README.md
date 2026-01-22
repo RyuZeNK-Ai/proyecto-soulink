@@ -1,7 +1,13 @@
 <h1 align="center" style="font-size: 2em; margin-bottom: 20px;">
   🌐 Soulink - Proyecto Web 🌐
 </h1>
+<div align="center">
 
+[![🎥 Presentación Final](https://img.shields.io/badge/🎥_Presentación_Final-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/ASdx1-Q2jok?si=KMa4YxKuloauUNVa)
+&nbsp;&nbsp;&nbsp;&nbsp;
+[![🧩 Presentación Front+Back+BD](https://img.shields.io/badge/_Front+Back+BD-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=pKhYXoqUKtU)
+
+</div>
 </div>
 
 <div align="center">
@@ -589,6 +595,7 @@ proyecto-soulink/
 ## 📸 Screenshot 22 - DBeaver - Usuarios CIFRADOS
 
 ![DBeaver - Usuarios CIFRADOS](frontend/assets/images/ss_bdcifrada.png)
+
 
 
 
